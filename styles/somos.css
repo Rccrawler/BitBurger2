@@ -1,0 +1,307 @@
+/* styles/QuienesSomos.css */
+
+/* --- Variables CSS para fácil personalización --- */
+:root {
+    --font-primary: 'Lamoore', 'Georgia', serif; /* Asumiendo que Lamoore es legible para texto */
+    --font-display: 'Ashton', 'Impact', sans-serif; /* Para títulos llamativos */
+
+    /* COLORES ACTUALIZADOS BASADOS EN LA IMAGEN DE "NOTICIAS" */
+    --color-background-page: #fdf6f0;      /* Beige cálido muy claro (fondo general) */
+    --color-background-card: #fffadc;      /* Amarillo muy pálido (para el contenedor de imagen y cualquier "tarjeta" principal) */
+    /* Si necesitas un blanco puro para elementos internos, podrías añadir: --color-background-inner-card: #ffffff; */
+    --color-text-primary: #4a3b31;         /* Marrón oscuro (texto general y párrafos) */
+    --color-text-headings: #4a3b31;        /* Marrón oscuro (encabezados de contenido como "Who are we?") */
+    --color-text-main-title: #4a3b31;      /* Marrón oscuro (para el título principal si existe, para unificar) */
+    --color-accent: #d9534f;               /* Rojo (para acentos como títulos destacados o checkmarks) */
+    --color-border-subtle: #ffcc80;       /* Naranja/amarillo suave (bordes de tarjetas y líneas de separación) */
+
+    --card-border-radius: 25px;
+    --element-border-radius: 12px;
+    --shadow-soft: 0 6px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: #fdf6f0; /* Cambia este valor al color que desees */
+    /* Otros estilos para el body pueden ir aquí, como la fuente, márgenes, etc. */
+    font-family: sans-serif;
+    margin: 0; /* Es buena práctica resetear el margen del body */
+}
+
+/* --- Estilos base para la página --- */
+body.about-us-page, .about-us-page {
+    background-color: var(--color-background-page);
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    justify-content: flex-start; /* Alinea los elementos al inicio de la columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    min-height: 100vh;
+    padding: 40px 20px; /* Más padding superior e inferior */
+    box-sizing: border-box;
+    font-family: var(--font-primary); /* Fuente base para la página */
+    color: var(--color-text-primary);
+}
+
+/* --- Contenedor principal de la tarjeta (si usas .about-container, debe seguir en el HTML) --- */
+/* (Tu HTML de ejemplo no tiene .about-container, solo .about-us-page y .about-content)
+   Si lo tienes en la página real, asegúrate de que esté bien estructurado.
+   Asumo que el contenido principal ahora está dentro de .about-us-page y no en un .about-container separado.
+*/
+
+/* --- Cabecera y Título Principal --- */
+.about-header { /* Si esta clase existe en tu HTML real */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-title { /* Si esta clase existe en tu HTML real */
+    font-family: var(--font-display);
+    color: var(--color-text-main-title); /* Usará el marrón oscuro definido arriba */
+    font-size: 3.2em;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* --- SECCIÓN DE LA IMAGEN DE INICIO (NUEVOS ESTILOS) --- */
+.main-image-container { /* Nuevo nombre de clase para el contenedor de la imagen */
+    margin: 0 auto 30px auto; /* Centra el contenedor y le da un margen inferior */
+    width: 100%;
+    max-width: 800px; /* Ancho máximo para la imagen en escritorio, ajusta según necesites */
+    overflow: hidden; /* Para que la imagen no se desborde si tiene bordes redondeados */
+    border-radius: var(--element-border-radius); /* Bordes redondeados para el contenedor */
+    box-shadow: var(--shadow-soft); /* Sombra suave para la imagen */
+    background-color: var(--color-background-card); /* Fondo amarillo pálido */
+    /* Podrías añadir un borde si quieres que se parezca más a las tarjetas de noticias: */
+    /* border: 1px solid var(--color-border-subtle); */
+}
+
+#mainPageImage { /* Nuevo ID para la imagen */
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    width: 100%; /* La imagen ocupará el 100% del ancho de su contenedor */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionar */
+    /* Animación opcional, si quieres que aparezca suavemente */
+    opacity: 0;
+    transform: translateY(40px);
+    animation-name: slideAndFadeIn;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    border-radius: var(--element-border-radius); /* Bordes redondeados para la imagen también */
+}
+/* --- FIN SECCIÓN DE LA IMAGEN DE INICIO --- */
+
+/* Resto de tu CSS se mantiene igual, a menos que se indique lo contrario */
+
+/* --- Bloques de Contenido --- */
+.content-block {
+    margin-bottom: 35px;
+}
+
+.content-block:last-child {
+    margin-bottom: 0;
+}
+
+.content-block img {
+    width: 30em;
+    max-width: 30em; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    border-radius: var(--element-border-radius); /* Bordes redondeados para las imágenes */
+    box-shadow: var(--shadow-soft); /* Sombra suave para las imágenes */
+}
+
+.content-heading {
+    font-family: var(--font-display);
+    color: var(--color-text-headings); /* Usará el marrón oscuro */
+    font-size: 2em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border-subtle); /* Usará el naranja/amarillo suave */
+    font-weight: 600;
+}
+
+.content-text,
+.work-values-list li {
+    font-family: var(--font-primary);
+    color: var(--color-text-primary); /* Usará el marrón oscuro */
+    font-size: 1.15em;
+    line-height: 1.8;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* --- Lista de Valores --- */
+.work-values-list {
+    list-style-type: none;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+.work-values-list li {
+    margin-bottom: 12px;
+    text-align: left;
+    position: relative;
+    padding-left: 25px;
+}
+
+.work-values-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--color-accent); /* Usará el rojo de acento */
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* --- Clases de fuentes específicas --- */
+.font-style-ashton {
+    font-family: var(--font-display);
+}
+
+.font-style-lamoore {
+    font-family: var(--font-primary);
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------
+ * HAMBURGER ANIMATION (VIDEO) - REEMPLAZADO POR IMAGEN FIJA
+ *------------------------------------------------------------------------------------*/
+
+/* Eliminamos o modificamos las reglas que hacían que la imagen se comportara como video a pantalla completa */
+/* Si tenías esta sección antes, bórrala o coméntala si no la necesitas para un video real */
+/* Si la dejaste para la animación de la imagen, ya está integrada en #mainPageImage */
+
+/* Esta animación la mantuve en #mainPageImage, así que esta sección ya no es necesaria con el código de arriba */
+/*
+.full-width-video {
+    width: 100%;
+    max-width: none;
+    margin: 30px 0;
+    padding: 0;
+}
+*/
+
+@keyframes slideAndFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Ajustes Responsivos para la imagen de inicio --- */
+@media (max-width: 767px) {
+    .main-image-container {
+        margin: 0 auto 20px auto; /* Menos margen inferior en móvil */
+        padding: 0; /* Sin padding horizontal aquí para que la imagen ocupe todo el ancho */
+        border-radius: 0; /* Eliminar bordes redondeados en móvil si quieres que sea de borde a borde */
+        box-shadow: none; /* Eliminar sombra en móvil si no la quieres */
+        max-width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    }
+
+    #mainPageImage {
+        border-radius: 0; /* Asegura que la imagen no tenga bordes redondeados si el contenedor los tiene */
+    }
+
+    /* ELIMINA LAS SIGUIENTES REGLAS QUE FUERON LAS QUE CAUSARON EL PROBLEMA
+       SI LAS TENÍAS EN UNA SECCIÓN DE VIDEO O ANIMACIÓN DE HAMBURGUESA
+       Y NO TIENEN NADA QUE VER CON TU NUEVA IMAGEN DE INICIO:
+    */
+    /*
+    .hamburger-animation-container {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #animatedHamburger {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    */
+}
+
+/* --- Ajustes Responsivos Generales (se mantienen igual) --- */
+@media (max-width: 768px) {
+    .about-us-page {
+        padding: 20px 15px;
+    }
+    /* ... el resto de las reglas para 768px ... */
+    .about-container { /* Si lo tienes en el HTML real */
+        padding: 25px 30px;
+    }
+    .about-title {
+        font-size: 2.6em;
+    }
+    .banner-section { /* Si lo tienes en el HTML real */
+        min-height: 200px;
+        padding: 20px;
+    }
+    .banner-image-placeholder { /* Si lo tienes en el HTML real */
+        width: 280px;
+        height: 150px;
+        font-size: 1.6em;
+    }
+    .content-heading {
+        font-size: 1.7em;
+    }
+    .content-text,
+    .work-values-list li {
+        font-size: 1.05em;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-page {
+        padding: 15px 10px;
+    }
+    /* ... el resto de las reglas para 480px ... */
+    .about-container { /* Si lo tienes en el HTML real */
+        padding: 20px 15px;
+        border-radius: var(--element-border-radius);
+    }
+    .about-title {
+        font-size: 2.1em;
+    }
+    .banner-section { /* Si lo tienes en el HTML real */
+        margin-bottom: 25px;
+        padding: 15px;
+    }
+    .banner-image-placeholder { /* Si lo tienes en el HTML real */
+        width: 100%;
+        max-width: 260px;
+        height: 130px;
+        font-size: 1.3em;
+    }
+    .content-heading {
+        font-size: 1.5em;
+    }
+    .content-text,
+    .work-values-list li {
+        font-size: 1em;
+        line-height: 1.65;
+        text-align: left;
+        hyphens: none;
+    }
+    .work-values-list {
+        padding-left: 5px;
+    }
+    .work-values-list li {
+        padding-left: 20px;
+    }
+}

@@ -1,0 +1,291 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0; /* Light gray page background */
+    color: #333333; /* Default dark gray text */
+    line-height: 1.6;
+}
+
+header {
+    background-color: #D29345; /* Muted Orange/Brown from image */
+    color: #FFFFFF; /* White text */
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 3px solid #C4832F; /* Darker border */
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+    font-size: 3em; /* Large title */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #C4832F; /* Darker orange on hover */
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #FFFFFF; /* White content background */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.cookie-policy .policy-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.cookie-policy .policy-header h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.cookie-policy .revision-date {
+    font-style: italic;
+    color: #777;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.cookie-policy .toc {
+    background-color: #f9f2e8; /* Light orange tint for TOC */
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border-left: 4px solid #D29345;
+}
+
+.cookie-policy .toc h3 {
+    color: #C4832F;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+.cookie-policy .toc h3 a {
+    color: #C4832F;
+    text-decoration: none;
+}
+.cookie-policy .toc h3 a:hover {
+    text-decoration: underline;
+}
+
+
+.cookie-policy .toc ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.cookie-policy .toc ul li {
+    margin-bottom: 5px;
+}
+
+.cookie-policy .toc ul li a {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+.cookie-policy .toc ul li a:hover {
+    text-decoration: underline;
+    color: #C4832F;
+}
+
+.cookie-policy section {
+    margin-bottom: 40px;
+}
+
+.cookie-policy h2 {
+    color: #C4832F;
+    border-bottom: 2px solid #C4832F;
+    padding-bottom: 8px;
+    margin-top: 0; /* Reset top margin for section titles */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.cookie-policy section h2:first-of-type { /* For first h2 in a section if needed */
+    margin-top: 0;
+}
+
+
+.cookie-policy h3 {
+    color: #4a4a4a;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    /* border-bottom: 1px dashed #cccccc; */
+    padding-bottom: 5px;
+}
+.cookie-policy section h3:first-of-type {
+    margin-top: 0;
+}
+
+.cookie-policy h4 {
+    color: #555555;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.cookie-policy p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.cookie-policy ul, .cookie-policy ol {
+    margin-bottom: 15px;
+    padding-left: 25px;
+}
+
+.cookie-policy ul li, .cookie-policy ol li {
+    margin-bottom: 8px;
+}
+
+.cookie-policy strong {
+    color: #C4832F;
+}
+
+.cookie-policy a {
+    color: #C4832F;
+    text-decoration: none;
+}
+.cookie-policy a:hover {
+    text-decoration: underline;
+}
+
+
+.cookie-policy dl {
+    margin-bottom: 20px;
+}
+
+.cookie-policy dt {
+    font-weight: bold;
+    color: #C4832F;
+    margin-top: 15px;
+}
+
+.cookie-policy dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #eeeeee;
+}
+
+.tracker-category {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #e0c9aF;
+    border-radius: 6px;
+    background-color: #fffbf5; /* Very light orange for category box */
+}
+.tracker-category h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #D29345;
+    padding-bottom: 5px;
+}
+
+.tracker-category h4 {
+    color: #555;
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.third-party-tracker, .first-party-tracker {
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 3px solid #D29345;
+    margin-bottom: 15px;
+}
+
+.third-party-tracker .service-name, .first-party-tracker .service-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+.checkbox-placeholder {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #C4832F;
+    margin-right: 8px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 15px;
+    font-size: 0.8em;
+    color: #777;
+}
+
+.ayuda-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #D29345;
+    background-color: #fdfaf6;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.ayuda-footer h2, .ayuda-footer h3, .ayuda-footer h4 {
+    color: #C4832F;
+    border-bottom: none;
+}
+.ayuda-footer h2 { font-size: 1.6em; }
+.ayuda-footer h3 { font-size: 1.3em; margin-top: 20px;}
+.ayuda-footer h4 { font-size: 1.1em; margin-top: 10px;}
+
+
+.ayuda-footer nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.ayuda-footer nav ul li {
+    margin-bottom: 8px;
+}
+
+.site-footer-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed #e0c9aF;
+}
+.site-footer-info p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #4a4a4a;
+    color: #FFFFFF;
+    margin-top: 40px;
+    font-size: 0.9em;
+}

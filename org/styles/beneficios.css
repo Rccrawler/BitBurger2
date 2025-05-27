@@ -1,0 +1,201 @@
+/* Navegación principal */
+.main-nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ffcc80;
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+.nav-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 10000px; /* Considera si este valor es necesario o si puede ser más restrictivo o 100% */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.nav-button {
+    background-color: #fff;
+    border: 1px solid #bcaaa4;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    color: #5a4a42;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.nav-button:hover {
+    background-color: #f5f5f5;
+}
+
+.nav-button.active {
+    background-color: #ffcc80;
+    color: #795548;
+    border-color: #ffb74d;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/*Contenido*/
+.content-section {
+    background-color: #fff3e0; /* Un color naranja muy pálido, temático */
+    border-radius: 15px;   /* Bordes redondeados */
+    padding: 60px;  /* Espacio interno */
+    width: 100%; /* Ancho completo del viewport, pero limitado por max-width */   
+    border: 1px solid #ffcc80; /* Borde naranja claro */
+    box-sizing: border-box; /* Asegura que padding y border no expandan más allá de width/max-width */
+    max-width: 1200px; /* Ancho máximo para la sección de contenido */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra suave */
+    margin: 0 auto 40px auto; /* Centrar la sección de contenido y añadir margen inferior */
+}
+
+.section-title {
+    font-size: 3.5em;
+    color: #8d6e63; /* Marrón medio para el título */
+    margin-bottom: 100px;   /* Espacio debajo del título */
+    text-align: center; /* Centrar el título */
+    border-bottom: 2px solid #ffcc80; /* Línea divisoria temática */
+    padding-bottom: 30px; /* Espacio debajo del título */
+    word-spacing: 2px; /* Espacio entre palabras */
+    letter-spacing: 3px; /* Espacio entre letras */
+    line-height: 1.5; /* Ajustado para mejor legibilidad si el título es largo */
+}
+
+.benefits-list {
+    display: flex; /* Cambiado de grid a flex */
+    flex-direction: column; /* Para apilar los elementos verticalmente */
+    gap: 25px; /* Espacio entre los benefit-item */
+}
+
+.benefit-item {
+    background-color: #fff;
+    border: 1px solid #ffe0b2; /* Borde naranja muy claro */
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    gap: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; /* Para que ocupe todo el ancho de .benefits-list */
+    box-sizing: border-box; /* Para que padding y border se incluyan en el width */
+    /* max-width: 1000px; */ /* Eliminado o comentado para permitir que ocupe todo el ancho */
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.benefit-icon1 {
+    width: 200px; /* Tamaño fijo del icono */
+    height: 200px; /* Tamaño fijo del icono */
+    object-fit: contain;
+    flex-shrink: 0; /* Evitar que el icono se reduzca si el texto es largo */
+    align-items: center; /* Centrar el icono verticalmente */
+}
+
+.benefit-icon2 {
+    margin-top: 20px;
+    width: 150px; /* Tamaño fijo del icono */
+    height: 150px; /* Tamaño fijo del icono */
+    object-fit: contain;
+    flex-shrink: 0; /* Evitar que el icono se reduzca si el texto es largo */
+    align-items: center; /* Centrar el icono verticalmente */
+}
+
+.benefit-icon3 {
+    margin-top: 20px;
+    width: 150px; /* Tamaño fijo del icono */
+    height: 150px; /* Tamaño fijo del icono */
+    object-fit: contain;
+    flex-shrink: 0; /* Evitar que el icono se reduzca si el texto es largo */
+    align-items: center; /* Centrar el icono verticalmente */
+}
+
+.benefit-icon4 {
+    width: 230px; /* Tamaño fijo del icono */
+    height: 230px; /* Tamaño fijo del icono */
+    object-fit: contain;
+    flex-shrink: 0; /* Evitar que el icono se reduzca si el texto es largo */
+    align-items: center; /* Centrar el icono verticalmente */
+}
+
+.benefit-icon5 {
+    width: 270px; /* Tamaño fijo del icono */
+    height: 270px; /* Tamaño fijo del icono */
+    object-fit: contain;
+    flex-shrink: 0; /* Evitar que el icono se reduzca si el texto es largo */
+    align-items: center; /* Centrar el icono verticalmente */
+}
+
+.benefit-text h3 {
+    font-family: 'Kalam', cursive;
+    font-size: 2.5em;
+    color: #bf360c; /* Naranja oscuro/rojizo para títulos de beneficios */
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.benefit-text p {
+    font-family: 'Kalam', cursive;
+    font-size: 2em;
+    line-height: 1.4;
+    color: #5d4037; /* Marrón para el texto descriptivo */
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 30px; /* Ajustado para menos padding en tabletas */
+    }
+    .section-title {
+        font-size: 2.5em; /* Reducido para tabletas */
+        margin-bottom: 60px;
+        padding-bottom: 20px;
+        line-height: 1.4;
+    }
+    /* La regla para .benefits-list que ponía grid-template-columns: 1fr;
+       ya no es necesaria porque ahora siempre es una columna debido a flex-direction: column. */
+    .benefit-text h3 {
+        font-size: 2em;
+    }
+    .benefit-text p {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 20px; /* Menos padding en móviles */
+    }
+    .section-title {
+        font-size: 1.9em;
+        margin-bottom: 40px; /* Reducido aún más */
+        padding-bottom: 15px;
+        line-height: 1.3;
+    }
+    .benefit-item {
+        padding: 15px;
+        gap: 10px;
+        flex-direction: column; /* Apila icono y texto verticalmente en pantallas muy pequeñas si se desea */
+        align-items: center; /* Centra el icono y texto cuando están apilados */
+        text-align: center; /* Centra el texto */
+    }
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px; /* Espacio entre icono y texto cuando están apilados */
+    }
+    .benefit-text h3 {
+        font-size: 1.5em; /* Ajustado para móviles */
+    }
+    .benefit-text p {
+        font-size: 1.2em; /* Ajustado para móviles */
+    }
+}

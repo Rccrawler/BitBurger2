@@ -1,0 +1,455 @@
+/* --- Estilos Base (Mayormente sin cambios) --- */
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    position: relative; /* Necesario si posicionamos el total absoluto respecto al body */
+}
+
+#menu {
+    width: 250px;
+    max-width: 100%;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width 0.3s ease;
+}
+
+#menu h2, #menu h3 { font-size: 1.1em; margin-top: 0; margin-bottom: 10px; color: #333; }
+.ingrediente { padding: 10px; margin-bottom: 8px; background: #fff; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; user-select: none; text-align: center; transition: background-color 0.2s; }
+.ingrediente:hover { background-color: #e9e9e9; }
+
+#hamburguesa { flex: 1; background-color: #ffe5b4; display: flex; justify-content: center; align-items: center; padding: 25px; min-height: 500px; overflow: hidden; }
+
+#vista { width: 300px; height: 650px; max-width: 95%; max-height: 95%; position: relative; background: radial-gradient(circle farthest-corner at center, #ddad6e 0%, rgb(249, 249, 249) 100%); border: 2px solid #d4ac79; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); overflow: hidden; display: flex; flex-direction: column-reverse; align-items: center; justify-content: flex-start; padding: 0; }
+
+.capa { width: 85%; max-width: 250px; display: block; margin-bottom: -2px; pointer-events: none; object-fit: contain; }
+
+#orden { margin-top: 25px; flex-grow: 1; display: flex; flex-direction: column; min-height: 100px; }
+#lista { list-style: none; padding: 0; margin: 0; background-color: #e5e5e5; border: 1px solid #ccc; border-radius: 4px; padding: 8px; flex-grow: 1; overflow-y: auto; max-height: 200px; min-height: 200px; }
+#lista li { margin: 5px 0; background: #fff; border: 1px solid #bbb; border-radius: 4px; padding: 8px 12px; cursor: move; text-align: center; user-select: none; transition: background-color 0.2s, opacity 0.2s; }
+#lista li.dragging { opacity: 0.5; background: #d0eaff; }
+#lista-ayuda { font-size: 0.8em; color: #666; text-align: center; margin-top: 8px; padding: 0 5px; }
+#lista-ayuda .eliminar-text { color: rgb(227, 92, 92); font-weight: bold; }
+
+/* --- NUEVO: Estilos para el display del precio total --- */
+#total-precio {
+    position: fixed; /* Fijo respecto a la ventana */
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    transition: background-color 0.3s; /* Transición suave */
+}
+#total-precio:hover {
+    background-color: rgba(0, 0, 0, 0.85); /* Más oscuro al pasar el ratón */
+}
+
+#encargar-btn {
+    display: block; /* Ocupa el ancho disponible en el menú */
+    width: calc(100% - 16px); /* Ancho completo menos padding del contenedor lista (si aplica) */
+    margin: 15px auto 5px auto; /* Margen superior e inferior, centrado */
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+#encargar-btn:disabled { /* Estilo cuando está deshabilitado */
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* --- Media Query (Ajustes menores si es necesario para el total) --- */
+@media (max-width: 768px) {
+    body { flex-direction: column; height: auto; }
+    #menu { width: 100%; height: auto; max-height: 45vh; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow-y: auto; }
+    #orden { flex-grow: 0; margin-top: 15px; }
+    #lista { max-height: 150px; }
+    #hamburguesa { flex: 1; width: 100%; min-height: 60vh; padding: 15px; }
+    #vista { width: 240px; height: 550px; max-width: 95%; max-height: 95%; }
+    .capa { width: 80%; max-width: 200px; }
+
+    /* Ajustar posición del total en móvil si se solapa con algo */
+    #total-precio {
+        bottom: 10px;
+        right: 10px;
+        font-size: 1em; /* Un poco más pequeño en móvil */
+        padding: 8px 12px;
+    }
+}
+
+
+
+
+/* --- Estilos del Botón (Sin cambios) --- */
+
+.button {
+    --primary: #ff5569;
+    --neutral-1: #ffe5b4;
+    --neutral-2: #8f6d2e;
+    --radius: 14px;
+
+    cursor: pointer;
+    border-radius: var(--radius);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    border: none;
+    box-shadow: 0 0.5px 0.5px 1px rgba(255, 255, 255, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 5px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    padding: 20px;
+    height: 68px;
+    font-family: "Galano Grotesque", Poppins, Montserrat, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 600;
+}
+.button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.3), 0 10px 3px -3px rgba(0, 0, 0, 0.04);
+}
+.button:active {
+    transform: scale(1);
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 10px 3px -3px rgba(0, 0, 0, 0.2);
+}
+.button:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    border: 2.5px solid transparent;
+    background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45))
+        border-box;
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+.button:hover::after {
+    transform: scale(1.05, 1.1);
+    box-shadow: inset 0 -1px 3px 0 rgba(255, 255, 255, 1);
+}
+.button::before {
+    content: "";
+    inset: 7px 6px 6px 6px;
+    position: absolute;
+    background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+    border-radius: 30px;
+    filter: blur(0.5px);
+    z-index: 2;
+}
+.state p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.state .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: scale(1.25);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.state .icon svg {
+    overflow: visible;
+}
+
+/* Outline */
+.outline {
+    position: absolute;
+    border-radius: inherit;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    inset: -2px -3.5px;
+}
+.outline::before {
+    content: "";
+    position: absolute;
+    inset: -100%;
+    background: conic-gradient(
+    from 180deg,
+    transparent 60%,
+    white 80%,
+    transparent 100%
+    );
+    animation: spin 2s linear infinite;
+    animation-play-state: paused;
+}
+@keyframes spin {
+    0% {
+    transform: rotate(0deg);
+    }
+    100% {
+    transform: rotate(360deg);
+    }
+}
+.button:hover .outline {
+    opacity: 1;
+}
+.button:hover .outline::before {
+    animation-play-state: running;
+}
+
+/* Letters */
+.state p span {
+    display: block;
+    opacity: 0;
+    animation: slideDown 0.8s ease forwards calc(var(--i) * 0.03s);
+}
+.button:hover p span {
+    opacity: 1;
+    animation: wave 0.5s ease forwards calc(var(--i) * 0.02s);
+}
+.button:focus p span {
+    opacity: 1;
+    animation: disapear 0.6s ease forwards calc(var(--i) * 0.03s);
+}
+@keyframes wave {
+    30% {
+    opacity: 1;
+    transform: translateY(4px) translateX(0) rotate(0);
+    }
+    50% {
+    opacity: 1;
+    transform: translateY(-3px) translateX(0) rotate(0);
+    color: var(--primary);
+    }
+    100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0);
+    }
+}
+@keyframes slideDown {
+    0% {
+    opacity: 0;
+    transform: translateY(-20px) translateX(5px) rotate(-90deg);
+    color: var(--primary);
+    filter: blur(5px);
+    }
+    30% {
+    opacity: 1;
+    transform: translateY(4px) translateX(0) rotate(0);
+    filter: blur(0);
+    }
+    50% {
+    opacity: 1;
+    transform: translateY(-3px) translateX(0) rotate(0);
+    }
+    100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0);
+    }
+}
+@keyframes disapear {
+    from {
+    opacity: 1;
+    }
+    to {
+    opacity: 0;
+    transform: translateX(5px) translateY(20px);
+    color: var(--primary);
+    filter: blur(5px);
+    }
+}
+
+/* Plane */
+.state--default .icon svg {
+    animation: land 0.6s ease forwards;
+}
+.button:hover .state--default .icon {
+    transform: rotate(45deg) scale(1.25);
+}
+.button:focus .state--default svg {
+    animation: takeOff 0.8s linear forwards;
+}
+.button:focus .state--default .icon {
+    transform: rotate(0) scale(1.25);
+}
+@keyframes takeOff {
+    0% {
+    opacity: 1;
+    }
+    60% {
+    opacity: 1;
+    transform: translateX(70px) rotate(45deg) scale(2);
+    }
+    100% {
+    opacity: 0;
+    transform: translateX(160px) rotate(45deg) scale(0);
+    }
+}
+@keyframes land {
+    0% {
+    transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
+    opacity: 0;
+    filter: blur(3px);
+    }
+    100% {
+    transform: translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+    filter: blur(0);
+    }
+}
+
+/* Contrail */
+.state--default .icon:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    width: 0;
+    left: -5px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5));
+}
+.button:focus .state--default .icon:before {
+    animation: contrail 0.8s linear forwards;
+}
+@keyframes contrail {
+    0% {
+    width: 0;
+    opacity: 1;
+    }
+    8% {
+    width: 15px;
+    }
+    60% {
+    opacity: 0.7;
+    width: 80px;
+    }
+    100% {
+    opacity: 0;
+    width: 160px;
+    }
+}
+
+/* States */
+.state {
+    padding-left: 29px;
+    z-index: 2;
+    display: flex;
+    position: relative;
+}
+.state--default span:nth-child(4) {
+    margin-right: 5px;
+}
+.state--sent {
+    display: none;
+}
+.state--sent svg {
+    transform: scale(1.25);
+    margin-right: 8px;
+}
+.button:focus .state--default {
+    position: absolute;
+}
+.button:focus .state--sent {
+    display: flex;
+}
+.button:focus .state--sent span {
+    opacity: 0;
+    animation: slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
+}
+.button:focus .state--sent .icon svg {
+    opacity: 0;
+    animation: appear 1.2s ease forwards 0.8s;
+}
+@keyframes appear {
+    0% {
+    opacity: 0;
+    transform: scale(4) rotate(-40deg);
+    color: var(--primary);
+    filter: blur(4px);
+    }
+    30% {
+    opacity: 1;
+    transform: scale(0.6);
+    filter: blur(1px);
+    }
+    50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: blur(0);
+    }
+    100% {
+    opacity: 1;
+    transform: scale(1);
+    }
+}
+
+    /*-------------------------------------------------------------------------------------
+* text fonts styles
+*------------------------------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Lamoore';
+    src: url('../../fonts/Lamoore.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ashton';
+    src: url('../fonts/Ashton.ttf') format('truetype');
+    font-weight: bold; /* Define la fuente como negrita por defecto */
+    font-style: normal;
+}
+
+.font-style-lamoore, p, h3, h4, h5, h6 {
+    font-family: 'Lamoore', sans-serif;
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 204, 128, 0.5);*/
+    font-size: 1.40rem;
+    margin-top: 0.5rem; /* Reduce top margin */
+    margin-bottom: 0.5rem; /* Reduce bottom margin */
+}
+
+.font-style-ashton, h1 {
+    font-family: 'Ashton', sans-serif;
+    text-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 204, 128, 0.5);
+    font-size: 0.60rem; /* Adjust size to match or adapt to h1 */
+    letter-spacing: 0.8vh;
+    word-spacing: -0.2vh;
+}
+
+.font-style-ashton-h2, h2 {
+    font-family: 'Ashton', sans-serif;
+    text-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 204, 128, 0.5);
+    font-size: 0.38rem; /* Adjust size to match or adapt to h1 */
+    letter-spacing: 0.8vh;
+    word-spacing: -0.2vh;
+}
+
+.ingrediente {
+    height: 35px; /* Altura fija para los cuadrados */
+    padding: 5px; /* Ajusta el espacio interno */
+    margin-bottom: 5px; /* Ajusta el espacio entre los cuadrados */
+    overflow: hidden; /* Oculta el contenido que exceda la altura */
+}

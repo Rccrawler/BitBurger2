@@ -1,0 +1,238 @@
+/* styles/estatuto.css */
+/* Estilos base heredados de fichaje.css */
+
+.main-container {
+    
+    margin: 0 auto;
+}
+
+.nav-button.active {
+    background-color: #ffcc80;
+    color: #795548;
+    border-color: #ffb74d;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.content-section {
+    background-color: #fff8e1; 
+    border: 1px solid #ffecb3;
+    border-radius: 15px;
+    padding: 30px 40px; 
+    width: 100%;
+    box-sizing: border-box; /* Añadido para mejor manejo de padding y border */
+    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+    margin: 0 auto;
+    max-width: 950px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 2.5em; 
+    color: #795548; 
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ffca28; 
+    word-spacing: 10px;
+    letter-spacing: 3px;
+    line-height: 1.5; /* Ajustado desde 100px */
+    margin-top: 30px;
+}
+
+/* Estilos para el contenedor del enlace al BOE */
+.link-container {
+    max-width: 700px; 
+    margin: 40px auto; /* Ajustado para dar espacio uniforme */
+    text-align: center;
+    padding-top: 30px; /* Añadido para separar del contenido anterior */
+    padding-bottom: 30px;
+    border-top: 1px dashed #ffdd80; /* Cambiado de bottom a top para separar de la sección anterior */
+    border-bottom: none; /* Eliminado si el anterior era el último elemento visual de separación */
+}
+
+.link-description {
+    font-family: 'Kalam', cursive;
+    font-size: 1.15em;
+    line-height: 1.6;
+    color: #5d4037; 
+    margin-bottom: 25px;
+}
+
+.external-link-button {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    background-color: #ffb74d; 
+    border: 2px solid #ffa726; 
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: #4e342e; 
+    font-size: 0.8em; 
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    letter-spacing: 3px;
+    /* margin: 0 auto; No necesario en inline-flex dentro de un text-align:center */
+    word-spacing: 2px;
+    font-family: 'Kalam', cursive; /* Asegurar la fuente si .font-style-ashton no la define */
+}
+
+.external-link-button:hover {
+    background-color: #ffa000; 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.external-link-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.link-icon {
+    width: 24px; 
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.link-note {
+    font-family: 'Kalam', cursive;
+    font-size: 0.9em;
+    color: #a1887f; 
+    margin-top: 15px;
+}
+
+/* Estilos para la nueva sección de Puntos Clave como texto profesional */
+.key-points-section {
+    margin-top: 30px;
+}
+
+.subsection-title-kalam { 
+    font-family: 'Kalam', cursive;
+    font-size: 1.8em; 
+    color: #8d6e63; 
+    margin-top: 0;
+    margin-bottom: 20px; 
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ffe0b2; 
+}
+
+.professional-text-block {
+    background-color: #ffffff; 
+    border: 1px solid #f5e6c3; 
+    border-radius: 8px;
+    padding: 20px 25px; 
+    margin-bottom: 30px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    /* text-align: center; Eliminado de aquí, se manejará en los hijos */
+}
+
+.professional-text-block p {
+    font-family: 'Kalam', cursive; 
+    font-size: 1.2em; 
+    line-height: 1.65; 
+    color: #4a4a4a; 
+    margin-bottom: 25px; /* Reducido desde 50px, ajustar si es necesario */
+    margin-left: 1px;
+    margin-right: 12px;
+    text-align: justify;   /* ¡CAMBIADO AQUÍ! */
+    hyphens: none;         /* ¡AÑADIDO AQUÍ! */
+    -webkit-hyphens: none; /* ¡AÑADIDO AQUÍ! */
+    -ms-hyphens: none;     /* ¡AÑADIDO AQUÍ! */
+}
+
+.professional-text-block p:last-child {
+    margin-bottom: 0; /* Ajustado, antes era 30px */
+}
+
+.professional-text-block p strong {
+    font-weight: bold; 
+    color: #795548; 
+    display: block;         /* ¡AÑADIDO AQUÍ! */
+    text-align: center;     /* ¡AÑADIDO AQUÍ! */
+    margin-bottom: 8px;    /* Espacio entre el título y la descripción */
+}
+
+/* Nota sobre el HTML:
+   La estructura <br></p> al final de cada párrafo en tu HTML es incorrecta.
+   El <br> debería estar dentro del contenido o eliminarse si solo es para espaciado (usa margin/padding en su lugar).
+   Ej: <p>Texto...<strong>Título:</strong><br>Descripción...</p>
+   o mejor:
+   <div>
+       <h4 class="item-title">Título</h4>
+       <p class="item-description">Descripción...</p>
+   </div>
+   Los estilos aplicados intentarán funcionar con el HTML provisto.
+*/
+
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 25px 30px;
+    }
+    .section-title {
+        font-size: 1.3em; /* Ajustado para consistencia */
+        line-height: 1.4;
+    }
+    .external-link-button {
+        font-size: 0.7em; /* Ajustado para consistencia */
+        padding: 12px 25px;
+    }
+    .subsection-title-kalam {
+        font-size: 1.5em;
+    }
+    .professional-text-block {
+        padding: 15px 20px;
+    }
+    .professional-text-block p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 20px 15px;
+    }
+    .section-title {
+        font-size: 1.2em; /* Ajustado para consistencia */
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+    .link-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .link-description {
+        font-size: 1.05em;
+    }
+    .external-link-button {
+        font-size: 0.7em; /* Ajustado para consistencia */
+        padding: 10px 20px;
+        width: auto; /* Permitir que se ajuste al contenido */
+        max-width: 90%; /* Para evitar que sea demasiado ancho */
+        box-sizing: border-box;
+    }
+     .link-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    .subsection-title-kalam {
+        font-size: 1.35em;
+    }
+    .professional-text-block {
+        padding: 15px;
+    }
+    .professional-text-block p {
+        font-size: 0.95em;
+        line-height: 1.6;
+        /* Si el texto justificado sin guiones crea demasiado espacio en móviles, */
+        /* considera cambiar a text-align: left; aquí: */
+        /* text-align: left; */
+    }
+    /* .points-summary-note no existe en el HTML proporcionado */
+}

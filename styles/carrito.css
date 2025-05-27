@@ -1,0 +1,279 @@
+/* styles/carrito.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Assuming Ashton font is defined in style.css or loaded globally */
+    /* Fallback fonts can be added here if needed */
+}
+
+.cart-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to see content when it's not full height */
+    min-height: 100vh;
+    background-color: #EAEAEA; /* Light grey background from image */
+    padding: 20px; /* More padding for page container */
+    box-sizing: border-box;
+}
+
+.cart-content-wrapper {
+    background-color: #FDF6E3; /* Light beige/off-white, closer to sketch if #FEFEFE is too stark */
+    border: 3px solid #4a4a4a; /* Darker, sketch-like border */
+    border-radius: 25px; /* Slightly more rounded corners for the main panel */
+    padding: 20px 25px;
+    width: 100%;
+    max-width: 450px; /* Max width of the cart panel, adjusted slightly */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2); /* More pronounced shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between elements */
+    font-family: 'Poppins', sans-serif; /* Default font */
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px; /* Reduced padding */
+}
+
+.cart-title {
+    font-family: 'Ashton', 'Comic Sans MS', cursive; /* Ensure Ashton font is available */
+    /* Responsive font size: min, preferred, max */
+    margin: 0;
+    color: #383838; /* Darker text color */
+    font-weight: bold; /* Ashton might be bold, this ensures it if not */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15); /* Adjusted shadow for 3D effect */
+    line-height: 1;
+    overflow-wrap: break-word; /* In case "Carrito" becomes very long in some language */
+    word-break: break-word;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    font-size: clamp(1.5em, 5vw, 2em); /* Responsive size for X */
+    font-weight: bold;
+    color: #4A4A4A; /* Darker X */
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+    align-self: flex-start; /* Align X to the top of the header space */
+    margin-top: 5px; /* Small top margin for alignment */
+}
+.cart-close-btn:hover {
+    color: #000;
+}
+
+.cart-search-bar {
+    background-color: #F0F0F0; /* Lighter grey for search bar */
+    border: 2px solid #707070; /* Darker border for search bar */
+    border-radius: 8px; /* Slightly less rounded corners */
+    padding: 10px 15px;
+    text-align: center;
+    color: #555; /* Darker text for placeholder */
+    font-family: 'Poppins', sans-serif; /* Standard sans-serif font */
+    font-size: 0.9em;
+    letter-spacing: 0.5px; /* Reduced letter spacing */
+}
+
+.cart-item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Space between cart items */
+    max-height: 35vh; /* Adjusted height, can be tuned */
+    overflow-y: auto;
+    padding-right: 8px; /* Space for scrollbar */
+}
+
+/* Custom scrollbar for webkit browsers */
+.cart-item-list::-webkit-scrollbar {
+    width: 8px;
+}
+.cart-item-list::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Lighter track */
+    border-radius: 10px;
+}
+.cart-item-list::-webkit-scrollbar-thumb {
+    background: #a0a0a0; /* Darker thumb */
+    border-radius: 10px;
+}
+.cart-item-list::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+}
+
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1.5px dashed #c0c0c0; /* Lighter dashed separator */
+    gap: 10px; /* Added gap between item parts */
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para la imagen del producto en el carrito */
+.item-image {
+    width: 80px;  /* Ajusta este valor según necesites para el tamaño de la imagen */
+    height: 80px; /* Ajusta este valor según necesites para el tamaño de la imagen */
+    object-fit: cover; /* Esto asegura que la imagen cubra el área. Puede recortar partes de la imagen.
+                          Usa 'contain' si prefieres ver la imagen completa aunque queden espacios. */
+    border-radius: 8px; /* Bordes redondeados consistentes con otros elementos */
+    flex-shrink: 0; /* Evita que la imagen se encoja demasiado en contextos flexibles */
+    /* Opcional: si tus imágenes tienen fondos transparentes o quieres un borde visible:
+    border: 1px solid #ddd;
+    */
+}
+
+.item-image-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: #E0E0E0; /* Light grey placeholder */
+    border: 2px solid #707070; /* Darker border */
+    border-radius: 8px; /* Rounded rectangle */
+    /* margin-right: 12px; /* Replaced by gap on parent */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Add a placeholder icon or text if needed via JS or if it's an img tag */
+}
+
+.item-name { /* Changed from item-name-placeholder in original CSS comment */
+    flex-grow: 1;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem); /* Responsive item name font size */
+    text-align: left;
+    /* margin-right: 10px; /* Replaced by gap on parent */
+    /* Removed background, border, monospace font from original placeholder style */
+    overflow-wrap: break-word; /* Allow long words to break and wrap */
+    word-break: break-word; /* For compatibility / stronger breaking */
+    min-width: 0; /* Allow flex item to shrink properly and wrap text */
+}
+
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Slightly reduced space */
+    flex-shrink: 0;
+}
+
+.quantity-btn {
+    background-color: #FFE082; /* Yellow matching image */
+    border: 2px solid #4A4A4A; /* Dark border matching image */
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #4A4A4A; /* Dark text color */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+.quantity-btn:hover {
+    background-color: #FFD54F; /* Slightly darker yellow on hover */
+}
+
+.item-quantity {
+    font-size: 1.1em;
+    font-weight: bold;
+    min-width: 30px; /* Ensure space for up to 3 digits, adjust if needed for >999 */
+    text-align: center;
+    color: #333;
+}
+
+.cart-summary {
+    margin-top: 10px;
+    padding: 10px 5px; /* Added small horizontal padding */
+    text-align: left; /* Aligned to the left as in image */
+}
+
+.total-price-container {
+    font-size: 1.15em; /* Slightly larger total text */
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.total-price-container span:first-child {
+    margin-right: 8px;
+}
+
+#cart-total-price {
+    font-weight: bold;
+}
+
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Reduced margin */
+    padding-top: 15px;
+    border-top: 2px solid #B0B0B0; /* Separator matching other subtle borders */
+}
+
+.process-order-btn {
+    font-family: 'Ashton', 'Comic Sans MS', cursive; /* Ensure Ashton font is available */
+    background-color: #FFE082; /* Yellow matching quantity buttons */
+    border: 2.5px solid #4A4A4A; /* Dark border */
+    border-radius: 10px;
+    padding: 20px 12px; /* Adjusted padding for potentially smaller/wrapped text */
+    /* Responsive font size */
+    font-weight: bold; /* Ashton might be bold, this ensures it */
+    color: #383838; /* Dark text color */
+    cursor: pointer;
+    flex-grow: 1;
+    margin-right: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.2; /* Allow text to wrap if it's long */
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15); /* Subtle shadow for button */
+    /* Ensure text can wrap */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.process-order-btn:hover {
+    background-color: #FFD54F;
+    border-color: #333;
+}
+
+.cart-footer-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border: 2px solid #707070; /* Consistent darker border */
+    border-radius: 8px;
+    flex-shrink: 0;
+
+    /* Styles for alt text if image fails to load */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem; /* Smaller alt text */
+    color: #555; /* Less prominent alt text color */
+    background-color: #f0f0f0; /* Light background for the broken image box */
+    text-align: center;
+    overflow: hidden; /* Hide parts of alt text that don't fit */
+}
+
+/* Ensure Ashton font is applied, assuming it's defined elsewhere (e.g. style.css) */
+.font-style-ashton {
+    font-family: 'Ashton', 'Comic Sans MS', cursive !important; /* Added fallback */
+    font-weight: bold !important; /* Many display/script fonts need explicit bold */
+}
+
+.hidden {
+    display: none !important; /* Utility class to hide elements */
+}

@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0; /* Light gray page background */
+    color: #333333; /* Default dark gray text */
+    line-height: 1.6;
+}
+
+header {
+    background-color: #D29345; /* Muted Orange/Brown from image */
+    color: #FFFFFF; /* White text */
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 3px solid #C4832F; /* Darker border */
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+    font-size: 3em; /* Large title */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #C4832F; /* Darker orange on hover */
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #FFFFFF; /* White content background */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.privacy-policy h2 {
+    color: #C4832F; /* Darker Muted Orange/Brown for titles */
+    border-bottom: 2px solid #C4832F;
+    padding-bottom: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+.privacy-policy h2:first-of-type {
+    margin-top: 0;
+}
+
+.privacy-policy h3 {
+    color: #4a4a4a; /* Slightly lighter than main titles */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 1px dashed #cccccc;
+    padding-bottom: 5px;
+}
+
+.privacy-policy h4 {
+    color: #555555;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.privacy-policy p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.privacy-policy ul, .privacy-policy ol {
+    margin-bottom: 15px;
+    padding-left: 25px; /* Indent list items */
+}
+
+.privacy-policy ul li, .privacy-policy ol li {
+    margin-bottom: 8px;
+}
+
+.privacy-policy strong {
+    color: #C4832F; /* Highlight strong text with title color */
+}
+
+.privacy-policy .data-collected-list {
+    list-style-type: none;
+    padding: 15px;
+    margin-left: 0; /* Reset default ul padding */
+    background-color: #f9f9f9; /* Light background for this specific list */
+    border-left: 4px solid #D29345; /* Accent border */
+    border-radius: 4px;
+}
+
+.privacy-policy .data-collected-list li {
+    padding: 3px 0;
+}
+
+.privacy-policy dl {
+    margin-bottom: 20px;
+}
+
+.privacy-policy dt {
+    font-weight: bold;
+    color: #C4832F; /* Title color for definition terms */
+    margin-top: 15px;
+}
+
+.privacy-policy dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #eeeeee;
+}
+
+.us-privacy {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fdfaf6; /* Very light orange tint for US section */
+    border: 1px solid #e0c9aF;
+    border-radius: 6px;
+}
+
+.us-privacy h2 {
+    color: #b0732a; /* Slightly different shade for US section title */
+    border-bottom-color: #b0732a;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #4a4a4a; /* Dark gray footer */
+    color: #FFFFFF;
+    margin-top: 40px;
+    font-size: 0.9em;
+}

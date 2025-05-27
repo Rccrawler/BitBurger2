@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
+        <meta http-equiv="Expires" content="Wed, 21 Oct 2025 07:28:00 GMT">
+        <!--Favicon-->
+        <link rel="shortcut icon" href="img/inicio/logo3.ico" type="image/x-icon">
+        <title>BitBurger</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/boton.css">
+    </head>
+    <body>
+
+        <!--Cookies-->
+        <script src="script/cookies.js"></script>
+
+
+        <div id="cookie-banner">
+            <p>We use cookies to improve your experience. 
+                <a href="terminos.html" style="color: lightblue;">Learn more</a>.
+            </p>
+            <button onclick="aceptarCookies()">Accept</button>
+            <button onclick="abrirConfiguracion()">Set up</button>
+        </div>
+
+        <div id="configurar-cookies-modal" class="hidden">
+            <div class="modal-content">
+                <h2>Cookies</h2>
+                <br>
+                <form id="configurar-cookies-form">
+                    <label>
+                        <input type="checkbox" name="cookies-necesarias" checked disabled>
+                        Necessary cookies (always active)
+                    </label>
+                    <label>
+                        <input type="checkbox" name="cookies-analiticas">
+                        Analytical cookies
+                    </label>
+                    <label>
+                        <input type="checkbox" name="cookies-publicidad">
+                        Advertising cookies
+                    </label>
+                </form>
+                <button onclick="guardarConfiguracion()">Save</button>
+                <button onclick="cerrarConfiguracion()">Cancel</button>
+            </div>
+        </div>
+        
+        <!-- Contenedor principal del botón, posicionado en la esquina -->
+        <div class="expanding-button-container">
+            <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+                <img src="img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
+            </button>
+
+            <div class="options-wrapper" id="optionsMenu">
+                <button class="option-button option-1" aria-label="Inicio" data-url="pedidos.html">
+                    <div class="option-burger-content">
+                        <div class="option-bun-top"></div>
+                        <div class="option-bun-bottom"></div>
+                        <span class="option-text">Orders</span>
+                    </div>
+                </button>
+
+                <button class="option-button option-2" aria-label="Opción 1" data-url="perfil.html">
+                    <div class="option-burger-content">
+                        <div class="option-bun-top"></div>
+                        <div class="option-bun-bottom"></div>
+                        <span class="option-text">Know us</span>
+                    </div>
+                </button>
+
+                <button class="option-button option-3" aria-label="Opción 2" data-url="org/index.html">
+                    <div class="option-burger-content">
+                        <div class="option-bun-top"></div>
+                        <div class="option-bun-bottom"></div>
+                        <span class="option-text">Employees</span>
+                    </div>
+                </button>
+
+                <button class="option-button option-4" aria-label="Perfil" data-url="pages/perfil.html">
+                    <div class="option-burger-content">
+                        <div class="option-bun-top"></div>
+                        <div class="option-bun-bottom"></div>
+                        <span class="option-text">Profile</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="status-box" id="statusBox">
+            <span id="statusText">Loading status...</span><br>
+            <span id="statusText">waiting <a href="pages/game/index.html" target="_blank" style="color:rgb(96, 88, 1); text-decoration:underline;">play</a></span>
+        </div>    
+
+        <div class="hamburger-animation-container">
+            <video src="img/inicio/video-burger.mp4" autoplay loop muted playsinline class="hamburger-animation" id="animatedHamburger">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="page-content">
+            <h1>Burgers sold this year</h1>
+            <br>
+            <p><h3>We serve burgers. But we also design moments</h3></p>
+            <p>From the moment you place your order on the web or app, until you try it the first bite, everything is designed to be quick, easy... and tasty.</p>
+        </div>
+
+        <div class="counter-container">
+            <!-- Dígito 1 -->
+            <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 2 -->
+            <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 3 -->
+             <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 4 -->
+             <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 5 -->
+             <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 6 -->
+             <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+            </div>
+            <!-- Dígito 7 -->
+             <div class="digit" data-digit-value="0">
+                <div class="segment segment-a"></div>
+                <div class="segment segment-b"></div>
+                <div class="segment segment-c"></div>
+                <div class="segment segment-d"></div>
+                <div class="segment segment-e"></div>
+                <div class="segment segment-f"></div>
+                <div class="segment segment-g"></div>
+             </div>
+        </div>
+
+        <section class="description-section">
+            <div class="description-text description-left">
+                <h2>Fresh Ingredients</h2>
+                <p>We select only the finest ingredients, from the juicy meat to the crispiest vegetables. Every bite is an explosion of flavor!</p>
+            </div>
+            <div class="description-image-container">
+                <img src="img/inicio/HAMBURGUESA 1200x709.png" alt="Hamburguesa detalle" class="description-image">
+            </div>
+            <div class="description-text description-right">
+                <h2>Preparation at the Moment</h2>
+                <p>Your burger is cooked exactly when you order it. The grill gives it that unmistakable smoky touch, and the cheese is melted to perfection.</p>
+                <p>Order it however you like!</p>
+            </div>
+        </section>
+
+        <section class="carousel-section draggable-carousel">
+            <div class="carousel-container">
+                <!-- <<< Plato Fijo Decorativo >>> -->
+                <img src="img/inicio/plato.png" alt="" class="carousel-base-plate">
+
+                <div class="carousel-plate" id="carouselPlate">
+                    <div class="carousel-item" data-index="0">
+                        <img src="img/inicio/burger-carousel-1.png" alt="Hamburguesa Clásica">
+                    </div>
+                    <div class="carousel-item" data-index="1">
+                        <img src="img/inicio/burger-carousel-2.png" alt="Hamburguesa con Queso">
+                    </div>
+                    <div class="carousel-item" data-index="2">
+                        <img src="img/inicio/burger-carousel-3.png" alt="Hamburguesa con Bacon">
+                    </div>
+                    <div class="carousel-item" data-index="3">
+                        <img src="img/inicio/burger-carousel-4.png" alt="Hamburguesa Vegetariana">
+                    </div>
+                    <div class="carousel-item" data-index="4">
+                        <img src="img/inicio/burger-carousel-5.png" alt="Hamburguesa Doble">
+                    </div>
+                    <div class="carousel-item" data-index="5">
+                        <img src="img/inicio/burger-carousel-6.png" alt="Hamburguesa Especial">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="bote-ketchup">
+                <div class="bote">
+                  <button class="go-btn" id="goButton">GO</button>
+                  <input type="text" id="searchInput" placeholder="Find your food...">
+                  <span class="ketchup-text">ketchup</span>
+                  <div class="splash" id="splash"></div>
+                </div>
+                <div class="boquilla"></div>
+              </div>
+        </section>
+
+        <a href="pages/editor-hanburgesa/index.html" class="corner-action-button corner-left" aria-label="Personalizar Hamburguesa">
+            <img src="img/inicio/icono-personalizar.png" alt="">
+        </a>
+        <a href="pages/carta.html" class="corner-action-button corner-right" aria-label="Comprar Hamburguesa">
+            <img src="img/inicio/icono-comprar.png" alt="">
+        </a>
+
+        <footer class="site-footer">
+            <span>© 2024 BitBurger | <a href="contacto.html"> More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">License Creative Commons | </a><a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA=="><img src="img/inicio/grupk39s.png" alt="Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"></a></span>
+        </footer>
+
+        <script src="script/boton.js"></script>
+        <script src="script/script.js"></script>
+
+    </body>
+</html>

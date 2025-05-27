@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../styles/perfil.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="header-top">
+            <button class="log-out-button">Log Out</button>
+        </div>
+
+        <h1>------Perfil------</h1>
+
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img id="profileImage" src="../img/inicio/usuario.png" alt="Foto de Perfil" class="profile-image-display">
+            </div>
+            <button class="change-pic-button">Cambiar foto de perfil</button>
+        </div>
+
+        <form id="profileForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="dob-day">Fecha Nacimiento (Opcional):</label>
+                <div class="dob-inputs">
+                    <input type="text" id="dob-day" name="dob-day" placeholder="DD" maxlength="2">
+                    <input type="text" id="dob-month" name="dob-month" placeholder="MM" maxlength="2">
+                    <input type="text" id="dob-year" name="dob-year" placeholder="YYYY" maxlength="4">
+                </div>
+            </div>
+
+            <!-- --- INICIO: CAMPOS DE DIRECCIÓN SEPARADOS --- -->
+            <fieldset class="address-fieldset">
+                <legend>Dirección Principal</legend>
+                <div class="form-group full-width">
+                    <label for="direccion_calle">Calle:</label>
+                    <input type="text" id="direccion_calle" name="direccion_calle">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="direccion_numero">Número:</label>
+                        <input type="text" id="direccion_numero" name="direccion_numero">
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion_piso_puerta">Piso/Puerta:</label>
+                        <input type="text" id="direccion_piso_puerta" name="direccion_piso_puerta">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="direccion_ciudad">Ciudad:</label>
+                        <input type="text" id="direccion_ciudad" name="direccion_ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion_codigo_postal">Cód. Postal:</label>
+                        <input type="text" id="direccion_codigo_postal" name="direccion_codigo_postal">
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="direccion_pais">País:</label>
+                    <input type="text" id="direccion_pais" name="direccion_pais">
+                </div>
+            </fieldset>
+            <!-- --- FIN: CAMPOS DE DIRECCIÓN SEPARADOS --- -->
+            
+            <!-- Contenedor para mensajes del formulario -->
+            <div id="profile-message-placeholder" style="text-align: center; margin-bottom: 15px;"></div>
+
+            <button type="submit" class="save-button">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script src="../script/perfil.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Sketchy font */
+    background-color: #e0e0e0; /* Light grey background like paper */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for longer pages */
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    color: #4a3f35; /* Dark brown text */
+}
+
+.profile-container {
+    background-color: #f5e9d9; /* Light beige-pinkish */
+    border: 2px solid #d3b890; /* Darker beige border */
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden; /* To contain the decorative circle if it pokes out */
+}
+
+.decorative-circle {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 220px;
+    height: 220px;
+    background-color: rgba(255, 220, 170, 0.4); /* Semi-transparent light orange */
+    border: 2px solid rgba(230, 184, 115, 0.6); /* Slightly darker orange border */
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Ensure content is above the decorative circle */
+.header-top, h1, .profile-header, #profileForm {
+    position: relative;
+    z-index: 1;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.search-bar-placeholder {
+    flex-grow: 1;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #c7b299;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.log-out-button,
+.change-pic-button,
+.save-button {
+    background-color: #ffcc80; /* Orange */
+    border: 2px solid #e6b873; /* Darker orange border */
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: bold;
+    color: #704214; /* Dark brown text */
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.log-out-button {
+    padding: 8px 12px; /* Slightly smaller */
+}
+
+h1 {
+    text-align: center;
+    color: #5a4a3a;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-image-placeholder {
+    width: 90px;
+    height: 90px;
+    background-color: #ffcc80; /* Orange */
+    border: 3px solid #e6b873; /* Darker orange border */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #704214; /* Dark brown text */
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.change-pic-button {
+    flex-grow: 1;
+    padding: 10px 15px;
+}
+
+#profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1; /* Each group in a row takes equal space */
+}
+
+.form-group {
+    background-color: #ffe8c0; /* Light yellow/orange */
+    border: 2px solid #e6b873; /* Darker orange border */
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group label {
+    font-weight: normal;
+    color: #654321; /* Brownish text for labels */
+    white-space: nowrap; /* Prevent label text from wrapping */
+    flex-shrink: 0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    background-color: #fff9e6; /* Very light yellow/cream */
+    border: 1px solid #e6b873;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    color: #4a3f35;
+    width: 100%; /* Make input take remaining space */
+    box-sizing: border-box;
+}
+
+.dob-inputs {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.dob-inputs input {
+    background-color: #fff9e6;
+    border: 1px solid #e6b873;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    color: #4a3f35;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.dob-inputs input[name="dob-day"],
+.dob-inputs input[name="dob-month"] {
+    width: 45px; /* Fixed width for DD/MM */
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.dob-inputs input[name="dob-year"] {
+    flex-grow: 1; /* Year takes remaining space */
+    min-width: 60px;
+}
+
+
+.save-button {
+    display: block;
+    width: 100px;
+    margin: 15px auto 0 auto; /* Center button */
+    padding: 10px 15px;
+}

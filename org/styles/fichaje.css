@@ -1,0 +1,234 @@
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kalam', cursive, sans-serif;
+    background-color: #fdf6f0;
+    color: #4a3b31;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilo para la fuente Ashton (asegúrate que la fuente esté disponible) */
+/* Si 'Ashton' no está definida globalmente, necesitarás @font-face o importarla */
+.font-style-ashton {
+    font-family: 'Ashton', 'Comic Sans MS', cursive, sans-serif !important; /* Añadido sans-serif como último fallback */
+    font-weight: bold !important;
+}
+
+
+/* Navegación principal */
+.main-nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ffcc80;
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+.nav-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 10000px; /* Considera si este valor es necesario o si puede ser más restrictivo o 100% */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.nav-button {
+    background-color: #fff;
+    border: 1px solid #bcaaa4;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    color: #5a4a42;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.nav-button:hover {
+    background-color: #f5f5f5;
+}
+
+.nav-button.active {
+    background-color: #ffcc80;
+    color: #795548;
+    border-color: #ffb74d;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Área de contenido principal */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* Caja de Fichaje (Entrada/Salida) */
+.fichaje-box {
+    background-color: #ffcc80;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.fichaje-section {
+    margin-bottom: 25px;
+}
+.fichaje-section:last-child {
+    margin-bottom: 0;
+}
+
+.fichaje-section h2 {
+    /* font-family ya heredado o especificado por .font-style-ashton */
+    font-size: 2.2em;
+    color: #795548;
+    margin-bottom: 15px;
+    /* font-weight: bold; ya en .font-style-ashton */
+}
+
+.fichaje-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.fichaje-info {
+    background-color: #ffe0b2;
+    border: 1px solid #ffb74d;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 1em; /* Usa la fuente Kalam por defecto */
+    color: #795548;
+    min-width: 90px;
+    text-align: center;
+}
+
+.fichaje-action-button {
+    /* font-family ya heredado o especificado por .font-style-ashton */
+    background-color: #ffe0b2;
+    border: 1px solid #ffb74d;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: #795548;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.fichaje-action-button:hover {
+    background-color: #ffd54f;
+}
+.fichaje-action-button:active {
+    transform: scale(0.95);
+}
+
+/* Contenedor del Calendario y Botón Download */
+.calendario-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 700px; /* Ajusta según el ancho de tu imagen de calendario */
+}
+
+.calendario-visualizador {
+    background-color: #ffcc80;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendario-visualizador img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Bordes redondeados para la imagen si quieres */
+}
+
+.download-button {
+    /* font-family ya heredado o especificado por .font-style-ashton */
+    background-color: #ffcc80;
+    border: 1px solid #ffb74d;
+    padding: 14px 30px;
+    border-radius: 8px;
+    color: #795548;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    /* font-weight: bold; ya en .font-style-ashton */
+}
+.download-button:hover {
+    background-color: #ffd54f;
+}
+.download-button:active {
+    transform: scale(0.95);
+}
+
+/* ----- Responsive ----- */
+@media (min-width: 768px) {
+    .fichaje-controls {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .main-nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+    .nav-buttons-container {
+        padding: 0 10px;
+    }
+    .content-area {
+        padding: 0 10px;
+        gap: 20px;
+    }
+    .nav-button {
+        font-size: 0.85em;
+        padding: 8px 10px;
+    }
+    .fichaje-box {
+        padding: 20px;
+    }
+    .fichaje-section h2 {
+        font-size: 1.8em;
+    }
+    .fichaje-info, .fichaje-action-button {
+        font-size: 0.9em;
+        width: 100%; /* Para que ocupen el ancho en móvil y se apilen */
+        margin-bottom: 8px;
+    }
+    .fichaje-controls > *:last-child { /* Evitar doble margen en el último elemento */
+        margin-bottom: 0;
+    }
+    .calendario-visualizador {
+        padding: 5px;
+    }
+    .download-button {
+        font-size: 1.1em;
+        padding: 12px 22px;
+    }
+}

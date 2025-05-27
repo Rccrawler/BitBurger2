@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger - Cart</title>
+    <link rel="shortcut icon" href="../img/inicio/logo3.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/carrito.css">
+</head>
+<body>
+    <div class="cart-page-container">
+        <div class="cart-content-wrapper">
+            <div class="cart-header">
+                <h1 class="cart-title font-style-ashton">Cart</h1>
+                <button class="cart-close-btn" aria-label="Cerrar carrito">X</button>
+            </div>
+            
+            <!--
+            <div class="cart-search-bar">
+                <span>--- Filter products ---</span>
+            </div>
+            -->
+
+            <!-- Mensaje para cuando el carrito está vacío -->
+            <div id="empty-cart-message" class="hidden"> <!-- Inicialmente oculto si se espera cargar ítems -->
+                <p>Your cart is empty. Add something delicious!</p>
+            </div>
+
+            <!-- Lista dinámica de ítems del carrito -->
+            <!-- Esta lista será poblada por script/carrito.js -->
+            <ul class="cart-item-list" id="dynamic-cart-item-list">
+                <!-- Los ítems del carrito se insertarán aquí dinámicamente -->
+            </ul>
+
+            <!-- Considerar si esta segunda barra de búsqueda es necesaria.
+                 Si la primera ya cumple la función, esta podría ser redundante.
+                 Si es para un propósito diferente, mantenerla.
+                 Por ahora, se mantiene para coincidir con la estructura original proporcionada.
+            -->
+            <!--
+            <div class="cart-search-bar">
+                <span>--- Filter products ---</span>
+            </div>
+            -->
+
+            <div class="cart-summary">
+                <div class="total-price-container">
+                    <span>Total:</span>
+                    <span id="cart-total-price">€0.00</span> <!-- Se actualizará por JS -->
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <button class="process-order-btn font-style-ashton">Process order</button>
+                <img src="../img/inicio/burger-movil.png" alt="Icono de hamburguesa" class="cart-footer-icon">
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/carrito.js"></script>
+</body>
+</html>

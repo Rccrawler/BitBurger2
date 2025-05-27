@@ -1,0 +1,520 @@
+/*-------------------------------------------------------------------------------------
+ * PEDIDOS PAGE STYLES (Mobile-First)
+ *------------------------------------------------------------------------------------*/
+
+/* Base Mobile Styles */
+.page-content-pedidos {
+    padding: 70px 15px 20px 15px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative; /* Ensure this container establishes a stacking context if needed */
+    z-index: 1; /* Make sure page content is at a base level */
+}
+
+.pedidos-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    position: relative; /* If it needs to be above anything else locally */
+    z-index: 2; /* Above general page content, but below modals/overlays */
+}
+
+/* Estilos para el título "Cart" de la página del carrito */
+.cart-title {
+    font-size: 0.01vh; /* Tamaño base, igual que .pedidos-title. Ajusta si es necesario. */
+    margin-bottom: 20px; /* Consistencia con .pedidos-title */
+    color: #333; /* Consistencia con .pedidos-title */
+    overflow-wrap: break-word; /* Consistencia con .pedidos-title */
+    word-break: break-word; /* Consistencia con .pedidos-title */
+    /* La font-family 'Ashton' es aplicada por la clase 'font-style-ashton' en el HTML. */
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2; /* Same as title */
+}
+
+.tab-link {
+    padding: 8px 15px;
+    font-family: 'Lamoore', sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid #d18830;
+    background-color: #fff;
+    color: #d18830;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.tab-link:hover,
+.tab-link.active {
+    background-color: #d18830;
+    color: white;
+}
+.tab-link.active {
+    font-weight: bold;
+}
+
+.menu-items-container {
+    position: relative;
+    z-index: 1; /* Below title and tabs if they overlap, but above background */
+}
+
+.menu-category {
+    display: none;
+    gap: 10px;
+    padding: 5px 0;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.menu-category.active {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-item-card {
+    background-color: #ffcc80;
+    border: 1px solid #d18830;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    min-height: 120px;
+    box-sizing: border-box;
+    width: 130px; /* Base width, adjusted in MQs */
+}
+
+.menu-item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.menu-item-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.menu-item-card span {
+    font-family: 'Lamoore', sans-serif;
+    font-size: 0.75rem;
+    color: #4F4A45;
+    font-weight: bold;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+}
+
+/* Modal (Popup) Styles - Base Mobile */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.85); /* Darker overlay from screenshot */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002; /* High z-index for the overlay */
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-popup-content {
+    background-color: #fff; /* White background for modal from screenshot */
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 95vw;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* Softer, larger shadow */
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease-in-out;
+    max-height: 90vh;
+    overflow: hidden; /* CRITICAL: Keep this hidden */
+    box-sizing: border-box;
+}
+
+.modal-overlay.hidden .modal-popup-content {
+    transform: scale(0.85);
+    opacity: 0;
+}
+
+.modal-background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Ashton', sans-serif;
+    font-size: 3.8rem;
+    font-weight: bold;
+    color: rgba(180, 115, 40, 0.75); /* Adjusted color from screenshot (more opaque, less yellow) */
+    text-transform: uppercase;
+    z-index: 0; /* Behind actual modal content */
+    pointer-events: none;
+    line-height: 0.8;
+    text-align: center;
+    width: 110%; /* Slightly wider than modal to allow for nice clipping */
+    white-space: pre-line;
+    opacity: 1; /* Let color alpha handle transparency */
+    text-shadow: none; /* Removed shadow for cleaner look like screenshot */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Ensure all interactive/visible content in modal is above the background text */
+.close-modal-btn,
+#modal-item-image,
+#modal-item-name,
+#modal-item-description,
+.quantity-selector,
+#add-to-order-btn {
+    position: relative;
+    z-index: 1;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888; /* Greyish close button */
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+}
+.close-modal-btn:hover {
+    color: #333;
+}
+
+#modal-item-image {
+    width: 60px; /* Match screenshot proportions */
+    height: auto; /* Adjust height based on image aspect ratio */
+    max-height: 60px;
+    object-fit: contain;
+    margin: 0 auto 8px auto;
+    border-radius: 4px;
+    border: none; /* No border on image in screenshot */
+}
+
+#modal-item-name {
+    margin-bottom: 5px; /* Less margin */
+    color: #444; /* Darker text for name */
+    font-family: 'Lamoore', sans-serif; /* Using Lamoore for the item name itself */
+    font-size: 1rem; /* Smaller, as in screenshot */
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    font-weight: normal; /* Regular Lamoore weight */
+    text-shadow: none; /* No text shadow for this specific h3 */
+}
+
+#modal-item-description {
+    font-family: 'Lamoore', sans-serif;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    gap: 10px; /* Slightly more gap */
+}
+
+.quantity-selector label {
+    font-family: 'Lamoore', sans-serif;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.quantity-selector input[type="number"] {
+    width: 36px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 6px 4px;
+    border: 1px solid #ddd; /* Lighter border */
+    border-radius: 4px;
+    font-family: 'Lamoore', sans-serif;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Subtle inset shadow */
+}
+
+.quantity-btn {
+    background-color: #E9A94E; /* Orange color from screenshot */
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.quantity-btn:hover {
+    background-color: #d6923a;
+    transform: scale(1.05);
+}
+.quantity-btn:active {
+    transform: scale(0.95);
+}
+
+#add-to-order-btn {
+    font-family: 'Ashton', sans-serif;
+    background-color: #36B37E; /* Green from screenshot */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1.2rem; /* Larger font for button */
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.15); /* Text shadow for depth */
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15); /* Button shadow */
+}
+#add-to-order-btn:hover {
+    background-color: #2DA471;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 7px rgba(0,0,0,0.2);
+}
+#add-to-order-btn:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/*-------------------------------------------------------------------------------------
+ * Boton carrito
+ *------------------------------------------------------------------------------------*/
+
+.burger-button {
+    position: fixed; /* Lo saca del flujo normal y lo fija a la ventana */
+    right: 20px;    /* Distancia desde el borde derecho de la ventana (ajusta a tu gusto) */
+    top: 20px;      /* Distancia desde el borde superior (ajusta a tu gusto) */
+    z-index: 1000;  /* Asegura que esté por encima de otros elementos */
+
+    /* --- Tus estilos existentes --- */
+    /* NO necesitas 'position: relative;' aquí si usas 'fixed' o 'absolute' para el botón mismo */
+    /* Los hijos con 'position: absolute' se posicionarán ahora relativo a este '.burger-button' fijo/absoluto */
+    width: 200px;
+    height: 160px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    /* El resto de tus estilos para .burger-button no cambian */
+}
+.bun-top, .bun-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #d18830;
+    z-index: 3;
+    transition: transform 0.4s ease;
+}
+
+.bun-top {
+    top: 57px;
+    border-radius: 80px 80px 30px 30px;
+}
+
+.bun-bottom {
+    bottom: 57px;
+    border-radius: 0 0 80px 80px;
+}
+
+.burger-button:hover .bun-top {
+    transform: translateY(-55px);
+}
+
+.burger-button:hover .bun-bottom {
+    transform: translateY(55px);
+}
+
+.sesame {
+    width: 5px;
+    height: 2px;
+    background: #fff3c0;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(-20deg);
+    opacity: 0.8;
+}
+
+.bun-top .sesame:nth-child(1) { top: 10px; left: 30px; }
+.bun-top .sesame:nth-child(2) { top: 12px; left: 60px; }
+.bun-top .sesame:nth-child(3) { top: 8px; left: 90px; }
+.bun-top .sesame:nth-child(4) { top: 15px; left: 120px; }
+.bun-top .sesame:nth-child(5) { top: 10px; left: 150px; }
+
+.ingredient {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 22px;
+    opacity: 0;
+    transform: scaleY(0);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.lettuce { top: 48px; background: #66bb55; }
+.cheese  { top: 70px; background: #fdd835; }
+.meat    { top: 92px; background: #8b4513; }
+
+.burger-button:hover .ingredient {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.burger-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Queries */
+
+/* Styles for VERY Small Screens (e.g., less than 359px wide) */
+@media (max-width: 359px) {
+    .page-content-pedidos { padding: 60px 10px 15px 10px; }
+    .pedidos-title { font-size: 1.5rem; margin-bottom: 15px; }
+    .cart-title { font-size: 1.5rem; margin-bottom: 15px; } /* Ajuste para pantallas muy pequeñas */
+    .tab-link { padding: 6px 10px; font-size: 0.8rem; }
+    .menu-category.active { gap: 8px; } /* Removed grid-template-columns: 1fr; to let flexbox handle it */
+    .menu-item-card { width: calc(50% - 4px); min-height: 110px; padding: 8px; }
+    .menu-item-card img { width: 45px; height: 45px; }
+    .menu-item-card span { font-size: 0.7rem; }
+
+    .modal-popup-content { padding: 12px; max-width: calc(100vw - 20px); }
+    .modal-background-text { font-size: 2.4rem; line-height: 0.85; width: 120%; }
+    #modal-item-image { width: 50px; max-height: 50px; }
+    #modal-item-name { font-size: 0.9rem; }
+    #modal-item-description { font-size: 0.75rem; margin-bottom: 10px; }
+    .quantity-selector input[type="number"] { width: 30px; font-size: 0.8rem; }
+    .quantity-btn { width: 24px; height: 24px; font-size: 0.9rem; }
+    #add-to-order-btn { padding: 10px 12px; font-size: 1rem; letter-spacing: 0.5px; }
+}
+
+/* Tablet Styles (and up from 600px) */
+@media (min-width: 600px) {
+    .page-content-pedidos { padding: 80px 20px 20px 20px; max-width: 900px; }
+    .pedidos-title { font-size: 2.2rem; }
+    .cart-title { font-size: 2.2rem; } /* Ajuste para tablets */
+    .tab-link { padding: 9px 18px; font-size: 1rem; border-width: 2px; }
+    /* .menu-category removed grid-template-columns */
+    .menu-category.active { gap: 15px; }
+    .menu-item-card { width: 120px; padding: 12px; min-height: 140px; border-width: 2px; }
+    .menu-item-card img { width: 70px; height: 70px; }
+    .menu-item-card span { font-size: 0.9rem; }
+
+    .modal-overlay { padding: 15px; }
+    .modal-popup-content { max-width: 450px; padding: 20px; }
+    .modal-background-text { font-size: 4.8rem; }
+    #modal-item-image { width: 70px; max-height: 70px; }
+    #modal-item-name { font-size: 1.2rem; }
+    #modal-item-description { font-size: 0.9rem; }
+    .quantity-selector input[type="number"] { width: 40px; font-size: 1rem; }
+    .quantity-btn { width: 30px; height: 30px; font-size: 1.2rem; }
+    #add-to-order-btn { width: auto; padding: 12px 25px; font-size: 1.3rem; }
+}
+
+/* Desktop Styles (and up from 768px) */
+@media (min-width: 768px) {
+    .pedidos-title { font-size: 2.5rem; }
+    .cart-title { font-size: 2.5rem; } /* Ajuste para desktops */
+    .tab-link { padding: 10px 20px; font-size: 1.1rem; }
+    .menu-category.active { gap: 20px; }
+    .menu-item-card { width: 130px; padding: 15px 10px; min-height: 150px; }
+    .menu-item-card img { width: 80px; height: 80px; margin-bottom: 10px; }
+    .menu-item-card span { font-size: 0.95rem; }
+
+    .modal-popup-content { max-width: 480px; padding: 25px; }
+    .modal-background-text { font-size: 6rem; width: 110%; }
+    #modal-item-image { width: 80px; max-height: 80px; margin-bottom: 15px; }
+    #modal-item-name { font-size: 1.3rem; margin-bottom: 10px; }
+    #modal-item-description { font-size: 1rem; margin-bottom: 15px; }
+    .quantity-selector { gap: 10px; margin-bottom: 15px; }
+    .quantity-selector input[type="number"] { width: 45px; }
+    #add-to-order-btn { letter-spacing: 1.2px; font-size: 1.4rem; padding: 14px 28px; }
+}
+
+/* Larger Desktop Styles (and up from 1024px) for very large text */
+@media (min-width: 1024px) {
+    /* .cart-title { font-size: 2.8rem; } Opcional: si quieres un tamaño aún mayor para desktops grandes */
+    .modal-background-text {
+        font-size: 7rem; /* Final large size */
+    }
+    #modal-item-image {
+        width: 100px; /* Larger image for large modals */
+        max-height: 100px;
+    }
+    #modal-item-name {
+        font-size: 1.4rem;
+    }
+}

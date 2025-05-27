@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Eliminadas meta http-equiv Cache-Control y Expires, generalmente es mejor manejarlas en el servidor -->
+    <link rel="shortcut icon" href="../img/inicio/logo3.ico" type="image/x-icon">
+    <title>BitBurger - food menu</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/boton.css">
+    <link rel="stylesheet" href="../styles/carta.css">
+</head>
+<body>
+
+    <!--Cookies-->
+    <script src="../script/cookies.js"></script>
+    <div id="cookie-banner" class="hidden">
+        <p>We use cookies to improve your experience. 
+            <a href="terminos.html" style="color: lightblue;">learn more</a>.
+        </p>
+        <button onclick="aceptarCookies()">Accept</button>
+        <button onclick="abrirConfiguracion()">Configure</button>
+    </div>
+    <div id="configurar-cookies-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Cookies</h2>
+            <br>
+            <form id="configurar-cookies-form">
+                <label><input type="checkbox" name="cookies-necesarias" checked disabled> Necessary cookies</label>
+                <label><input type="checkbox" name="cookies-analiticas"> Analytical cookies</label>
+                <label><input type="checkbox" name="cookies-publicidad"> Advertising cookies</label>
+            </form>
+            <button onclick="guardarConfiguracion()">Save</button>
+            <button onclick="cerrarConfiguracion()">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Expanding Corner Menu -->
+    <div class="expanding-button-container">
+        <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+            <img src="../img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
+        </button>
+        <div class="options-wrapper" id="optionsMenu">
+            <!-- Asegúrate que estas URLs son correctas para tu estructura -->
+            <button class="option-button option-1" aria-label="Pedidos" data-url="carta.html"> <!-- Asumiendo que esta es la página de pedidos/carta -->
+                <div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">orders</span></div>
+            </button>
+            <button class="option-button option-2" aria-label="Conócenos" data-url="conocenos.html">
+                <div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">know us</span></div>
+            </button>
+            <button class="option-button option-3" aria-label="Empleados" data-url="../org/index.html">
+                <div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div>
+            </button>
+            <button class="option-button option-4" aria-label="Perfil" data-url="perfil.html">
+                <div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div>
+            </button>
+        </div>
+    </div>
+
+    <a href="../pages/carrito.html" class="burger-button">
+        <div class="bun-top">
+        <div class="sesame"></div> <div class="sesame"></div> <div class="sesame"></div> <div class="sesame"></div> <div class="sesame"></div>
+        </div>
+        <div class="ingredient lettuce"></div>
+        <div class="ingredient cheese"></div>
+        <div class="ingredient meat"></div>
+        <div class="bun-bottom"></div>
+        <span>cart</span>
+    </a> 
+
+    <div class="page-content-pedidos">
+        <h1 class="pedidos-title font-style-ashton">Orders</h1>
+
+        <div class="category-tabs">
+            <button class="tab-link active" data-tab="hamburguesas">Hamburger</button>
+            <button class="tab-link" data-tab="entrantes">Appetizers</button>
+            <button class="tab-link" data-tab="otros-platos">Main Courses</button>
+            <button class="tab-link" data-tab="bebidas">Drinks</button>
+        </div>
+
+        <div class="menu-items-container">
+            <!-- Hamburguesas: Se llenará dinámicamente por carta.js -->
+            <div id="hamburguesas" class="menu-category active">
+                <!-- Contenido dinámico -->
+            </div>
+
+            <!-- Entrantes: Se llenará dinámicamente por carta.js -->
+            <div id="entrantes" class="menu-category">
+                <!-- Contenido dinámico -->
+            </div>
+
+            <!-- Otros Platos: Se llenará dinámicamente por carta.js -->
+            <div id="otros-platos" class="menu-category">
+                <!-- Contenido dinámico -->
+            </div>
+
+            <!-- Bebidas: Se llenará dinámicamente por carta.js -->
+            <div id="bebidas" class="menu-category">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Item Detail Modal (Popup) -->
+    <div id="item-detail-modal" class="modal-overlay hidden">
+        <div class="modal-popup-content">
+            <span class="modal-background-text"></span>
+            <button class="close-modal-btn">×</button>
+            <img id="modal-item-image" src="" alt="Detalle del producto">
+            <h3 id="modal-item-name" class="font-style-ashton-h2">Product Name</h3>
+            <p id="modal-item-description">Detailed product description here...</p>
+            <div class="quantity-selector">
+                <label for="item-quantity">Total orders:</label>
+                <button class="quantity-btn" data-action="decrease">-</button>
+                <input type="number" id="item-quantity" value="1" min="1" readonly>
+                <button class="quantity-btn" data-action="increase">+</button>
+            </div>
+            <button id="add-to-order-btn">Add to Order</button>
+        </div>
+    </div>
+
+    <!-- Corner Action Buttons -->
+    <a href="../pages/editor-hanburgesa/index.html" class="corner-action-button corner-left" aria-label="Personalizar Hamburguesa">
+        <img src="../img/inicio/icono-personalizar.png" alt="Personalizar hamburguesa">
+    </a>
+    <a href="../pages/register.html"
+       class="corner-action-button corner-right"
+       aria-label="Registrarse o Iniciar Sesión"
+       data-tooltip="Haz clic para registrarte o iniciar sesión">
+        <img src="../img/inicio/usuario.png" alt="Registrarse o iniciar sesión">
+    </a>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <span>© 2024 BitBurger | <a href="contacto.html">More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">Creative Commons License | </a><a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA=="><img src="../img/inicio/grupk39s.png" alt="Instagram" style="height: 24px; vertical-align: middle; margin-right: 8px;"></a></span>
+    </footer>
+
+    <script src="../script/boton.js"></script>
+    <script src="../script/carta.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // const statusTextElement = document.getElementById('statusText'); // Este elemento no parece estar en tu HTML
+            // const orderStatus = "Selecciona tus productos"; 
+            // if (statusTextElement) {
+            //     statusTextElement.textContent = orderStatus;
+            // }
+            const cookieBanner = document.getElementById('cookie-banner');
+            if (cookieBanner && localStorage.getItem('cookiesAceptadas') !== 'true') {
+                cookieBanner.classList.remove('hidden');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userCornerButton = document.querySelector('a.corner-action-button.corner-right');
+            const userCornerImage = userCornerButton ? userCornerButton.querySelector('img') : null;
+
+            // URL del servlet para servir imágenes.
+            // Debe ser la URL absoluta y correcta de tu ImageServlet en Tomcat.
+            const IMAGE_SERVLET_URL = 'http://localhost:8080/BitBurger/ImageServlet'; // Ajusta si es necesario
+
+            if (userCornerButton && userCornerImage) {
+                const storedUser = localStorage.getItem('currentUser');
+                if (storedUser) {
+                    try {
+                        const user = JSON.parse(storedUser);
+                        if (user && user.idUsuario) {
+                            // Usuario logueado
+                            userCornerButton.href = '../pages/perfil.html'; // Enlace a perfil
+                            userCornerButton.ariaLabel = 'Ver Perfil';
+                            userCornerButton.dataset.tooltip = 'Ver tu perfil';
+
+                            // --- CAMBIAR LA IMAGEN DEL ICONO ---
+                            if (user.fotoPerfilNombreOriginal) {
+                                userCornerImage.src = `${IMAGE_SERVLET_URL}?userId=${user.idUsuario}&t=${new Date().getTime()}`;
+                                userCornerImage.alt = 'Ver Perfil'; // Alt text más descriptivo
+                                userCornerImage.onerror = function() {
+                                    this.onerror = null; // Evitar bucles
+                                    this.src = '../img/inicio/usuario.png'; // Placeholder si falla la carga
+                                    console.warn('Fallo al cargar imagen de perfil para el icono, usando placeholder.');
+                                };
+                            } else {
+                                // Si no tiene foto, mantener el placeholder por defecto
+                                userCornerImage.src = '../img/inicio/usuario.png';
+                                userCornerImage.alt = 'Ver Perfil (sin foto)';
+                            }
+                            console.log('Icono de usuario apunta a perfil.html y foto actualizada (si existe).');
+
+                        } else {
+                            // Datos de usuario corruptos
+                            userCornerButton.href = '../pages/register.html';
+                            userCornerImage.src = '../img/inicio/usuario.png'; // Imagen por defecto
+                            userCornerImage.alt = 'Registrarse o Iniciar Sesión';
+                            console.log('Datos de usuario corruptos, icono de usuario apunta a register.html.');
+                        }
+                    } catch(e) {
+                        // Error al parsear
+                        userCornerButton.href = '../pages/register.html';
+                        userCornerImage.src = '../img/inicio/usuario.png'; // Imagen por defecto
+                        userCornerImage.alt = 'Registrarse o Iniciar Sesión';
+                        console.error('Error parseando currentUser, icono de usuario apunta a register.html', e);
+                    }
+                } else {
+                    // No hay usuario logueado, el enlace e imagen por defecto son correctos
+                    console.log('No hay usuario logueado, icono de usuario apunta a register.html.');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

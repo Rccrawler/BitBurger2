@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Bienvenido</title>
+    <link rel="stylesheet" href="../styles/bienvenida.css">
+    <script src="../script/bienvenida.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="main-container">
+        <nav class="main-nav">
+            <div class="nav-buttons-container">
+                <button class="nav-button font-style-ashton" onclick="window.location.href='fichaje.html'">CLOCK-IN</button>
+                <button class="nav-button font-style-ashton active">WELCOME</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <script src="../../script/employee-guard.js"></script> 
+            <section class="welcome-video-section">
+                <div class="video-placeholder">
+                    <video controls>
+                        <!-- ¡IMPORTANTE! Reemplaza la siguiente línea con la ruta a tu video:
+                             - Para un video local: "videos/mi_video_bienvenida.mp4"
+                             - Para un video de AWS S3: "https://tu-bucket.s3.tu-region.amazonaws.com/ruta/al/video.mp4"
+                        -->
+                        <source src="https://bitburger-fotos-y-videos.s3.us-east-1.amazonaws.com/Videos/Bienvenida.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+            <section class="welcome-description-section">
+                <div class="description-box">
+                    <h3>Summary of the video</h3>
+                    <br>
+                    <p>Hello and welcome to the BitBurger team! We are very happy that you are joining us!
+                        <br>
+                        Our obsession is quality. From the ingredients to the service, every detail is crucial. And you are a key piece in maintaining that excellence that defines us!
+                        <br>
+                        To ensure that we operate with the highest standards, we have a Committee. This team works constantly to ensure that all our practices, from operational to legal, are impeccable. This means that you are in a place that takes its responsibilities seriously.
+                        <br>
+                        And not only that, they also analyze proposals and implement improvements to optimize our processes, our products, and even the sustainability of our business. We strive to be better every day!
+                        <br>
+                        We want you to know that you are joining a company that invests in its future and in doing things right. Your professionalism and commitment are key to this journey.
+                        <br>
+                        Welcome once again! Together we will take BitBurger to the next level!
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
