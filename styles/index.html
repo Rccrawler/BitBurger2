@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger - Inspirado en Goiko</title>
+    <link rel="shortcut icon" href="img/inicio/logo3.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/boton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Si usas Slick Carousel, necesitarás su CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> -->
+</head>
+<body>
+
+    <!-- NEW HEADER BAR -->
+    <div class="top-header-bar">
+        <div class="header-left">
+            <a href="index.html" class="header-logo-link">
+                <img src="img/inicio/logo3.png" alt="BitBurger Logo" class="header-logo-img">
+            </a>
+            <button class="hamburger-menu-button" id="hamburgerButton" aria-label="Abrir menú" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div class="header-right">
+            <a href="pages/pedidos.html" class="header-action-btn header-btn-order">Hacer Pedido</a>
+            <a href="pages/reservas.html" class="header-action-btn header-btn-reserve">Reservar</a>
+            <div class="language-selector">
+                <button class="header-action-btn header-btn-lang">ES <i class="fas fa-caret-down"></i></button>
+                <!-- Add language dropdown options here if needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- EXISTING EXPANDING MENU - Now controlled by hamburger -->
+    <!-- This div is no longer the primary fixed container for the logo -->
+    <div class="options-wrapper" id="optionsMenu">
+        <button class="option-button option-1" data-url="pedidos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Pedidos</span></div></button>
+        <button class="option-button option-2" data-url="perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Conócenos</span></div></button>
+        <button class="option-button option-3" data-url="org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Staff</span></div></button>
+        <button class="option-button option-4" data-url="pages/perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Perfil</span></div></button>
+    </div>
+
+
+    <!-- Cookies (sin cambios) -->
+    <div id="cookie-banner"><p>Usamos cookies para mejorar tu experiencia. <a href="terminos.html">Saber más</a>.</p><button onclick="aceptarCookies()">Aceptar</button><button onclick="abrirConfiguracion()">Configurar</button></div>
+    <div id="configurar-cookies-modal" class="hidden"><div class="modal-content"><h2>Configuración de Cookies</h2><form id="configurar-cookies-form"><label><input type="checkbox" name="cookies-necesarias" checked disabled> Necesarias</label><label><input type="checkbox" name="cookies-analiticas"> Analíticas</label><label><input type="checkbox" name="cookies-publicidad"> Publicidad</label></form><button onclick="guardarConfiguracion()">Guardar</button><button onclick="cerrarConfiguracion()">Cancelar</button></div></div>
+    
+    <!-- The original .expanding-button-container is removed from here. Its functionality is now split. -->
+
+    <!-- Status Box (sin cambios estructurales) -->
+    <div class="status-box" id="statusBox"><span id="statusText">ONLINE</span><br><span id="statusTextDetail">Pedidos <a href="pages/game/index.html" target="_blank">abiertos</a></span></div>    
+
+    <!-- HERO SECTION -->
+    <header class="hero-section new-goiko-hero">
+        <div class="hero-background-text-container">
+            <!-- MODIFIED BACKGROUND TEXT -->
+            <div class="hero-background-text-line line-1"><span>VINBACONVINBACONVINBACONVINBACONVINBACONVINBACONVINBACONVINBACON</span></div>
+            <div class="hero-background-text-line line-2"><span>CONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVIN</span></div>
+            <div class="hero-background-text-line line-3"><span>VINBACONVINBACONVINBACONVINBACONVINBACONVINBACONVINBACONVINBACON</span></div>
+            <div class="hero-background-text-line line-4"><span>CONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVINCONKEVIN</span></div>
+        </div>
+        <div class="hero-image-container">
+             <img src="img/inicio/burger-carousel-1.png" alt="Hamburguesa Destacada BitBurger">
+        </div>
+        <div class="hero-main-title">
+            <span>LA REVOLUCIÓN</span>
+            <span>DEL CHORREO</span>
+            <span>CON BITBURGER</span>
+        </div>
+        <div class="hero-buttons-goiko">
+            <a href="pages/pedidos.html" class="goiko-btn goiko-btn-hero-primary">HACER PEDIDO</a>
+            <a href="pages/reservas.html" class="goiko-btn goiko-btn-hero-secondary">RESERVAR</a>
+        </div>
+    </header>
+
+    <!-- ... rest of your HTML content remains the same ... -->
+    <!-- PROMO SECTION (Ej: 2x1) -->
+    <section class="promo-section-goiko" style="background-image: url('img/placeholder/promo-bg.jpg');">
+        <div class="promo-overlay"></div>
+        <div class="goiko-container text-center promo-content-animated">
+            <p class="promo-subtext">De Domingo a Jueves en Cenas</p>
+            <h2 class="promo-maintext">2X1 EN BURGERS</h2>
+            <a href="pages/promociones.html#2x1" class="goiko-btn goiko-btn-promo">¡DESCARGA TU CUPÓN! <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- CARTA CATEGORIES CAROUSEL -->
+    <section class="carta-carousel-section">
+        <div class="scrolling-title-background"><div class="scrolling-title-text"><span>CARTA CARTA CARTA CARTA CARTA</span></div></div>
+        <div class="goiko-container">
+            <div class="slick-carousel-container">
+                <a href="pages/carta.html#entrantes" class="carta-category-item"><img src="img/placeholder/entrantes.jpg" alt="Entrantes"><div class="category-info"><h3>ENTRANTES <i class="fas fa-arrow-right"></i></h3><p>Para compartir (o no)</p></div></a>
+                <a href="pages/carta.html#burgers" class="carta-category-item"><img src="img/placeholder/burgers.jpg" alt="Burgers"><div class="category-info"><h3>BURGERS <i class="fas fa-arrow-right"></i></h3><p>Las de siempre, las que amas</p></div></a>
+                <a href="pages/carta.html#chicken" class="carta-category-item"><img src="img/placeholder/chicken.jpg" alt="Chicken Lovers"><div class="category-info"><h3>CHICKEN LOVERS <i class="fas fa-arrow-right"></i></h3><p>Para los amantes del pollo</p></div></a>
+                <a href="pages/carta.html#postres" class="carta-category-item"><img src="img/placeholder/postres.jpg" alt="Postres"><div class="category-info"><h3>POSTRES <i class="fas fa-arrow-right"></i></h3><p>El final feliz</p></div></a>
+                <a href="pages/carta.html#bebidas" class="carta-category-item"><img src="img/placeholder/bebidas.jpg" alt="Bebidas"><div class="category-info"><h3>BEBIDAS <i class="fas fa-arrow-right"></i></h3><p>Para refrescar el gaznate</p></div></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEVIN BACON COUNTER (CON TU HTML DE 7 SEGMENTOS) -->
+    <section class="kevin-counter-section user-counter-style">
+        <div class="goiko-container text-center">
+            <h2 class="user-counter-title">BYTES CLASSIC VENDIDAS ESTE AÑO</h2>
+            <!-- HTML de tu contador de 7 segmentos -->
+            <div class="counter-container" id="userSevenSegmentCounter">
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+                <div class="digit digit-separator"></div> <!-- Separador de miles opcional -->
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+                <div class="digit" data-digit-value="0"><div class="segment segment-a"></div><div class="segment segment-b"></div><div class="segment segment-c"></div><div class="segment segment-d"></div><div class="segment segment-e"></div><div class="segment segment-f"></div><div class="segment segment-g"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRIENDS WITH BENEFITS -->
+    <section class="friends-benefits-section" style="background-image: url('img/placeholder/friends-bg.jpg');">
+        <div class="promo-overlay"></div>
+        <div class="goiko-container text-center promo-content-animated">
+            <img src="img/placeholder/bitkoins.png" alt="BitKoins" class="friends-coin-img">
+            <h2>SEAMOS FRIENDS WITH BENEFITS</h2>
+            <p>Únete al club más top de BitBurger y accede a ofertas y experiencias exclusivas.</p>
+            <a href="pages/friends.html" class="goiko-btn goiko-btn-friends">REGISTRARSE <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- FOODTRUCK SECTION -->
+    <section class="foodtruck-section">
+        <div class="goiko-container">
+            <div class="foodtruck-content">
+                <div class="foodtruck-text animated-text-block">
+                    <h2>FOODTRUCK</h2>
+                    <p>¡BITBURGER sobre ruedas! Llevamos el chorreo donde tú estés. La Byte-Van está ready para la party.</p>
+                    <a href="pages/foodtruck.html" class="goiko-link-arrow">SABER MÁS <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="foodtruck-image animated-image-block">
+                    <img src="img/placeholder/foodtruck.png" alt="BitBurger Foodtruck">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOIKOCINA (BITBURGER EN CASA) -->
+    <section class="goikocina-section">
+         <div class="goikocina-content-wrapper" style="background-image: url('img/placeholder/goikocina-productos.jpg');">
+            <div class="promo-overlay"></div>
+            <div class="goikocina-text-overlay promo-content-animated">
+                <i class="fas fa-utensils goikocina-icon"></i>
+                <h2>BitBurger en tu cocina.</h2>
+                <p>Los ingredientes más top, ahora en tu casa... Prepárate para chuparte los dedos.</p>
+                <a href="pages/tienda.html" class="goiko-btn goiko-btn-primary">DESCUBRE BITCOCINA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section class="news-section-goiko">
+        <div class="scrolling-title-background"><div class="scrolling-title-text"><span>NEWS NEWS NEWS NEWS NEWS</span></div></div>
+        <div class="goiko-container">
+            <div class="news-grid-goiko">
+                <a href="blog/post1.html" class="news-card-goiko"><img src="img/placeholder/news1.jpg" alt="Noticia 1"><div class="news-card-content"><span class="news-category">NOVEDADES</span><h3>Donde comer las mejores BitBurgers en tu ciudad</h3></div></a>
+                <a href="blog/post2.html" class="news-card-goiko"><img src="img/placeholder/news2.jpg" alt="Noticia 2"><div class="news-card-content"><span class="news-category">COMUNIDAD</span><h3>¿Cuál es la mejor combinación de ingredientes?</h3></div></a>
+                <a href="blog/post3.html" class="news-card-goiko"><img src="img/placeholder/news3.jpg" alt="Noticia 3"><div class="news-card-content"><span class="news-category">EVENTOS</span><h3>5 motivos para unirte al club Friends with Benefits</h3></div></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer-detailed">
+        <div class="footer-top-scrolling-text"><div class="scrolling-title-text reverse"><span>FOREVER CHORREO FOREVER CHORREO FOREVER CHORREO</span></div></div>
+        <div class="goiko-container">
+            <div class="footer-grid">
+                <div class="footer-column"><img src="img/inicio/logo3.png" alt="BitBurger Logo" class="footer-logo"><p class="footer-tagline">El Sabor que Conecta.</p><div class="footer-social"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></div></div>
+                <div class="footer-column"><h4>BITBURGER</h4><ul><li><a href="pages/carta.html">Carta</a></li><li><a href="pages/restaurantes.html">Restaurantes</a></li><li><a href="#">Pide Online</a></li><li><a href="pages/promociones.html">Promociones</a></li></ul></div>
+                <div class="footer-column"><h4>CONÓCENOS</h4><ul><li><a href="perfil.html">Nuestra Historia</a></li><li><a href="sostenibilidad.html">Sostenibilidad</a></li><li><a href="blog.html">Blog</a></li><li><a href="org/index.html">Trabaja con Nosotros</a></li></ul></div>
+                <div class="footer-column"><h4>LEGAL</h4><ul><li><a href="terminos.html">Términos y Condiciones</a></li><li><a href="privacidad.html">Política de Privacidad</a></li><li><a href="cookies-policy.html">Política de Cookies</a></li><li><a href="alergenos.html">Info Alérgenos</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 BitBurger. Todos los derechos reservados.</p><p><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">Licencia CC</a></p></div>
+        </div>
+    </footer>
+
+    <script src="script/cookies.js"></script>
+    <script src="script/boton.js"></script>
+    <!-- Slick Carousel JS (si lo usas) -->
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <script src="script/script.js"></script> 
+</body>
+</html>

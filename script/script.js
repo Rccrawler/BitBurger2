@@ -352,4 +352,241 @@ document.addEventListener('DOMContentLoaded', () => {
     * FIN Lógica del Contador
     *------------------------------------------------------------------------------------*/
 
+
+
+        // --- Scroll-Triggered Animations ---
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    if (animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Unobserve after animation to save resources
+                    // observerInstance.unobserve(entry.target);
+                }
+                // Optional: To re-animate if it scrolls out and back in (remove unobserve)
+                // else {
+                //     entry.target.classList.remove('is-visible');
+                // }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+            // rootMargin: "0px 0px -50px 0px" // Example: trigger 50px before it's fully in view
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+
+    // --- Dynamic Counter (Example for KEVIN BACON VENDIDAS) ---
+    const counterElement = document.querySelector('.seven-segment-counter');
+    if (counterElement) {
+        const targetNumberString = "0829588"; // The number to display
+        const digits = counterElement.querySelectorAll('.digit');
+        let flatDigits = [];
+        digits.forEach(d => {
+            if (d.textContent.length > 1) { // For digit groups like "829"
+                [...d.textContent].forEach(char => flatDigits.push(char));
+            } else {
+                flatDigits.push(d.textContent);
+            }
+        });
+        
+        // This is a simplified representation. A real 7-segment dynamic update
+        // would involve changing each actual .digit span's content.
+        // For now, we'll simulate an update to the original static HTML structure.
+        // To make it truly dynamic, you'd create/update spans per digit of targetNumberString.
+
+        // Example: Simulate updating a specific digit if needed for a visual cue.
+        // This part is complex for true 7-segment visual counting up without individual segment control.
+        // For simplicity, the current visual is static but can be made dynamic if you
+        // structure the HTML with individual spans for each digit character.
+        // The current HTML groups them "0", "829", "588".
+
+        // Let's refine the HTML for the counter to make JS targeting easier for a dynamic display.
+        // (See HTML update below)
+        const dynamicCounterDigits = document.querySelectorAll('.dynamic-digit');
+        if (dynamicCounterDigits.length > 0) {
+            const finalNumber = 829588; // Example final number
+            let currentNumber = 0;
+
+            // Observer for the counter itself to start when visible
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(finalNumber, dynamicCounterDigits);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counterObserver.observe(counterElement);
+        }
+    }
+
+    function animateCounter(target, digitElements) {
+        let numStr = String(target).padStart(digitElements.length, '0');
+        digitElements.forEach((digitSpan, index) => {
+            const finalDigit = numStr[index];
+            let currentDigit = 0;
+            const interval = setInterval(() => {
+                digitSpan.textContent = currentDigit;
+                if (currentDigit == finalDigit) {
+                    clearInterval(interval);
+                    digitSpan.classList.add('landed'); // Add class for subtle land effect
+                }
+                currentDigit = (currentDigit + 1) % 10;
+            }, 80 + (index * 20)); // Stagger and speed up
+        });
+    }
+
+
+    // --- Coupon Carousel (Placeholder Logic) ---
+    const couponSection = document.querySelector('.coupon-section');
+    if (couponSection) {
+        const prevArrow = couponSection.querySelector('.prev-arrow');
+        const nextArrow = couponSection.querySelector('.next-arrow');
+        // Add event listeners and logic for carousel functionality here
+        // This would involve changing the background image or content of .coupon-section
+        if(prevArrow) prevArrow.addEventListener('click', () => console.log('Prev coupon'));
+        if(nextArrow) nextArrow.addEventListener('click', () => console.log('Next coupon'));
+    }
+
+    // --- Carta Items Horizontal Scroll with Mouse Wheel (Optional Enhancement) ---
+    const cartaWrapper = document.querySelector('.carta-items-wrapper');
+    if (cartaWrapper) {
+        cartaWrapper.addEventListener('wheel', (event) => {
+            if (event.deltaY !== 0) { // Check if vertical scroll, then apply to horizontal
+                // event.preventDefault(); // Uncomment if you want to prevent page scroll while scrolling carta
+                cartaWrapper.scrollLeft += event.deltaY * 1.5; // Adjust multiplier for speed
+            }
+        });
+    }
+
+        // --- Full Width Carousel ---
+    const carouselSection = document.querySelector('.full-width-carousel-section');
+    if (carouselSection) { // Only run if carousel section exists
+
+        const slidesContainer = carouselSection.querySelector('.carousel-slides');
+        const slides = Array.from(carouselSection.querySelectorAll('.carousel-slide'));
+        const prevButton = carouselSection.querySelector('.carousel-button.prev');
+        const nextButton = carouselSection.querySelector('.carousel-button.next');
+        const dotsContainer = carouselSection.querySelector('.carousel-dots');
+
+        if (!slidesContainer || slides.length === 0 || !prevButton || !nextButton || !dotsContainer) {
+            console.warn('Full width carousel elements not found or incomplete.');
+        } else {
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval;
+            const autoPlayDelay = 5000; // 5 seconds
+
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button'); // Use button for accessibility
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    // if (autoPlayInterval) stopAutoPlay(); // Optional: stop autoplay on manual dot click
+                });
+                dotsContainer.appendChild(dot);
+            });
+            const dots = Array.from(dotsContainer.querySelectorAll('.carousel-dot'));
+
+            function updateCarousel() {
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+
+                // Disable/Enable buttons at ends (non-looping for manual nav)
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex === totalSlides - 1;
+            }
+
+            function goToSlide(index) {
+                if (index < 0 || index >= totalSlides) return;
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                    // if (autoPlayInterval) stopAutoPlay(); // Optional: stop autoplay on manual nav
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                    // if (autoPlayInterval) stopAutoPlay(); // Optional: stop autoplay on manual nav
+                }
+            });
+            
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval); // Clear existing interval
+                autoPlayInterval = setInterval(() => {
+                    currentIndex++;
+                    if (currentIndex >= totalSlides) {
+                        currentIndex = 0; // Loop back to the first slide for autoplay
+                    }
+                    updateCarousel();
+                }, autoPlayDelay);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null; // Clear the interval ID
+            }
+
+            // Uncomment to start autoplay by default
+            // startAutoPlay();
+
+            // Pause autoplay on hover (optional)
+            // carouselSection.addEventListener('mouseenter', stopAutoPlay);
+            // carouselSection.addEventListener('mouseleave', () => { if (!autoPlayInterval) startAutoPlay(); });
+
+
+            // Basic Touch/Swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                // if (autoPlayInterval) stopAutoPlay(); // Optional: Stop autoplay on touch
+            }, { passive: true });
+
+            slidesContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                // if (!autoPlayInterval) startAutoPlay(); // Optional: Restart autoplay after touch
+            }, { passive: true });
+
+            function handleSwipe() {
+                const threshold = 50; // Minimum swipe distance
+                if (touchEndX < touchStartX - threshold) { // Swiped left
+                    if (currentIndex < totalSlides - 1) {
+                        currentIndex++;
+                    } 
+                    // else { currentIndex = 0; } // Optional: loop to first slide on swipe
+                } else if (touchEndX > touchStartX + threshold) { // Swiped right
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                    }
+                    // else { currentIndex = totalSlides - 1; } // Optional: loop to last slide on swipe
+                }
+                updateCarousel();
+            }
+             // Initialize carousel
+            updateCarousel();
+        }
+    }
+
 });

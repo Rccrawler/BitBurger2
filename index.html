@@ -1,253 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
-        <meta http-equiv="Expires" content="Wed, 21 Oct 2025 07:28:00 GMT">
-        <!--Favicon-->
-        <link rel="shortcut icon" href="img/inicio/logo3.ico" type="image/x-icon">
-        <title>BitBurger</title>
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/boton.css">
-    </head>
-    <body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/boton.css">
+    <link rel="shortcut icon" href="img/inicio/logo3.ico" type="image/x-icon">
+</head>
+<body>
 
-        <!--Cookies-->
-        <script src="script/cookies.js"></script>
-
-
-        <div id="cookie-banner">
-            <p>We use cookies to improve your experience. 
-                <a href="terminos.html" style="color: lightblue;">Learn more</a>.
-            </p>
-            <button onclick="aceptarCookies()">Accept</button>
-            <button onclick="abrirConfiguracion()">Set up</button>
-        </div>
-
-        <div id="configurar-cookies-modal" class="hidden">
-            <div class="modal-content">
-                <h2>Cookies</h2>
-                <br>
-                <form id="configurar-cookies-form">
-                    <label>
-                        <input type="checkbox" name="cookies-necesarias" checked disabled>
-                        Necessary cookies (always active)
-                    </label>
-                    <label>
-                        <input type="checkbox" name="cookies-analiticas">
-                        Analytical cookies
-                    </label>
-                    <label>
-                        <input type="checkbox" name="cookies-publicidad">
-                        Advertising cookies
-                    </label>
-                </form>
-                <button onclick="guardarConfiguracion()">Save</button>
-                <button onclick="cerrarConfiguracion()">Cancel</button>
-            </div>
-        </div>
-        
-        <!-- Contenedor principal del botón, posicionado en la esquina -->
-        <div class="expanding-button-container">
-            <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
-                <img src="img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
-            </button>
-
-            <div class="options-wrapper" id="optionsMenu">
-                <button class="option-button option-1" aria-label="Inicio" data-url="pedidos.html">
-                    <div class="option-burger-content">
-                        <div class="option-bun-top"></div>
-                        <div class="option-bun-bottom"></div>
-                        <span class="option-text">Orders</span>
-                    </div>
+    <header>
+        <div class="header-left">
+            <div class="expanding-button-container">
+                <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+                    <img src="img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
                 </button>
-
-                <button class="option-button option-2" aria-label="Opción 1" data-url="perfil.html">
-                    <div class="option-burger-content">
-                        <div class="option-bun-top"></div>
-                        <div class="option-bun-bottom"></div>
-                        <span class="option-text">Know us</span>
-                    </div>
-                </button>
-
-                <button class="option-button option-3" aria-label="Opción 2" data-url="org/index.html">
-                    <div class="option-burger-content">
-                        <div class="option-bun-top"></div>
-                        <div class="option-bun-bottom"></div>
-                        <span class="option-text">Employees</span>
-                    </div>
-                </button>
-
-                <button class="option-button option-4" aria-label="Perfil" data-url="pages/perfil.html">
-                    <div class="option-burger-content">
-                        <div class="option-bun-top"></div>
-                        <div class="option-bun-bottom"></div>
-                        <span class="option-text">Profile</span>
-                    </div>
-                </button>
+                <div class="options-wrapper" id="optionsMenu">
+                    <button class="option-button option-1" data-url="pedidos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
+                    <button class="option-button option-2" data-url="perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
+                    <button class="option-button option-3" data-url="org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div></button>
+                    <button class="option-button option-4" data-url="pages/perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div></button>
+                </div>
             </div>
         </div>
+        <nav class="header-right">
+            <a href="#" class="nav-button order-button">HACER PEDIDO</a>
+            <a href="#" class="nav-button reserve-button">RESERVAR</a>
+            <div class="language-selector">
+                <span>ES</span>
+                <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="10" height="10"><path d="M8 12L2 6h12L8 12z"/></svg>
+            </div>
+        </nav>
+    </header>
 
-        <div class="status-box" id="statusBox">
-            <span id="statusText">Loading status...</span><br>
-            <span id="statusText">waiting <a href="pages/game/index.html" target="_blank" style="color:rgb(96, 88, 1); text-decoration:underline;">play</a></span>
-        </div>    
-
-        <div class="hamburger-animation-container">
-            <video src="img/inicio/video-burger.mp4" autoplay loop muted playsinline class="hamburger-animation" id="animatedHamburger">
-                Your browser does not support the video tag.
-            </video>
+    <script src="script/cookies.js"></script>
+    <div id="cookie-banner">
+        <p>We use cookies to improve your experience. <a href="terminos.html" style="color: lightblue;">Learn more</a>.</p>
+        <button onclick="aceptarCookies()">Accept</button>
+        <button onclick="abrirConfiguracion()">Set up</button>
+    </div>
+    <div id="configurar-cookies-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Cookies</h2><br>
+            <form id="configurar-cookies-form">
+                <label><input type="checkbox" name="cookies-necesarias" checked disabled> Necessary cookies (always active)</label>
+                <label><input type="checkbox" name="cookies-analiticas"> Analytical cookies</label>
+                <label><input type="checkbox" name="cookies-publicidad"> Advertising cookies</label>
+            </form>
+            <button onclick="guardarConfiguracion()">Save</button>
+            <button onclick="cerrarConfiguracion()">Cancel</button>
         </div>
+    </div>
 
-        <div class="page-content">
-            <h1>Burgers sold this year</h1>
-            <br>
-            <p><h3>We serve burgers. But we also design moments</h3></p>
-            <p>From the moment you place your order on the web or app, until you try it the first bite, everything is designed to be quick, easy... and tasty.</p>
-        </div>
-
-        <div class="counter-container">
-            <!-- Dígito 1 -->
-            <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
+    <main>
+        <section class="hero-section"> <!-- Initial animation likely CSS direct, not scroll -->
+            <div class="background-text-hero">
+                 <p>Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger</p>
+                 <p>--------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger ---------------------</p>
+                 <p>Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger</p>
+                 <p>--------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger ---------------------</p>
             </div>
-            <!-- Dígito 2 -->
-            <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-            </div>
-            <!-- Dígito 3 -->
-             <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-            </div>
-            <!-- Dígito 4 -->
-             <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-            </div>
-            <!-- Dígito 5 -->
-             <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-            </div>
-            <!-- Dígito 6 -->
-             <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-            </div>
-            <!-- Dígito 7 -->
-             <div class="digit" data-digit-value="0">
-                <div class="segment segment-a"></div>
-                <div class="segment segment-b"></div>
-                <div class="segment segment-c"></div>
-                <div class="segment segment-d"></div>
-                <div class="segment segment-e"></div>
-                <div class="segment segment-f"></div>
-                <div class="segment segment-g"></div>
-             </div>
-        </div>
-
-        <section class="description-section">
-            <div class="description-text description-left">
-                <h2>Fresh Ingredients</h2>
-                <p>We select only the finest ingredients, from the juicy meat to the crispiest vegetables. Every bite is an explosion of flavor!</p>
-            </div>
-            <div class="description-image-container">
-                <img src="img/inicio/HAMBURGUESA 1200x709.png" alt="Hamburguesa detalle" class="description-image">
-            </div>
-            <div class="description-text description-right">
-                <h2>Preparation at the Moment</h2>
-                <p>Your burger is cooked exactly when you order it. The grill gives it that unmistakable smoky touch, and the cheese is melted to perfection.</p>
-                <p>Order it however you like!</p>
-            </div>
+            <img src="img/inicio/burger-carousel-1.png" alt="burger-carousel-1" class="hero-burger">
         </section>
 
-        <section class="carousel-section draggable-carousel">
+        <!-- NEW FULL WIDTH CAROUSEL SECTION -->
+        <section class="full-width-carousel-section">
             <div class="carousel-container">
-                <!-- <<< Plato Fijo Decorativo >>> -->
-                <img src="img/inicio/plato.png" alt="" class="carousel-base-plate">
+                <div class="carousel-slides">
+                    <!-- IMPORTANT: Replace these src attributes with your actual image paths -->
+                    <img src="img/inicio/20250527_1914_Comida Rápida Realista_simple_compose_01jw9bq28pfynb3rkzp81c30ze.png" alt="Carousel Image 1 - BitBurger Special" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649rej7teghp2y60wjqk.png" alt="Carousel Image 2 - Delicious Offer" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649set18v863c17sdjez.png" alt="Carousel Image 3 - Fresh Ingredients" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649ve6d8vnm7n90mcvt7.png" alt="Carousel Image 4 - Taste the Difference" class="carousel-slide">
+                </div>
+                <button class="carousel-button prev" aria-label="Previous slide">❮</button>
+                <button class="carousel-button next" aria-label="Next slide">❯</button>
+            </div>
+            <div class="carousel-dots">
+                <!-- Dots will be generated by JavaScript -->
+            </div>
+        </section>
+        <!-- END OF FULL WIDTH CAROUSEL SECTION -->
 
-                <div class="carousel-plate" id="carouselPlate">
-                    <div class="carousel-item" data-index="0">
-                        <img src="img/inicio/burger-carousel-1.png" alt="Hamburguesa Clásica">
+        <section class="carta-section"> 
+            <div class="repeating-background-text carta-bg-text">
+                    <span>  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  </span>
+            </div>
+        </section>
+
+        <section class="carta-section"> 
+            <div class="carta-items-wrapper">
+                <div class="carta-items">
+                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.15">
+                        <img src="img/inicio/burger-carousel-5.png" alt="Burgers">
+                        <h3>BURGERS <span class="arrow">↗</span></h3>
+                        <p>Las de siempre</p>
                     </div>
-                    <div class="carousel-item" data-index="1">
-                        <img src="img/inicio/burger-carousel-2.png" alt="Hamburguesa con Queso">
+                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0">
+                        <img src="img/inicio/cocacola.png" alt="Entrantes">
+                        <h3>Drink <span class="arrow">↗</span></h3>
+                        <p>To share or not to share</p>
                     </div>
-                    <div class="carousel-item" data-index="2">
-                        <img src="img/inicio/burger-carousel-3.png" alt="Hamburguesa con Bacon">
+                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.3">
+                        <img src="img/inicio/nachos.png" alt="Chicken Lovers">
+                        <h3>Main Courses <span class="arrow">↗</span></h3>
+                        <p>Para los amantes del pollo</p>
                     </div>
-                    <div class="carousel-item" data-index="3">
-                        <img src="img/inicio/burger-carousel-4.png" alt="Hamburguesa Vegetariana">
+                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.45">
+                        <img src="img/inicio/burger-carousel-4.png" alt="Smash Burgers">
+                        <h3>Appetizers <span class="arrow">↗</span></h3>
+                        <p>Smashed to perfection</p>
                     </div>
-                    <div class="carousel-item" data-index="4">
-                        <img src="img/inicio/burger-carousel-5.png" alt="Hamburguesa Doble">
-                    </div>
-                    <div class="carousel-item" data-index="5">
-                        <img src="img/inicio/burger-carousel-6.png" alt="Hamburguesa Especial">
+                     <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.6">
+                        <img src="img/entrantes.jpg" alt="Entrantes Repeat">
+                        <h3>Vegan Burgers <span class="arrow">↗</span></h3>
+                        <p>To share or not to share</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="search-section">
-            <div class="bote-ketchup">
-                <div class="bote">
-                  <button class="go-btn" id="goButton">GO</button>
-                  <input type="text" id="searchInput" placeholder="Find your food...">
-                  <span class="ketchup-text">ketchup</span>
-                  <div class="splash" id="splash"></div>
-                </div>
-                <div class="boquilla"></div>
-              </div>
+        <section class="counter-section animate-on-scroll fade-in-up">
+            <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.1">KEVIN BACON VENDIDAS ESTE AÑO</h2>
+            <div class="seven-segment-counter animate-on-scroll fade-in-scale" data-delay="0.2">
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">8</span>
+                <span class="dynamic-digit digit">2</span>
+                <span class="dynamic-digit digit">9</span>
+                <span class="dynamic-digit digit">5</span>
+                <span class="dynamic-digit digit">8</span>
+                <span class="dynamic-digit digit">8</span>
+            </div>
         </section>
 
-        <a href="pages/editor-hanburgesa/index.html" class="corner-action-button corner-left" aria-label="Personalizar Hamburguesa">
-            <img src="img/inicio/icono-personalizar.png" alt="">
-        </a>
-        <a href="pages/carta.html" class="corner-action-button corner-right" aria-label="Comprar Hamburguesa">
-            <img src="img/inicio/icono-comprar.png" alt="">
-        </a>
+        <section class="friends-section animate-on-scroll fade-in">
+            <img src="img/goikoins.png" alt="Goikoins" class="goikoins-img animate-on-scroll slide-from-left" data-delay="0.2">
+            <div class="friends-text animate-on-scroll slide-from-right" data-delay="0.2">
+                <h2>SEAMOS FRIENDS WITH BENEFITS</h2>
+                <p>Únete al club más top de GOIKO y accede a ofertas y experiencias exclusivas</p>
+                <a href="#" class="btn btn-outline animate-on-scroll fade-in-scale" data-delay="0.4">REGISTRARSE</a>
+            </div>
+        </section>
 
-        <footer class="site-footer">
-            <span>© 2024 BitBurger | <a href="contacto.html"> More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">License Creative Commons | </a><a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA=="><img src="img/inicio/grupk39s.png" alt="Logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"></a></span>
-        </footer>
+        <section class="foodtruck-section animate-on-scroll fade-in-up">
+            <div class="foodtruck-bg-text">GOIKO</div>
+            <div class="foodtruck-content">
+                <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.1">FOODTRUCK</h2>
+                <p class="animate-on-scroll slide-from-bottom" data-delay="0.2">¡GOIKO sobre ruedas! Llevamos el chorreo a donde tú estés. La Bestia y la Mini Bestia están ready para el party.</p>
+                <a href="#" class="link-arrow animate-on-scroll fade-in" data-delay="0.3">SABER MÁS <span class="arrow">↗</span></a>
+            </div>
+        </section>
 
-        <script src="script/boton.js"></script>
-        <script src="script/script.js"></script>
+        <section class="goikocina-section"> 
+            <div class="goikocina-image-area animate-on-scroll slide-from-left">
+                <img src="img/goikocina_products.png" alt="Productos Goikocina" class="goikocina-products">
+            </div>
+            <div class="goikocina-text-area animate-on-scroll slide-from-right" data-delay="0.2">
+                <img src="img/chef_hat_icon.svg" alt="Chef hat" class="chef-icon animate-on-scroll fade-in-scale" data-delay="0.3">
+                <p class="animate-on-scroll slide-from-bottom" data-delay="0.4">Prepárate para chuparte los dedos...</p>
+                <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.5">Goikocina. Los ingredientes más top, ahora en tu cocina</h2>
+                <a href="#" class="btn btn-outline-dark animate-on-scroll fade-in-scale" data-delay="0.6">DESCUBRE GOIKOCINA</a>
+            </div>
+        </section>
 
-    </body>
+        <section class="news-section">
+            <div class="repeating-background-text news-bg-text">
+                <span>NEWSGOIKONEWSGOIKONEWSGOIKONEWSGOIKO</span>
+            </div>
+            <div class="news-grid">
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0">
+                    <img src="img/news1.jpg" alt="Noticia 1">
+                    <p class="news-category">NOTICIAS</p>
+                    <h3>Dónde comer las mejores hamburguesas en Málaga</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.15">
+                    <img src="img/news2.jpg" alt="Noticia 2">
+                    <p class="news-category">NOTICIAS</p>
+                    <h3>¿Cuál es la mejor hamburguesa de A Coruña?</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.3">
+                    <img src="img/news3.jpg" alt="Noticia 3">
+                    <p class="news-category">NOTICIAS</p>
+                    <h3>5 motivos para unirte al club Friends with Benefits de Goiko</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.45">
+                    <img src="img/news1.jpg" alt="Noticia 1 Repeat">
+                    <p class="news-category">NOTICIAS</p>
+                    <h3>Dónde comer las mejores hamburguesas en Málaga</h3>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="repeating-background-text footer-bg-text">
+            <span>FOREVERCHORREOFOREVERCHORREOFOREVER</span>
+        </div>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo-social">
+                    <img src="img/goiko_logo_black.png" alt="GOIKO Logo" class="footer-logo">
+                    <div class="social-icons">
+                        <a href="#"><img src="img/icon_facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="img/icon_x.svg" alt="X"></a>
+                        <a href="#"><img src="img/icon_instagram.svg" alt="Instagram"></a>
+                        <a href="#"><img src="img/icon_linkedin.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                <nav class="footer-nav main-links">
+                    <a href="#">CARTA</a><a href="#">RESERVAR</a><a href="#">GLUTEN FREE</a><a href="#">HACER PEDIDO</a><a href="#">RESTAURANTES</a><a href="#">FRIENDS WITH BENEFITS</a><a href="#">FOODTRUCKS</a><a href="#">GOIKOCINA</a><a href="#">ÚNETE AL EQUIPO</a>
+                </nav>
+                <nav class="footer-nav secondary-links">
+                    <a href="#">CONÓCENOS</a><a href="#">PRENSA</a><a href="#">FACTURA ONLINE</a><a href="#">BLOG</a><a href="#">ALÉRGENOS</a><a href="#">ATENCIÓN AL CLIENTE</a><a href="#">BASES Y CONDICIONES</a><a href="#">BUZÓN ÉTICO</a><a href="#">POLÍTICA DE PRIVACIDAD</a><a href="#">CÓDIGO ÉTICO</a><a href="#">PRINCIPIOS SISTEMA INTERNO DE INFORMACIÓN</a><a href="#">INFORME NO FINANCIERO</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 GOIKO GRILL GROUP SL. TODOS LOS DERECHOS RESERVADOS</p>
+                <nav><a href="#">AVISO LEGAL</a><a href="#">POLÍTICA DE COOKIES</a><a href="#">CONDICiones DE VENTA</a></nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script/boton.js"></script>
+    <!-- <script src="script/cookies.js"></script>  Already included above main -->
+    <script src="script/script.js"></script> <!-- Add the carousel JS code to this file -->
+</body>
 </html>
