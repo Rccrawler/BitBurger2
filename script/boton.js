@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // URL a la que navegar en el segundo clic del botón principal.
     // Puedes definirla aquí o pasarla de alguna manera si necesitas que sea más dinámica.
         
-    const secondClickUrl = '/us/';
+    const secondClickUrl = '/';
     
     if (mainButton && optionsMenu) {
         mainButton.addEventListener('click', (event) => {

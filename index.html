@@ -20,16 +20,17 @@
                     <img src="img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
                 </button>
                 <div class="options-wrapper" id="optionsMenu">
-                    <button class="option-button option-1" data-url="pedidos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
-                    <button class="option-button option-2" data-url="perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
+                    <button class="option-button option-1" data-url="pages/carrito.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
+                    <button class="option-button option-2" data-url="conocenos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
                     <button class="option-button option-3" data-url="org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div></button>
                     <button class="option-button option-4" data-url="pages/perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div></button>
                 </div>
             </div>
         </div>
         <nav class="header-right">
-            <a href="#" class="nav-button order-button">HACER PEDIDO</a>
-            <a href="#" class="nav-button reserve-button">RESERVAR</a>
+            <a href="pages/game/index.html" target="_blank" class="nav-button order-button">Game</a>
+            <a href="pages/editor-hanburgesa/index.html" class="nav-button order-button">Personalize</a>
+            <a href="pages/carta.html" class="nav-button reserve-button">ORDER</a>
             <div class="language-selector">
                 <span>EN</span>
                 <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="10" height="10"><path d="M8 12L2 6h12L8 12z"/></svg>
@@ -39,7 +40,7 @@
 
     <script src="script/cookies.js"></script>
     <div id="cookie-banner">
-        <p>We use cookies to improve your experience. <a href="terminos.html" style="color: lightblue;">Learn more</a>.</p>
+        <p>We use cookies to improve your experience. <a href="org/pages/politica_cookies.html" style="color: lightblue;">Learn more</a>.</p>
         <button onclick="aceptarCookies()">Accept</button>
         <button onclick="abrirConfiguracion()">Set up</button>
     </div>
@@ -95,34 +96,41 @@
         <section class="carta-section"> 
             <div class="carta-items-wrapper">
                 <div class="carta-items">
-                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.15">
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.15">
                         <img src="img/inicio/burger-carousel-5.png" alt="Burgers">
                         <h3>BURGERS <span class="arrow">↗</span></h3>
-                        <p>Las de siempre</p>
-                    </div>
-                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0">
-                        <img src="img/inicio/cocacola.png" alt="Entrantes">
-                        <h3>Drink <span class="arrow">↗</span></h3>
-                        <p>To share or not to share</p>
-                    </div>
-                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.3">
-                        <img src="img/inicio/nachos.png" alt="Chicken Lovers">
-                        <h3>Main Courses <span class="arrow">↗</span></h3>
-                        <p>Para los amantes del pollo</p>
-                    </div>
-                    <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.45">
-                        <img src="img/inicio/burger-carousel-4.png" alt="Smash Burgers">
-                        <h3>Appetizers <span class="arrow">↗</span></h3>
-                        <p>Smashed to perfection</p>
-                    </div>
-                     <div class="carta-item animate-on-scroll slide-from-right" data-delay="0.6">
-                        <img src="img/inicio/vegan.png" alt="Entrantes Repeat">
-                        <h3>Vegan Burgers <span class="arrow">↗</span></h3>
-                        <p>To share or not to share</p>
-                    </div>
+                        <p>Our timeless classics — bold, juicy, unforgettable.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0">
+                        <img src="img/inicio/cocacola.png" alt="Drinks">
+                        <h3>DRINKS <span class="arrow">↗</span></h3>
+                        <p>Chill out with a refreshing sip — share it or keep it all to yourself.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.3">
+                        <img src="img/inicio/nachos.png" alt="Main Courses">
+                        <h3>MAIN COURSES <span class="arrow">↗</span></h3>
+                        <p>From loaded nachos to chicken dreams — full-on flavor ahead.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.45">
+                        <img src="img/inicio/burger-carousel-4.png" alt="Appetizers">
+                        <h3>APPETIZERS <span class="arrow">↗</span></h3>
+                        <p>Smashed, crispy, or cheesy — the perfect start to your feast.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.6">
+                        <img src="img/inicio/vegan.png" alt="Vegan Burgers">
+                        <h3>VEGAN BURGERS <span class="arrow">↗</span></h3>
+                        <p>100% plant-based. 100% delicious. Zero compromises.</p>
+                    </a>
+
                 </div>
             </div>
         </section>
+
 
         <section class="counter-section animate-on-scroll fade-in-up">
             <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.1">Bitburgers sold this year</h2>
@@ -143,7 +151,7 @@
             <div class="friends-text animate-on-scroll slide-from-right" data-delay="0.2">
                 <h2>GET DISCOUNTS</h2>
                 <p>there are bitburger burgers in the video games find them and earn discounts</p>
-                <a href="#" class="btn btn-outline animate-on-scroll fade-in-scale" data-delay="0.4">REGISTER</a>
+                <a href="pages/register.html" class="btn btn-outline animate-on-scroll fade-in-scale" data-delay="0.4">REGISTER</a>
             </div>
         </section>
 
@@ -165,34 +173,34 @@
                 <p class="animate-on-scroll slide-from-bottom" data-delay="0.4">Get ready to lick your fingers...</p>
                 <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.5">We serve burgers. But we also design moments</h2>
                 <p class="animate-on-scroll slide-from-bottom" data-delay="0.6">We select only the finest ingredients, from the juicy meat to the crispiest vegetables. Every bite is an explosion of flavor!</p>
-                <a href="#" class="btn btn-outline-dark animate-on-scroll fade-in-scale" data-delay="0.6">From the moment you place your order on the web or app, until you try it the first bite, everything is designed to be quick, easy... and tasty.</a>
+                <a href="pages/carta.html" class="btn btn-outline-dark animate-on-scroll fade-in-scale" data-delay="0.6">From the moment you place your order on the web or app, until you try it the first bite, everything is designed to be quick, easy... and tasty.</a>
             </div>
         </section>
 
         <section class="news-section">
             <div class="repeating-background-text news-bg-text">
-                <span>NEWSGOIKONEWSGOIKONEWSGOIKONEWSGOIKO</span>
+                <span>NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger</span>
             </div>
             <div class="news-grid">
                 <article class="news-card animate-on-scroll fade-in-up" data-delay="0">
-                    <img src="img/news1.jpg" alt="Noticia 1">
-                    <p class="news-category">NOTICIAS</p>
-                    <h3>Dónde comer las mejores hamburguesas en Málaga</h3>
+                    <img src="img/inicio/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg" alt="Noticia 1">
+                    <p class="news-category">NEWS</p>
+                    <h3>The Golden Gate Bridge has stood the test of time — and so have real, honest burgers like ours. Made with care, served with pride.</h3>
                 </article>
                 <article class="news-card animate-on-scroll fade-in-up" data-delay="0.15">
-                    <img src="img/news2.jpg" alt="Noticia 2">
-                    <p class="news-category">NOTICIAS</p>
-                    <h3>¿Cuál es la mejor hamburguesa de A Coruña?</h3>
+                    <img src="img/inicio/1115d808-d4ff-4787-b024-32d7b0d3eefc.webp" alt="Noticia 2">
+                    <p class="news-category">NEWS</p>
+                    <h3>Taking a ride on one of San Francisco’s historic cable cars? Make a stop at BitBurger for a burger experience that’s just as iconic.</h3>
                 </article>
                 <article class="news-card animate-on-scroll fade-in-up" data-delay="0.3">
-                    <img src="img/news3.jpg" alt="Noticia 3">
-                    <p class="news-category">NOTICIAS</p>
-                    <h3>5 motivos para unirte al club Friends with Benefits de Goiko</h3>
+                    <img src="img/inicio/image.jpg" alt="Noticia 3">
+                    <p class="news-category">NEWS</p>
+                    <h3>Just like the iconic Painted Ladies of San Francisco, our burgers are full of color, character, and local flavor. Stop by for a taste of the city!</h3>
                 </article>
                 <article class="news-card animate-on-scroll fade-in-up" data-delay="0.45">
-                    <img src="img/news1.jpg" alt="Noticia 1 Repeat">
-                    <p class="news-category">NOTICIAS</p>
-                    <h3>Dónde comer las mejores hamburguesas en Málaga</h3>
+                    <img src="img/inicio/R (1).jpg" alt="Noticia 1 Repeat">
+                    <p class="news-category">NEWS</p>
+                    <h3>At BitBurger, we are adding drive-thru service to all of our locations.</h3>
                 </article>
             </div>
         </section>
@@ -200,29 +208,31 @@
 
     <footer>
         <div class="repeating-background-text footer-bg-text">
-            <span>FOREVERCHORREOFOREVERCHORREOFOREVER</span>
+            <!--<span>FOREVERCHORREOFOREVERCHORREOFOREVER</span>-->
         </div>
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-logo-social">
-                    <img src="img/goiko_logo_black.png" alt="GOIKO Logo" class="footer-logo">
+                    <img src="img/inicio/logo3.png" alt="GOIKO Logo" style="width: 7vh;">
+                    <br>
+                    <br>
                     <div class="social-icons">
-                        <a href="#"><img src="img/icon_facebook.svg" alt="Facebook"></a>
-                        <a href="#"><img src="img/icon_x.svg" alt="X"></a>
-                        <a href="#"><img src="img/icon_instagram.svg" alt="Instagram"></a>
-                        <a href="#"><img src="img/icon_linkedin.svg" alt="LinkedIn"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/facebook-13.png" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/gorjeo.png" alt="X"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/instagram.png" alt="Instagram"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/linkedin.png" alt="LinkedIn"></a>
                     </div>
                 </div>
                 <nav class="footer-nav main-links">
-                    <a href="#">CARTA</a><a href="#">RESERVAR</a><a href="#">GLUTEN FREE</a><a href="#">HACER PEDIDO</a><a href="#">RESTAURANTES</a><a href="#">FRIENDS WITH BENEFITS</a><a href="#">FOODTRUCKS</a><a href="#">GOIKOCINA</a><a href="#">ÚNETE AL EQUIPO</a>
+                    <a href="pages/carta.html">MENU</a><a href="pages/carta.html">RESERVE</a><a href="pages/carta.html">ORDER NOW</a><a href="pages/carta.html">FOOD TRUCKS</a>
                 </nav>
                 <nav class="footer-nav secondary-links">
-                    <a href="#">CONÓCENOS</a><a href="#">PRENSA</a><a href="#">FACTURA ONLINE</a><a href="#">BLOG</a><a href="#">ALÉRGENOS</a><a href="#">ATENCIÓN AL CLIENTE</a><a href="#">BASES Y CONDICIONES</a><a href="#">BUZÓN ÉTICO</a><a href="#">POLÍTICA DE PRIVACIDAD</a><a href="#">CÓDIGO ÉTICO</a><a href="#">PRINCIPIOS SISTEMA INTERNO DE INFORMACIÓN</a><a href="#">INFORME NO FINANCIERO</a>
+                    <a href="#">ABOUT US</a><a href="#">ALLERGENS</a><a href="#">TERMS & CONDITIONS</a><a href="">PRIVACY POLICY</a>
                 </nav>
             </div>
             <div class="footer-bottom">
-                <p>©2025 GOIKO GRILL GROUP SL. TODOS LOS DERECHOS RESERVADOS</p>
-                <nav><a href="#">AVISO LEGAL</a><a href="#">POLÍTICA DE COOKIES</a><a href="#">CONDICiones DE VENTA</a></nav>
+            <p><span>© 2024 BitBurger | <a href="contacto.html">More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">Creative Commons License | </a></span></p>
+            <nav><a href="#">LEGAL NOTICE</a><a href="#">COOKIE POLICY</a><a href="#">SALES CONDITIONS</a></nav>            
             </div>
         </div>
     </footer>

@@ -347,7 +347,7 @@ footer { background-color: var(--bg-light-contrast); color: var(--text-dark); pa
 .footer-logo { height: 50px; margin-bottom: 20px; transition: transform 0.3s ease; filter: invert(15%) sepia(15%) saturate(1500%) hue-rotate(0deg) brightness(80%) contrast(90%); /* Darken for light bg */ }
 .footer-logo:hover { transform: rotate(-5deg); }
 .social-icons { display: flex; gap: 15px; }
-.social-icons img { width: 24px; height: 24px; transition: transform 0.3s ease-in-out, filter 0.3s ease; filter: invert(15%) sepia(15%) saturate(1500%) hue-rotate(0deg) brightness(80%) contrast(90%);}
+.social-icons img { width: 44px; height: 44px; transition: transform 0.3s ease-in-out, filter 0.3s ease; filter: invert(15%) sepia(15%) saturate(1500%) hue-rotate(0deg) brightness(80%) contrast(90%);}
 .social-icons a:hover img { transform: scale(1.25) rotate(8deg); filter: brightness(1.1) invert(15%) sepia(15%) saturate(1500%) hue-rotate(0deg) brightness(80%) contrast(90%); }
 .footer-nav { display: flex; flex-direction: column; gap: 8px; }
 .footer-nav a { font-size: 14px; color: #5a4d3f; transition: color 0.2s ease, padding-left 0.2s ease, letter-spacing 0.2s ease; }
