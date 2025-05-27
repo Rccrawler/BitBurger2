@@ -310,8 +310,8 @@ main { padding-top: 70px; background-color: var(--bg-dark-main); } /* Ensure mai
 .foodtruck-bg-text { font-family: 'Anton', sans-serif; font-size: 30vw; color: var(--text-light); opacity: 0.04; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; user-select: none; font-weight: 900; transition: opacity 0.5s ease, transform 0.5s ease; }
 .foodtruck-section:hover .foodtruck-bg-text { opacity: 0.08; transform: translate(-50%, -50%) scale(1.05); }
 .foodtruck-content { position: relative; z-index: 1; }
-.foodtruck-content h2 { font-family: 'Anton', sans-serif; font-size: 48px; margin-bottom: 15px; color: var(--text-light); }
-.foodtruck-content p { font-size: 18px; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; color: var(--text-light); opacity: 0.9; }
+.foodtruck-content h2 { font-family: 'Anton', sans-serif; font-size: 28px; margin-bottom: 15px; color: var(--text-light); }
+.foodtruck-content p { font-size: 18px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; color: var(--text-light); opacity: 0.9; }
 .link-arrow { font-family: 'Anton', sans-serif; font-size: 18px; color: var(--text-light); letter-spacing: 0.5px; display: inline-block; transition: transform 0.3s ease, letter-spacing 0.3s ease, color 0.3s ease; }
 .link-arrow:hover { transform: translateX(8px); letter-spacing: 1px; color: var(--accent-orange); } /* Will use new golden color */
 
