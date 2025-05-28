@@ -1,106 +1,50 @@
-// script/carta.js
+// --- START OF FILE carta.js ---
 document.addEventListener('DOMContentLoaded', () => {
-    const SERVLET_URL = 'http://localhost:8080/BitBurger/Controller';
+    const SERVLET_URL = 'http://localhost:8080/BitBurger/Controller'; // Asegúrate que esta URL es correcta
 
     const categoryIdMap = {
         1: 'hamburguesas',
         2: 'bebidas',
         3: 'entrantes',
-        4: 'otros-platos'
+        4: 'otros-platos',
+        // ... (otros mapeos si los tienes)
     };
 
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const menuCategoriesElements = document.querySelectorAll('.menu-category');
-
-    if (tabLinks.length > 0 && menuCategoriesElements.length > 0) {
-        tabLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const targetTab = link.dataset.tab;
-                tabLinks.forEach(tl => tl.classList.remove('active'));
-                link.classList.add('active');
-                menuCategoriesElements.forEach(category => {
-                    category.classList.toggle('active', category.id === targetTab);
-                });
-            });
-        });
-    }
-
     const itemDetailModal = document.getElementById('item-detail-modal');
-    let currentModalItemData = {}; 
+    let currentModalItemData = {};
 
+    // ----- MODAL LOGIC -----
     function setupModalEventListeners() {
         if (!itemDetailModal) {
             console.error("[CARTA.JS] Modal 'item-detail-modal' not found.");
             return;
         }
 
-        const modalItemImage = document.getElementById('modal-item-image');
-        const modalItemName = document.getElementById('modal-item-name');
-        const modalItemDescription = document.getElementById('modal-item-description');
         const closeModalBtn = itemDetailModal.querySelector('.close-modal-btn');
-        const menuItemCards = document.querySelectorAll('.menu-item-card');
         const quantityInput = document.getElementById('item-quantity');
         const quantityButtons = itemDetailModal.querySelectorAll('.quantity-btn');
         const addToOrderBtn = document.getElementById('add-to-order-btn');
-        const modalBackgroundTextElement = itemDetailModal.querySelector('.modal-background-text');
 
-        if (menuItemCards.length > 0) {
-            menuItemCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const id = card.dataset.id; 
-                    const name = card.dataset.name;
-                    const price = parseFloat(card.dataset.price);
-                    const imageSrc = card.dataset.imageSrc;
-                    // Changed default description to English
-                    const description = card.dataset.description || "Description not available."; 
-
-                    if (typeof id !== 'string' || id.trim() === "" || id === "undefined" || id === "null") {
-                        console.error("[CARTA.JS] CRITICAL: Clicked card has invalid ID:", id, "Name:", name);
-                        // Changed alert to English
-                        alert("Error: This product has an invalid ID and cannot be processed.");
-                        return;
-                    }
-                    if (isNaN(price)) {
-                        console.error("[CARTA.JS] CRITICAL: Clicked card has invalid price:", card.dataset.price, "Name:", name);
-                        // Changed alert to English
-                        alert("Error: This product has an invalid price.");
-                        return;
-                    }
-
-                    currentModalItemData = { id, name, price, imageSrc }; 
-
-                    if (modalItemName) modalItemName.textContent = name;
-                    if (modalItemImage) {
-                        modalItemImage.src = imageSrc;
-                        modalItemImage.alt = name;
-                        modalItemImage.onerror = function() { this.onerror = null; this.src = '../img/menu/placeholder.png'; };
-                    }
-                    if (modalItemDescription) modalItemDescription.textContent = description;
-                    if (quantityInput) quantityInput.value = "1"; 
-
-                    // --- MODIFICATION TO REMOVE BACKGROUND TEXT ---
-                    if (modalBackgroundTextElement) {
-                        modalBackgroundTextElement.innerText = ''; // Clear the background text
-                    }
-                    // --- END OF MODIFICATION ---
-
-                    itemDetailModal.classList.remove('hidden');
-                });
-            });
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => itemDetailModal.classList.add('hidden'));
         }
-
-        if (closeModalBtn) closeModalBtn.addEventListener('click', () => itemDetailModal.classList.add('hidden'));
-        if (itemDetailModal) itemDetailModal.addEventListener('click', (event) => {
-            if (event.target === itemDetailModal) itemDetailModal.classList.add('hidden');
+        itemDetailModal.addEventListener('click', (event) => {
+            if (event.target === itemDetailModal) {
+                itemDetailModal.classList.add('hidden');
+            }
         });
 
         if (quantityButtons.length > 0 && quantityInput) {
             quantityButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     let currentValue = parseInt(quantityInput.value, 10);
-                    if (isNaN(currentValue)) currentValue = 1; 
-                    if (button.dataset.action === 'increase') currentValue++;
-                    else if (button.dataset.action === 'decrease' && currentValue > 1) currentValue--;
+                    if (isNaN(currentValue) || currentValue < 1) currentValue = 1;
+                    
+                    if (button.dataset.action === 'increase') {
+                        currentValue++;
+                    } else if (button.dataset.action === 'decrease' && currentValue > 1) {
+                        currentValue--;
+                    }
                     quantityInput.value = currentValue.toString();
                 });
             });
@@ -109,52 +53,68 @@ document.addEventListener('DOMContentLoaded', () => {
         if (addToOrderBtn && quantityInput) {
             addToOrderBtn.addEventListener('click', () => {
                 const quantity = parseInt(quantityInput.value, 10);
-
-                if (typeof currentModalItemData.id !== 'string' || currentModalItemData.id.trim() === "" || currentModalItemData.id === "undefined" || currentModalItemData.id === "null") {
-                    console.error("[CARTA.JS] Error: Item ID is missing or invalid in currentModalItemData.", currentModalItemData);
-                    // Changed alert to English
-                    alert("Error adding product (ID not found in modal data). Please try again.");
+                // Simplificando validación para el ejemplo, asegúrate de tenerlas completas
+                if (!currentModalItemData || !currentModalItemData.id || isNaN(quantity) || quantity <= 0) {
+                    console.error("[CARTA.JS] Error adding product due to invalid data or quantity.");
+                    alert("Error adding product. Please check details and quantity.");
                     return;
                 }
-                if (isNaN(quantity) || quantity <= 0) {
-                    console.error("[CARTA.JS] Error: Item quantity is invalid.", quantityInput.value);
-                    // Changed alert to English
-                    alert("Error adding product (invalid quantity). Please try again.");
-                    return;
-                }
-
-                const itemToAdd = {
-                    id: currentModalItemData.id,
-                    name: currentModalItemData.name,
-                    price: currentModalItemData.price,
-                    imageSrc: currentModalItemData.imageSrc,
-                    quantity: quantity
-                };
-                
+                const itemToAdd = { ...currentModalItemData, quantity: quantity };
                 addItemToCart(itemToAdd);
-                // Changed alert to English
                 alert(`${itemToAdd.quantity} x ${itemToAdd.name} added to cart.`);
                 itemDetailModal.classList.add('hidden');
             });
-        } else {
+        } else { 
             if (!addToOrderBtn) console.error("[CARTA.JS] Button 'add-to-order-btn' not found.");
             if (!quantityInput) console.error("[CARTA.JS] Input 'item-quantity' not found.");
         }
     }
 
+    function openProductModal(productData) {
+        if (!itemDetailModal) return;
+        const modalItemImage = document.getElementById('modal-item-image');
+        const modalItemName = document.getElementById('modal-item-name');
+        const modalItemDescription = document.getElementById('modal-item-description');
+        const quantityInput = document.getElementById('item-quantity');
+
+        // Simplificando validación para el ejemplo
+        if (!productData || !productData.id) {
+            console.error("[CARTA.JS] Invalid product data for modal.");
+            alert("Error: Cannot display product details.");
+            return;
+        }
+
+        currentModalItemData = { ...productData };
+        if (modalItemName) modalItemName.textContent = productData.name;
+        if (modalItemImage) {
+            modalItemImage.src = productData.imageSrc; // imageSrc ya fue determinada en renderProducts
+            modalItemImage.alt = productData.name;
+            modalItemImage.onerror = function() { 
+                this.onerror = null;
+                this.src = '../img/menu/placeholder.png';
+            };
+        }
+        if (modalItemDescription) modalItemDescription.textContent = productData.description || "No description available.";
+        if (quantityInput) quantityInput.value = "1";
+        itemDetailModal.classList.remove('hidden');
+    }
+
+    // ----- PRODUCT FETCHING AND RENDERING -----
     async function fetchAndRenderProducts() {
         try {
             const response = await fetch(`${SERVLET_URL}?ACTION=PRODUCTO.LIST_ALL`);
-            const responseText = await response.text();
-
-            if (!response.ok) throw new Error(`HTTP error ${response.status}: ${responseText}`);
-            const products = JSON.parse(responseText);
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP error ${response.status}: ${errorText}`);
+            }
+            const products = await response.json();
             renderProducts(products);
         } catch (error) {
             console.error('[CARTA.JS] Error fetching products:', error);
             const container = document.querySelector('.menu-items-container');
-            // Changed error message to English
-            if (container) container.innerHTML = `<p class="error-message">Could not load products. Please try again later. (${error.message})</p>`;
+            if (container) {
+                container.innerHTML = `<p class="error-message" style="color: var(--accent-red, red); text-align: center; padding: 20px;">Could not load products. Please try again later. (${error.message})</p>`;
+            }
         }
     }
 
@@ -166,6 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!products || products.length === 0) {
             console.warn("[CARTA.JS] No products to render or product list is empty.");
+            const activeCategoryContainer = document.querySelector('.menu-items-container .menu-category.active');
+            if (activeCategoryContainer) {
+                activeCategoryContainer.innerHTML = '<p style="text-align:center; color: #555; padding: 20px;">No products found in this category.</p>';
+            }
             return;
         }
 
@@ -174,50 +138,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("[CARTA.JS] CRITICAL: Product from backend has invalid ID:", product);
                 return;
             }
-            const productIdStr = String(product.id); 
-
+            const productIdStr = String(product.id);
             const categoryHtmlId = categoryIdMap[product.idCategoria];
             const categoryContainer = document.getElementById(categoryHtmlId);
 
             if (!categoryContainer) {
+                console.warn(`[CARTA.JS] Category container '${categoryHtmlId}' not found for product: ${product.nombre}. Ensure mapping is correct.`);
                 return;
             }
 
             const card = document.createElement('button');
             card.className = 'menu-item-card';
-            card.dataset.id = productIdStr; 
-            card.dataset.name = product.nombre;
-            card.dataset.price = (product.precioBase || 0).toFixed(2);
-            card.dataset.imageSrc = product.imagenNombre || '../img/menu/placeholder.png';
-            // Changed default description to English
-            card.dataset.description = product.descripcion || 'Description not available.';
+
+            const productPrice = parseFloat(product.precioBase || 0);
+            if (isNaN(productPrice)) {
+                console.warn(`[CARTA.JS] Product ${product.nombre} has invalid price: ${product.precioBase}. Defaulting to 0.`);
+            }
+
+            // --- LÓGICA DE IMAGEN SIMILAR A old.js ---
+            // Asumimos que el backend envía 'imagenNombre' que es el nombre del archivo.
+            // Y que las imágenes están en '../img/menu/' relativo a carta.html
+            let imageSourceForProduct;
+            if (product.imagenNombre && product.imagenNombre.trim() !== '') {
+                // Si imagenNombre parece una URL completa (http:// o https://), úsala directamente.
+                if (product.imagenNombre.startsWith('http://') || product.imagenNombre.startsWith('https://')) {
+                    imageSourceForProduct = product.imagenNombre;
+                } else {
+                    // Sino, asume que es un nombre de archivo y construye la ruta.
+                    imageSourceForProduct = `../img/menu/${product.imagenNombre}`;
+                }
+            } else {
+                imageSourceForProduct = '../img/menu/placeholder.png';
+            }
+            // console.log(`Product: ${product.nombre}, imagenNombre: ${product.imagenNombre}, Source: ${imageSourceForProduct}`);
+
+
+            const productDataForModal = {
+                id: productIdStr,
+                name: product.nombre,
+                price: !isNaN(productPrice) ? parseFloat(productPrice.toFixed(2)) : 0.00,
+                imageSrc: imageSourceForProduct, // Usar la imagen determinada
+                description: product.descripcion || 'No description available.'
+            };
+            
+            const nameOverlay = document.createElement('div');
+            nameOverlay.className = 'menu-item-name-overlay';
+            nameOverlay.textContent = productDataForModal.name;
 
             const img = document.createElement('img');
-            img.src = card.dataset.imageSrc;
-            img.alt = product.nombre;
-            img.onerror = function() { this.onerror = null; this.src = '../img/menu/placeholder.png'; };
+            img.src = productDataForModal.imageSrc; // Usar la imagen determinada
+            img.alt = productDataForModal.name;
+            img.onerror = function() {
+                console.warn(`Error loading image for ${product.nombre} at: ${this.src}. Using placeholder.`);
+                this.onerror = null;
+                this.src = '../img/menu/placeholder.png';
+            };
 
-            const span = document.createElement('span');
-            span.textContent = product.nombre;
-
+            card.appendChild(nameOverlay);
             card.appendChild(img);
-            card.appendChild(span);
+            card.addEventListener('click', () => openProductModal(productDataForModal));
             categoryContainer.appendChild(card);
         });
-        setupModalEventListeners();
+        
+        // Animación de tarjetas para la pestaña activa
+        const activeCategoryContainer = document.querySelector('.menu-items-container .menu-category.active');
+        if (activeCategoryContainer) {
+            const cards = activeCategoryContainer.querySelectorAll('.menu-item-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px) scale(0.95)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1)';
+                }, index * 70); // Animación escalonada
+            });
+        }
     }
 
+    // ----- CART LOGIC -----
     function addItemToCart(item) { 
         let cart = [];
         try {
             const storedCart = localStorage.getItem('bitBurgerCart');
             if (storedCart) {
                 cart = JSON.parse(storedCart);
-                cart = cart.map(cartItem => ({
-                    ...cartItem,
-                    id: String(cartItem.id || ''), 
-                    quantity: parseInt(cartItem.quantity, 10) || 1 
-                }));
+                cart = cart.map(cartItem => ({ ...cartItem, id: String(cartItem.id || ''), quantity: parseInt(cartItem.quantity, 10) || 1 })).filter(cartItem => cartItem.id && cartItem.quantity > 0);
             }
         } catch (e) {
             console.error("[CARTA.JS] Error parsing cart from localStorage. Resetting cart.", e);
@@ -236,16 +241,38 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('bitBurgerCart', JSON.stringify(cart));
         } catch (e) {
             console.error("[CARTA.JS] Error saving cart to localStorage:", e);
-            // Changed alert to English
             alert("There was a problem saving your cart.");
         }
     }
 
-    fetchAndRenderProducts();
+     // --- NUEVA FUNCIÓN PARA ANIMAR EL TÍTULO HERO ---
+    function animateHeroTitle() {
+        const heroTitleElement = document.querySelector('.hero-menu-section .hero-menu-title');
+        if (!heroTitleElement) {
+            console.warn("Elemento .hero-menu-title no encontrado para animación.");
+            return;
+        }
 
-    // Cookies logic
-    const cookieBanner = document.getElementById('cookie-banner');
-    if (cookieBanner && localStorage.getItem('cookiesAceptadas') !== 'true') {
-        cookieBanner.classList.remove('hidden');
+        const text = heroTitleElement.textContent.trim();
+        heroTitleElement.innerHTML = ''; // Limpiar el contenido original
+
+        text.split('').forEach((char, index) => {
+            const letterSpan = document.createElement('span');
+            letterSpan.classList.add('letter');
+            letterSpan.textContent = char;
+            
+            // Aplicar el delay de animación directamente con JS si se prefiere al CSS :nth-child
+            // Esto es más flexible si el texto del título pudiera cambiar dinámicamente.
+            // letterSpan.style.animationDelay = `${index * 0.15}s`; // Ajusta el factor de delay (0.15s)
+
+            heroTitleElement.appendChild(letterSpan);
+        });
     }
+    // --- FIN DE LA NUEVA FUNCIÓN ---
+
+
+    // ----- INITIALIZATION -----
+    fetchAndRenderProducts();
+    setupModalEventListeners(); // Configurar listeners del modal una vez al cargar la página
+    animateHeroTitle(); // Llamar a la función para animar el título
 });

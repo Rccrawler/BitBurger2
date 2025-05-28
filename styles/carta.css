@@ -1,520 +1,522 @@
-/*-------------------------------------------------------------------------------------
- * PEDIDOS PAGE STYLES (Mobile-First)
- *------------------------------------------------------------------------------------*/
+/* --- START OF FILE styles/carta.css --- */
+/* Usaremos la última versión que proporcionaste, que ya está bien estilizada para Goiko.
+   Me centraré en asegurar que el JS genere HTML compatible.
+   Los estilos principales de .menu-item-card y .menu-item-name-overlay ya están definidos. */
 
-/* Base Mobile Styles */
-.page-content-pedidos {
-    padding: 70px 15px 20px 15px;
-    max-width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    box-sizing: border-box;
-    position: relative; /* Ensure this container establishes a stacking context if needed */
-    z-index: 1; /* Make sure page content is at a base level */
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif; /* Fuente base, Anton para títulos */
+    line-height: 1.5; /* Mejor legibilidad general */
 }
 
-.pedidos-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    position: relative; /* If it needs to be above anything else locally */
-    z-index: 2; /* Above general page content, but below modals/overlays */
-}
-
-/* Estilos para el título "Cart" de la página del carrito */
-.cart-title {
-    font-size: 0.01vh; /* Tamaño base, igual que .pedidos-title. Ajusta si es necesario. */
-    margin-bottom: 20px; /* Consistencia con .pedidos-title */
-    color: #333; /* Consistencia con .pedidos-title */
-    overflow-wrap: break-word; /* Consistencia con .pedidos-title */
-    word-break: break-word; /* Consistencia con .pedidos-title */
-    /* La font-family 'Ashton' es aplicada por la clase 'font-style-ashton' en el HTML. */
-}
-
-.category-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2; /* Same as title */
-}
-
-.tab-link {
-    padding: 8px 15px;
-    font-family: 'Lamoore', sans-serif;
-    font-size: 0.9rem;
-    border: 1px solid #d18830;
+main.menu-page-goiko-style {
+    padding-top: 70px; /* Altura del header fijo */
     background-color: #fff;
-    color: #d18830;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 1; /* Para que el contenido principal esté debajo del header y el menú circular si se superponen */
 }
 
-.tab-link:hover,
-.tab-link.active {
-    background-color: #d18830;
+/* Hero Section */
+.hero-menu-section {
+    width: 100%;
+    height: 45vh; /* Un poco más de altura, ajustar según la imagen */
+    min-height: 320px;
+    /* !!! REEMPLAZA ESTA URL CON LA IMAGEN ADECUADA !!! */
+    background-image: url('../img/inicio/burger-carousel-1.png'); /* CAMBIAR ESTA IMAGEN */
+    background-size: cover;
+    background-position: center 70%; /* Ligeramente ajustado para mostrar más de la parte inferior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     color: white;
 }
-.tab-link.active {
-    font-weight: bold;
+.hero-menu-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 7rem); /* Ligeramente más grande */
+    text-transform: uppercase;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.75); /* Sombra más pronunciada */
+    z-index: 1;
+    letter-spacing: 1px;
 }
 
-.menu-items-container {
-    position: relative;
-    z-index: 1; /* Below title and tabs if they overlap, but above background */
-}
-
-.menu-category {
-    display: none;
-    gap: 10px;
-    padding: 5px 0;
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-.menu-category.active {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.menu-item-card {
-    background-color: #ffcc80;
-    border: 1px solid #d18830;
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+/* Barra de Navegación de Categorías del Menú */
+.menu-categories-bar {
+    background-color: #f8f8f8; /* Un gris muy sutil, casi blanco */
+    padding: 18px 10px; /* Más padding vertical */
     text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    min-height: 120px;
-    box-sizing: border-box;
-    width: 130px; /* Base width, adjusted in MQs */
+    border-bottom: 1px solid #eaeaea; /* Borde más sutil */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    position: sticky; /* Para que se quede fija al hacer scroll */
+    top: 70px; /* Altura del header */
+    z-index: 900; /* Encima del contenido pero debajo del header y menú circular */
+
+}
+.menu-categories-bar::-webkit-scrollbar { height: 3px; }
+.menu-categories-bar::-webkit-scrollbar-thumb { background: #d8d8d8; border-radius: 2px; }
+
+.menu-category-link {
+    display: inline-block;
+    padding: 10px 18px; /* Más padding */
+    margin: 0 6px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold para todos los links de categoría, como en Goiko */
+    font-size: 13px; /* Ligeramente más pequeño y nítido */
+    letter-spacing: 0.5px;
+    color: #555; /* Gris oscuro para los no activos */
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    transition: color 0.25s ease, border-bottom-color 0.25s ease;
+}
+.menu-category-link:hover {
+    color: #000;
+}
+.menu-category-link.active {
+    color: #000;
+    border-bottom-color: #000; /* Negro sólido para el activo */
 }
 
-.menu-item-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Sección "Choose Your Preference" */
+.preferences-section {
+    padding: 50px 20px; /* Más padding */
+    background-color: #ffffff;
+    text-align: center;
 }
+.preferences-section h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    color: #1a1a1a; /* Negro más intenso */
+    letter-spacing: 0.5px;
+}
+.preferences-columns {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Ligeramente más gap */
+    flex-wrap: wrap;
+}
+.preference-column {
+    background-color: #f5f5f5; /* Gris muy claro, casi blanco */
+    padding: 25px; /* Más padding interno */
+    min-width: 260px;
+    flex: 1;
+    max-width: 320px;
+    box-sizing: border-box;
+    text-align: left; /* Texto alineado a la izquierda dentro de las columnas */
+}
+.preference-column h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem; /* Un poco más grande */
+    margin-bottom: 18px;
+    color: #000;
+    text-align: center; /* Título de columna centrado */
+}
+.preference-column p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px; /* Un poco más grande para legibilidad */
+    color: #333; /* Texto más oscuro */
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+/* Sección del Grid de Productos */
+.menu-grid-section {
+    padding: 50px 20px;
+    background-color: #fff;
+}
+.menu-grid-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 7vw, 2.8rem); /* Más grande */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #000; /* Negro sólido */
+    letter-spacing: 1px;
+}
+.menu-items-container .menu-category { display: none; } /* Oculto por defecto, JS lo muestra */
+.menu-items-container .menu-category.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Más gap */
+    justify-items: center; /* Centra las tarjetas si no llenan la fila */
+}
+@media (min-width: 600px) { .menu-items-container .menu-category.active { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; } }
+@media (min-width: 992px) { .menu-items-container .menu-category.active { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+@media (min-width: 1200px) { .menu-items-container .menu-category.active { gap: 45px; } }
+
+
+/* Estilo de las tarjetas de producto (.menu-item-card) */
+.menu-item-card {
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Texto blanco por defecto para el contenido (aunque el nombre tiene su propio div) */
+    width: 100%; /* Ocupa el espacio del grid-cell */
+    max-width: 350px; /* Ancho máximo de tarjeta */
+    aspect-ratio: 2/3; /* Proporción más alta, como en Goiko */
+    display: flex;
+    flex-direction: column; /* Nombre arriba, imagen abajo */
+    text-decoration: none;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease-out;
+    overflow: hidden; /* Para que la imagen no se salga y para el zoom de la imagen */
+    cursor: pointer; /* Indica que es clickeable */
+    border: none; /* Reset de border si era un button */
+    padding: 0; /* Reset de padding */
+
+    /* Animación de entrada (JS se encargará de ponerlas visibles) */
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+    /* La transición la gestionará el JS para la aparición escalonada */
+}
+.menu-item-card:hover {
+    transform: translateY(-6px) scale(1.01); /* Efecto hover sutil pero notable */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.menu-item-card .menu-item-name-overlay {
+    padding: 15px 18px; /* Ajustar padding */
+    text-align: left;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.2rem, 1.5vw + 0.5rem, 1.6rem); /* Tamaño de fuente responsive */
+    text-transform: uppercase;
+    background-color: #000; /* Asegurar fondo negro */
+    color: #fff; /* Texto del nombre en blanco */
+    z-index: 1; /* Por si acaso, aunque con flex column no debería haber solapamiento */
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+    /* flex-shrink: 0; /* Para que no se encoja si el contenido es mucho, aunque no debería serlo */
+}
+
 
 .menu-item-card img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin-bottom: 8px;
-    border-radius: 4px;
+    width: 100%;
+    /* height: 100%;  NO es necesario, flex-grow lo maneja */
+    object-fit: cover; /* Cubre el área disponible, puede recortar si las proporciones no coinciden */
+    flex-grow: 1; /* Hace que la imagen llene el espacio vertical restante */
+    min-height: 0; /* Necesario para flexbox en algunos navegadores para que flex-grow funcione correctamente con imágenes */
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Zoom suave en la imagen */
+}
+.menu-item-card:hover img {
+    transform: scale(1.05); /* Zoom sutil en la imagen al hacer hover en la tarjeta */
 }
 
-.menu-item-card span {
-    font-family: 'Lamoore', sans-serif;
-    font-size: 0.75rem;
-    color: #4F4A45;
-    font-weight: bold;
-    line-height: 1.25;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    width: 100%;
+
+/* Sección "Still haven't decided?" */
+.decision-section {
+    padding: 40px 20px 60px;
+    text-align: center;
+    background-color: #fff;
+}
+.decision-section p {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #222;
+}
+.back-to-menu-button {
+    display: inline-block;
+    padding: 12px 30px; /* Más padding */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 14px; /* Ajustar si es necesario */
+    letter-spacing: 0.5px;
+    color: #333;
+    background-color: transparent;
+    border: 2px solid #000; /* Borde negro */
+    border-radius: 0; /* Sin borde redondeado, como en Goiko */
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.back-to-menu-button:hover {
+    background-color: #000;
+    color: #fff;
 }
 
-/* Modal (Popup) Styles - Base Mobile */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 30, 30, 0.85); /* Darker overlay from screenshot */
+/* Footer Estilo Goiko (Usando la versión refinada que tenías) */
+.footer-goiko {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 50px 20px 0px; /* Sin padding inferior aquí, se lo da el banner */
+    border-top: 1px solid #eaeaea;
+    overflow: hidden; /* Para que el banner no cause scroll horizontal inesperado */
+}
+.footer-goiko-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px; /* Ancho máximo como en Goiko */
+    margin: 0 auto 40px auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eaeaea;
+}
+.footer-goiko-left .footer-goiko-logo { height: 45px; }
+.footer-goiko-center nav, .footer-goiko-right nav { display: flex; flex-direction: column; gap: 10px; }
+.footer-goiko-center nav a, .footer-goiko-right nav a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 12px; /* Ligeramente más pequeño */
+    letter-spacing: 0.5px;
+    color: #111; /* Negro más intenso */
+    text-decoration: none;
+    text-transform: uppercase; /* Links del footer en mayúsculas */
+    transition: color 0.2s ease;
+}
+.footer-goiko-center nav a:hover, .footer-goiko-right nav a:hover { color: var(--accent-red); }
+
+.footer-goiko-social {
     display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 1002; /* High z-index for the overlay */
-    opacity: 1;
-    transition: opacity 0.25s ease-in-out;
-    padding: 10px;
-    box-sizing: border-box;
+    gap: 25px; /* Un poco más de espacio */
+    margin-bottom: 40px;
+}
+.footer-goiko-social img { height: 22px; opacity: 0.6; transition: opacity 0.2s ease, transform 0.2s ease; }
+.footer-goiko-social a:hover img { opacity: 1; transform: scale(1.1); }
+
+.footer-goiko-banner-text { /* Ya definido en style.css, pero se puede refinar aquí si es específico */
+    font-size: clamp(3rem, 15vw, 7rem); /* Más grande y responsive */
+    line-height: 0.9; /* Ajustar para que las letras se superpongan ligeramente si es necesario */
+    color: transparent; /* Texto transparente */
+    -webkit-text-stroke: 2px #000000; /* Borde negro */
+    text-stroke: 2px #000000;         /* Borde negro */
+    opacity: 1; /* El stroke sí es opaco */
+    padding: 20px 0; /* Espacio vertical para el banner */
+    font-family: 'Anton', sans-serif; /* Asegurar la fuente Anton */
+    font-weight: 400; /* Anton normal */
+    /* Resto de estilos heredados de .repeating-background-text en style.css */
+}
+.footer-goiko-banner-text span { animation-duration: 50s !important; /* Un poco más rápido, !important si style.css lo sobreescribe */ }
+
+.footer-goiko-bottom {
+    text-align: center;
+    font-size: 11px; /* Más pequeño */
+    color: #777; /* Gris más claro */
+    padding: 20px 0 25px; /* Padding superior e inferior */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
-.modal-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
+
+/* Modal de Detalle de Producto (#item-detail-modal) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(var(--bg-dark-main-rgb, 50, 40, 30), 0.85); /* Usa var si está definido, sino fallback */
+    backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000; /* MUY ALTO para estar sobre todo */
+    opacity: 0; /* Controlado por JS y clase .hidden */
+    pointer-events: none; /* Controlado por JS y clase .hidden */
+    transition: opacity 0.3s ease-in-out;
+    padding: 10px; box-sizing: border-box;
+}
+.modal-overlay.hidden { /* Estilo principal para ocultar */
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+.modal-overlay:not(.hidden) { /* Cuando SÍ es visible */
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-popup-content {
-    background-color: #fff; /* White background for modal from screenshot */
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 95vw;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* Softer, larger shadow */
-    transform: scale(1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease-in-out;
-    max-height: 90vh;
-    overflow: hidden; /* CRITICAL: Keep this hidden */
-    box-sizing: border-box;
+    background-color: var(--bg-dark-section, #4a3417); /* Fondo oscuro del modal */
+    color: var(--text-light, #F5EDE0);
+    padding: 25px; border-radius: 15px;
+    width: 100%; max-width: 500px; /* Ajustar según necesidad */
+    text-align: center; position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: scale(0.9) translateY(20px); /* Estado inicial para animación de entrada */
+    opacity: 0; /* Estado inicial para animación de entrada */
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-in-out;
+    max-height: 90vh; overflow-y: auto; box-sizing: border-box;
+}
+.modal-overlay:not(.hidden) .modal-popup-content { /* Animación cuando se muestra */
+    transform: scale(1) translateY(0);
+    opacity: 1;
 }
 
-.modal-overlay.hidden .modal-popup-content {
-    transform: scale(0.85);
-    opacity: 0;
-}
-
-.modal-background-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Ashton', sans-serif;
-    font-size: 3.8rem;
-    font-weight: bold;
-    color: rgba(180, 115, 40, 0.75); /* Adjusted color from screenshot (more opaque, less yellow) */
-    text-transform: uppercase;
-    z-index: 0; /* Behind actual modal content */
-    pointer-events: none;
-    line-height: 0.8;
-    text-align: center;
-    width: 110%; /* Slightly wider than modal to allow for nice clipping */
-    white-space: pre-line;
-    opacity: 1; /* Let color alpha handle transparency */
-    text-shadow: none; /* Removed shadow for cleaner look like screenshot */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Ensure all interactive/visible content in modal is above the background text */
-.close-modal-btn,
-#modal-item-image,
-#modal-item-name,
-#modal-item-description,
-.quantity-selector,
-#add-to-order-btn {
-    position: relative;
-    z-index: 1;
-}
+.modal-background-text { display: none; } /* Opcional: texto de fondo en el modal */
 
 .close-modal-btn {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #888; /* Greyish close button */
-    cursor: pointer;
-    line-height: 1;
-    padding: 5px;
+    position: absolute; top: 10px; right: 15px;
+    background: transparent; border: none;
+    font-size: 2.2rem; color: var(--text-light, #F5EDE0);
+    opacity:0.7; cursor:pointer; line-height: 1;
+    transition: opacity 0.2s, transform 0.2s;
 }
-.close-modal-btn:hover {
-    color: #333;
-}
+.close-modal-btn:hover { opacity: 1; transform: scale(1.1); }
 
 #modal-item-image {
-    width: 60px; /* Match screenshot proportions */
-    height: auto; /* Adjust height based on image aspect ratio */
-    max-height: 60px;
-    object-fit: contain;
-    margin: 0 auto 8px auto;
-    border-radius: 4px;
-    border: none; /* No border on image in screenshot */
+    width: 100%; max-width: 250px; /* Ajustar tamaño de imagen en modal */
+    height: auto; max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto 20px auto;
+    display: block;
+    border: 2px solid var(--border-color-dark-theme, #5A4D3F);
 }
-
-#modal-item-name {
-    margin-bottom: 5px; /* Less margin */
-    color: #444; /* Darker text for name */
-    font-family: 'Lamoore', sans-serif; /* Using Lamoore for the item name itself */
-    font-size: 1rem; /* Smaller, as in screenshot */
+#modal-item-name { /* Ya tiene .font-style-ashton-h2 */
+    font-family: 'Anton', sans-serif; /* Sobreescribir si es necesario */
+    color: var(--accent-orange, #F7B731);
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 10px;
     line-height: 1.2;
-    overflow-wrap: break-word;
-    font-weight: normal; /* Regular Lamoore weight */
-    text-shadow: none; /* No text shadow for this specific h3 */
 }
-
 #modal-item-description {
-    font-family: 'Lamoore', sans-serif;
-    font-size: 0.8rem;
-    color: #666;
-    margin-bottom: 12px;
-    line-height: 1.3;
-    overflow-wrap: break-word;
-}
-
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    gap: 10px; /* Slightly more gap */
-}
-
-.quantity-selector label {
-    font-family: 'Lamoore', sans-serif;
-    font-size: 0.85rem;
-    color: #555;
-}
-
-.quantity-selector input[type="number"] {
-    width: 36px;
-    text-align: center;
     font-size: 0.9rem;
-    padding: 6px 4px;
-    border: 1px solid #ddd; /* Lighter border */
-    border-radius: 4px;
-    font-family: 'Lamoore', sans-serif;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    background-color: #fff;
-    color: #333;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Subtle inset shadow */
+    color: var(--text-light, #F5EDE0);
+    opacity: 0.85;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    min-height: 40px; /* Para que no salte mucho si no hay descripción */
 }
 
-.quantity-btn {
-    background-color: #E9A94E; /* Orange color from screenshot */
-    color: white;
-    border: none;
-    width: 28px;
-    height: 28px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.quantity-selector { margin-bottom: 25px; display: flex; justify-content: center; align-items: center; }
+.quantity-selector label { margin-right: 10px; font-size: 0.9rem; }
+.quantity-selector .quantity-btn {
+    background-color: var(--accent-brown-light, #B08A6F);
+    color: var(--text-dark, #3D352A);
+    border: none; border-radius: 50%;
+    width: 30px; height: 30px; font-size: 1.2rem;
+    cursor: pointer; transition: background-color 0.2s, transform 0.1s;
+    display: flex; align-items: center; justify-content: center;
     line-height: 1;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
-.quantity-btn:hover {
-    background-color: #d6923a;
-    transform: scale(1.05);
+.quantity-selector .quantity-btn:hover { background-color: var(--accent-orange, #F7B731); transform: scale(1.1); }
+.quantity-selector input[type="number"] {
+    width: 50px; text-align: center;
+    background-color: transparent; color: var(--text-light, #F5EDE0);
+    border: 1px solid var(--border-color-dark-theme, #5A4D3F);
+    border-radius: 4px; padding: 5px; margin: 0 8px;
+    -moz-appearance: textfield;
 }
-.quantity-btn:active {
-    transform: scale(0.95);
-}
+.quantity-selector input[type="number"]::-webkit-outer-spin-button,
+.quantity-selector input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-#add-to-order-btn {
-    font-family: 'Ashton', sans-serif;
-    background-color: #36B37E; /* Green from screenshot */
+#add-to-order-btn.btn { /* Estilos de .btn ya definidos en style.css */
+    background-color: var(--accent-red, #ce7413);
     color: white;
     border: none;
-    padding: 12px 18px;
-    font-size: 1.2rem; /* Larger font for button */
-    border-radius: 6px;
-    cursor: pointer;
+    padding: 12px 30px; /* Un poco más grande */
+    width: 80%; max-width: 250px;
+}
+#add-to-order-btn.btn:hover {
+    background-color: #e88d2e; /* Un rojo más brillante al hacer hover */
+    transform: translateY(-2px) scale(1.03); /* Mantenemos el efecto de .btn */
+}
+
+
+/* Responsive (Goiko style from your latest version) */
+@media (max-width: 768px) {
+    main.menu-page-goiko-style { padding-top: 60px; /* Si el header es más pequeño en móvil */ }
+    .menu-categories-bar { top: 60px; /* Ajustar si la altura del header cambia */ }
+    .hero-menu-section { height: 35vh; min-height: 280px; }
+    .menu-categories-bar { padding: 15px 5px; } /* Un poco más de padding en móvil */
+    .menu-category-link { padding: 8px 12px; font-size: 12px; }
+    .preferences-columns { gap: 15px; }
+    .preference-column { padding: 20px; min-width: 240px; }
+    .menu-items-container .menu-category.active { gap: 25px; }
+    @media (min-width: 600px) and (max-width: 768px) { .menu-items-container .menu-category.active { grid-template-columns: repeat(2, 1fr); gap: 30px;} }
+    .footer-goiko-content { flex-direction: column; align-items: center; text-align: center; gap: 20px; margin-bottom: 30px; padding-bottom: 30px;}
+    .footer-goiko-center nav, .footer-goiko-right nav { align-items: center; }
+    .footer-goiko-social { margin-bottom: 30px; }
+    .footer-goiko-banner-text { font-size: clamp(2.5rem, 12vw, 5rem); -webkit-text-stroke-width: 1.5px; text-stroke-width: 1.5px; padding: 15px 0;}
+    .modal-popup-content { max-width: 90vw; padding: 20px; }
+    #modal-item-name { font-size: clamp(1.3rem, 4vw, 1.8rem); }
+}
+@media (max-width: 480px) {
+    .hero-menu-section { height: 30vh; min-height: 220px; }
+    .hero-menu-title { font-size: clamp(2.5rem, 10vw, 5rem); }
+    .menu-categories-bar { padding: 12px 5px; }
+    .menu-category-link { padding: 8px 8px; font-size: 11px; margin: 0 2px; }
+    .menu-items-container .menu-category.active { grid-template-columns: 1fr; gap: 20px; }
+    .menu-item-card { max-width: none; /* Que ocupe todo el ancho de la columna */ }
+    .preferences-section h2, .menu-grid-title { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+    .decision-section p {font-size: 1.1rem;}
+    .back-to-menu-button {padding: 10px 20px; font-size: 13px;}
+    .modal-popup-content { max-width: 95vw; padding: 15px; }
+    #modal-item-image { max-width: 180px; max-height: 180px; }
+    .quantity-selector .quantity-btn { width: 28px; height: 28px; font-size: 1rem; }
+    .quantity-selector input[type="number"] { width: 40px; }
+    #add-to-order-btn.btn { width: 90%; padding: 10px 20px; }
+}
+
+
+/* styles/carta.css o style.css */
+
+/* ... (tus estilos existentes para .hero-menu-title) ... */
+.hero-menu-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
     text-transform: uppercase;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.75);
+    z-index: 1;
     letter-spacing: 1px;
-    transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
-    width: 100%;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.15); /* Text shadow for depth */
-    box-shadow: 0 3px 5px rgba(0,0,0,0.15); /* Button shadow */
-}
-#add-to-order-btn:hover {
-    background-color: #2DA471;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 7px rgba(0,0,0,0.2);
-}
-#add-to-order-btn:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    display: flex; /* Para que los spans se alineen horizontalmente */
+    /* Eliminamos 'color: white;' aquí si cada letra tendrá su propio color animado */
 }
 
-/*-------------------------------------------------------------------------------------
- * Boton carrito
- *------------------------------------------------------------------------------------*/
-
-.burger-button {
-    position: fixed; /* Lo saca del flujo normal y lo fija a la ventana */
-    right: 20px;    /* Distancia desde el borde derecho de la ventana (ajusta a tu gusto) */
-    top: 20px;      /* Distancia desde el borde superior (ajusta a tu gusto) */
-    z-index: 1000;  /* Asegura que esté por encima de otros elementos */
-
-    /* --- Tus estilos existentes --- */
-    /* NO necesitas 'position: relative;' aquí si usas 'fixed' o 'absolute' para el botón mismo */
-    /* Los hijos con 'position: absolute' se posicionarán ahora relativo a este '.burger-button' fijo/absoluto */
-    width: 200px;
-    height: 160px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    /* El resto de tus estilos para .burger-button no cambian */
-}
-.bun-top, .bun-bottom {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 45px;
-    background: #d18830;
-    z-index: 3;
-    transition: transform 0.4s ease;
+/* Estilo para cada letra individual dentro del título */
+.hero-menu-title .letter {
+    display: inline-block; /* O display: block; si prefieres que no haya espacios entre letras */
+    color: white; /* Color base antes de la animación */
+    position: relative; /* Para animaciones de transformación si las quieres */
+    transition: transform 0.3s ease-out; /* Para un efecto hover sutil si lo deseas */
 }
 
-.bun-top {
-    top: 57px;
-    border-radius: 80px 80px 30px 30px;
+/* (Opcional) Efecto hover sutil en cada letra */
+/*
+.hero-menu-title .letter:hover {
+    transform: scale(1.1) translateY(-5px);
+    text-shadow: 0 0 15px var(--accent-orange, #F7B731);
 }
+*/
 
-.bun-bottom {
-    bottom: 57px;
-    border-radius: 0 0 80px 80px;
-}
-
-.burger-button:hover .bun-top {
-    transform: translateY(-55px);
-}
-
-.burger-button:hover .bun-bottom {
-    transform: translateY(55px);
-}
-
-.sesame {
-    width: 5px;
-    height: 2px;
-    background: #fff3c0;
-    border-radius: 50%;
-    position: absolute;
-    transform: rotate(-20deg);
-    opacity: 0.8;
-}
-
-.bun-top .sesame:nth-child(1) { top: 10px; left: 30px; }
-.bun-top .sesame:nth-child(2) { top: 12px; left: 60px; }
-.bun-top .sesame:nth-child(3) { top: 8px; left: 90px; }
-.bun-top .sesame:nth-child(4) { top: 15px; left: 120px; }
-.bun-top .sesame:nth-child(5) { top: 10px; left: 150px; }
-
-.ingredient {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 22px;
-    opacity: 0;
-    transform: scaleY(0);
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    z-index: 2;
-    border-radius: 10px;
-}
-
-.lettuce { top: 48px; background: #66bb55; }
-.cheese  { top: 70px; background: #fdd835; }
-.meat    { top: 92px; background: #8b4513; }
-
-.burger-button:hover .ingredient {
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-.burger-button span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    pointer-events: none;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Media Queries */
-
-/* Styles for VERY Small Screens (e.g., less than 359px wide) */
-@media (max-width: 359px) {
-    .page-content-pedidos { padding: 60px 10px 15px 10px; }
-    .pedidos-title { font-size: 1.5rem; margin-bottom: 15px; }
-    .cart-title { font-size: 1.5rem; margin-bottom: 15px; } /* Ajuste para pantallas muy pequeñas */
-    .tab-link { padding: 6px 10px; font-size: 0.8rem; }
-    .menu-category.active { gap: 8px; } /* Removed grid-template-columns: 1fr; to let flexbox handle it */
-    .menu-item-card { width: calc(50% - 4px); min-height: 110px; padding: 8px; }
-    .menu-item-card img { width: 45px; height: 45px; }
-    .menu-item-card span { font-size: 0.7rem; }
-
-    .modal-popup-content { padding: 12px; max-width: calc(100vw - 20px); }
-    .modal-background-text { font-size: 2.4rem; line-height: 0.85; width: 120%; }
-    #modal-item-image { width: 50px; max-height: 50px; }
-    #modal-item-name { font-size: 0.9rem; }
-    #modal-item-description { font-size: 0.75rem; margin-bottom: 10px; }
-    .quantity-selector input[type="number"] { width: 30px; font-size: 0.8rem; }
-    .quantity-btn { width: 24px; height: 24px; font-size: 0.9rem; }
-    #add-to-order-btn { padding: 10px 12px; font-size: 1rem; letter-spacing: 0.5px; }
-}
-
-/* Tablet Styles (and up from 600px) */
-@media (min-width: 600px) {
-    .page-content-pedidos { padding: 80px 20px 20px 20px; max-width: 900px; }
-    .pedidos-title { font-size: 2.2rem; }
-    .cart-title { font-size: 2.2rem; } /* Ajuste para tablets */
-    .tab-link { padding: 9px 18px; font-size: 1rem; border-width: 2px; }
-    /* .menu-category removed grid-template-columns */
-    .menu-category.active { gap: 15px; }
-    .menu-item-card { width: 120px; padding: 12px; min-height: 140px; border-width: 2px; }
-    .menu-item-card img { width: 70px; height: 70px; }
-    .menu-item-card span { font-size: 0.9rem; }
-
-    .modal-overlay { padding: 15px; }
-    .modal-popup-content { max-width: 450px; padding: 20px; }
-    .modal-background-text { font-size: 4.8rem; }
-    #modal-item-image { width: 70px; max-height: 70px; }
-    #modal-item-name { font-size: 1.2rem; }
-    #modal-item-description { font-size: 0.9rem; }
-    .quantity-selector input[type="number"] { width: 40px; font-size: 1rem; }
-    .quantity-btn { width: 30px; height: 30px; font-size: 1.2rem; }
-    #add-to-order-btn { width: auto; padding: 12px 25px; font-size: 1.3rem; }
-}
-
-/* Desktop Styles (and up from 768px) */
-@media (min-width: 768px) {
-    .pedidos-title { font-size: 2.5rem; }
-    .cart-title { font-size: 2.5rem; } /* Ajuste para desktops */
-    .tab-link { padding: 10px 20px; font-size: 1.1rem; }
-    .menu-category.active { gap: 20px; }
-    .menu-item-card { width: 130px; padding: 15px 10px; min-height: 150px; }
-    .menu-item-card img { width: 80px; height: 80px; margin-bottom: 10px; }
-    .menu-item-card span { font-size: 0.95rem; }
-
-    .modal-popup-content { max-width: 480px; padding: 25px; }
-    .modal-background-text { font-size: 6rem; width: 110%; }
-    #modal-item-image { width: 80px; max-height: 80px; margin-bottom: 15px; }
-    #modal-item-name { font-size: 1.3rem; margin-bottom: 10px; }
-    #modal-item-description { font-size: 1rem; margin-bottom: 15px; }
-    .quantity-selector { gap: 10px; margin-bottom: 15px; }
-    .quantity-selector input[type="number"] { width: 45px; }
-    #add-to-order-btn { letter-spacing: 1.2px; font-size: 1.4rem; padding: 14px 28px; }
-}
-
-/* Larger Desktop Styles (and up from 1024px) for very large text */
-@media (min-width: 1024px) {
-    /* .cart-title { font-size: 2.8rem; } Opcional: si quieres un tamaño aún mayor para desktops grandes */
-    .modal-background-text {
-        font-size: 7rem; /* Final large size */
+/* Animación de cambio de color */
+@keyframes rotateTextColor {
+    0%, 100% {
+        color: var(--accent-orange, #F7B731); /* Naranja principal */
+        transform: scale(1);
     }
-    #modal-item-image {
-        width: 100px; /* Larger image for large modals */
-        max-height: 100px;
+    25% {
+        color: #FFA500; /* Naranja más claro o diferente tono */
+        transform: scale(1.05) rotate(-2deg);
     }
-    #modal-item-name {
-        font-size: 1.4rem;
+    50% {
+        color: var(--accent-red, #ce7413); /* Rojo del acento */
+        transform: scale(1.1) rotate(0deg);
+    }
+    75% {
+        color: #FF8C00; /* Naranja oscuro */
+        transform: scale(1.05) rotate(2deg);
     }
 }
+
+/* Aplicar la animación a cada letra con un retardo diferente */
+.hero-menu-title .letter {
+    animation-name: rotateTextColor;
+    animation-duration: 5s; /* Duración total de un ciclo de color */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; /* O ease-in-out para suavizar */
+}
+
+/* Para que no todas las letras cambien al mismo tiempo, aplicamos delays */
+/* Puedes generar esto con JS o hacerlo manualmente si el texto es fijo */
+/* Si el texto "BURGERS" es fijo (7 letras): */
+.hero-menu-title .letter:nth-child(1) { animation-delay: 0s; }
+.hero-menu-title .letter:nth-child(2) { animation-delay: 0.2s; }
+.hero-menu-title .letter:nth-child(3) { animation-delay: 0.4s; }
+.hero-menu-title .letter:nth-child(4) { animation-delay: 0.6s; }
+.hero-menu-title .letter:nth-child(5) { animation-delay: 0.8s; }
+.hero-menu-title .letter:nth-child(6) { animation-delay: 1s; }
+.hero-menu-title .letter:nth-child(7) { animation-delay: 1.2s; }
+/* ... y así sucesivamente si el texto fuera más largo */
