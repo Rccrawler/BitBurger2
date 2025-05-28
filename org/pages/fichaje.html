@@ -5,62 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet Clock-in</title> <!-- Translated title -->
     <link rel="stylesheet" href="../styles/fichaje.css"> <!-- If you rename, this could be clockin.css -->
-    <script src="../script/fichaje.js"></script> <!-- If you rename, this could be clockin.js -->
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Consider adding a link to your Ashton font here if it's not globally defined --> <!-- Comment translated -->
-    <!-- <link rel="stylesheet" href="../../fonts/ashton/stylesheet.css"> -->
+    <!-- Script will be loaded at the end of body for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon">
 </head>
 <body>
     <div class="main-container">
         <header class="page-header">
-            <!-- You can add content to the header if you need it --> <!-- Comment translated -->
+            <!-- You can add content to the header if you need it -->
         </header>
 
         <nav class="main-nav">
             <div class="nav-buttons-container">
-                <button class="nav-button font-style-ashton active">CLOCK-IN</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button> <!-- Translated -->
-                <!-- Note: The next two buttons might have intended different hrefs or labels based on typical navigation patterns -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">STATUTE</button> <!-- Translated. Original links to convenio.html -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button> <!-- Translated. Original links to convenio.html -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton active">CLOCK-IN</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">STATUTE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button>
             </div>
         </nav>
 
         <main class="content-area">
-            <script src="../../script/employee-guard.js"></script> 
+            <script src="../../script/employee-guard.js"></script>
             <section class="fichaje-box">
                 <div class="fichaje-section font-style-ashton">
-                    <h2>CLOCK-IN</h2> <!-- Translated -->
+                    <h2>CLOCK-IN</h2>
                     <div class="fichaje-controls">
                         <span class="fichaje-info" id="entrada-fecha">--/--/----</span>
                         <span class="fichaje-info" id="entrada-hora">--:--:--</span>
-                        <button class="fichaje-action-button font-style-ashton">Clock In</button> <!-- Translated -->
+                        <!-- ADDED ID HERE -->
+                        <button id="clock-in-button" class="fichaje-action-button font-style-ashton">Clock In</button>
                     </div>
                 </div>
                 <div class="fichaje-section font-style-ashton">
-                    <h2>CLOCK-OUT</h2> <!-- Translated -->
+                    <h2>CLOCK-OUT</h2>
                     <div class="fichaje-controls">
                         <span class="fichaje-info" id="salida-fecha">--/--/----</span>
                         <span class="fichaje-info" id="salida-hora">--:--:--</span>
-                        <button class="fichaje-action-button font-style-ashton">Clock Out</button> <!-- Translated -->
+                        <!-- ADDED ID HERE -->
+                        <button id="clock-out-button" class="fichaje-action-button font-style-ashton">Clock Out</button>
                     </div>
+                </div>
+                <!-- NEW: Status and Countdown Timer Display -->
+                <div id="fichaje-status-container" style="margin-top: 20px; text-align: center; display: none;">
+                    <p id="fichaje-status-message" style="font-size: 1.1em; color: var(--accent-green); margin-bottom: 5px;"></p>
+                    <p id="fichaje-countdown" style="font-size: 1.3em; font-weight: bold; color: var(--accent-orange);"></p>
                 </div>
             </section>
 
             <section class="calendario-container">
                 <div class="calendario-visualizador">
-                    <!-- Make sure this path is correct and the image exists --> <!-- Comment translated -->
-                    <img id="calendario-imagen" src="../img/Calendario 2025.png" alt="Work Calendar 2025"> <!-- Translated alt text -->
+                    <img id="calendario-imagen" src="../img/Calendario 2025.png" alt="Work Calendar 2025">
                 </div>
-                <button class="download-button font-style-ashton">Download Calendar PDF</button> <!-- Translated -->
+                <button class="download-button font-style-ashton">Download Calendar PDF</button>
             </section>
         </main>
     </div>
+    <script src="../script/fichaje.js"></script> <!-- Moved script to end of body -->
 </body>
 </html>
