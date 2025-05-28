@@ -4,38 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet - Works Council</title>
-    <link rel="stylesheet" href="../styles/fichaje.css"> <!-- Common intranet styles -->
-    <link rel="stylesheet" href="../styles/comite.css">   <!-- Specific styles for this page -->
+    <link rel="stylesheet" href="../styles/fichaje.css">
+    <link rel="stylesheet" href="../styles/comite.css">
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
-
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon"> <!-- Asegúrate que la ruta al favicon sea correcta -->
 </head>
 <body>
     <div class="main-container">
         <header class="page-header">
-            <!-- You can add content to the header if needed -->
+            <!-- Puedes añadir contenido al header si es necesario -->
         </header>
 
         <nav class="main-nav">
             <div class="nav-buttons-container">
                 <button class="nav-button font-style-ashton" onclick="window.location.href='fichaje.html'">CLOCK-IN</button>
-                <button class="nav-button font-style-ashton" onclick="window.location.href='index.html'">WELCOME</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button> <!-- Corregido: llevaba a index.html -->
                 <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button>
                 <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button>
                 <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button>
                 <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
-                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DIMISSALS</button>
-                <button class="nav-button font-style-ashton active">COMMITTEE</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button> <!-- Corregido: DIMISSALS -> DISMISSALS -->
+                <button class="nav-button font-style-ashton active">COMMITTEE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button>
             </div>
         </nav>
 
         <main class="content-area">
-            <section class="content-section comite-introduction">
+            <!-- La primera sección ahora contiene el título y el índice -->
+            <section class="content-section">
                 <h1 class="font-style-ashton section-title">BitBurger Works Council</h1>
+                
+                <!-- Table of Contents (Índice) -->
+                <div class="toc-container">
+                    <h3 class="toc-title font-style-ashton">Index of the Committee</h3>
+                    <ul class="toc-list">
+                        <li><a href="#comite-intro">Introduction</a></li>
+                        <li><a href="#comite-structure">Constitution & Composition</a></li>
+                        <li><a href="#all-commissions">Committee Commissions (Overview)</a></li>
+                        <li><a href="#commission-health-safety">Health & Safety Commission</a></li>
+                        <li><a href="#commission-equality">Equality Commission</a></li>
+                        <li><a href="#commission-training">Training Commission</a></li>
+                        <li><a href="#commission-economic">Economic Commission</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section comite-introduction" id="comite-intro">
+                <!-- El H1 se movió arriba, así que esta sección empieza con el párrafo -->
                 <p class="intro-paragraph">The BitBurger Works Council has been formally established to represent all employees of the company. Its current composition reflects a proportional distribution among the different departments and functional areas, ensuring equitable representation.</p>
             </section>
 
-            <section class="content-section comite-composition">
+            <section class="content-section comite-composition" id="comite-structure">
                 <h2 class="font-style-ashton subsection-title">Constitution and Composition of the Committee</h2>
                 <p>The main leadership structure is as follows:</p>
                 <ul class="member-list">
@@ -48,10 +67,10 @@
                 <p>These 5 representatives act on behalf of the diverse functional areas of the company, ensuring the advocacy of interests for the entire workforce. The commissions involving these employee representatives are:</p>
             </section>
 
-            <section class="content-section comite-commissions">
+            <section class="content-section comite-commissions" id="all-commissions">
                 <h2 class="font-style-ashton subsection-title">Committee Commissions</h2>
 
-                <article class="commission-item">
+                <article class="commission-item" id="commission-health-safety">
                     <h3 class="commission-name">Health and Safety Commission</h3>
                     <p class="commission-responsible"><strong>Responsible:</strong> Andrew Calveche</p>
                     <h4>Objectives:</h4>
@@ -62,7 +81,7 @@
                     </ul>
                 </article>
 
-                <article class="commission-item">
+                <article class="commission-item" id="commission-equality">
                     <h3 class="commission-name">Equality Commission</h3>
                     <p class="commission-responsible"><strong>Responsible:</strong> Lucía Fernández</p>
                     <h4>Objectives:</h4>
@@ -74,7 +93,7 @@
                     </ul>
                 </article>
 
-                <article class="commission-item">
+                <article class="commission-item" id="commission-training">
                     <h3 class="commission-name">Training Commission</h3>
                     <p class="commission-responsible"><strong>Responsible:</strong> Arturo Marco and Ana Belmonte</p>
                     <h4>Objectives:</h4>
@@ -86,7 +105,7 @@
                     </ul>
                 </article>
 
-                <article class="commission-item">
+                <article class="commission-item" id="commission-economic">
                     <h3 class="commission-name">Economic and Budgetary Control Commission</h3>
                     <p class="commission-responsible"><strong>Responsible:</strong> Alvaro López</p>
                     <h4>Objectives:</h4>
@@ -100,6 +119,6 @@
             </section>
         </main>
     </div>
-    <!-- <script src="../../script/comite.js"></script> --> <!-- If you need specific JS later -->
+    <!-- <script src="../../script/comite.js"></script> --> <!-- Si necesitas JS específico más tarde -->
 </body>
 </html>

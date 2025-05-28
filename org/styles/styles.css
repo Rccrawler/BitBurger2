@@ -1,257 +1,397 @@
-/*-------------------------------------------------------------------------------------
- * GENERAL & PAGE RESET/OVERRIDES
- *------------------------------------------------------------------------------------*/
+/* Using variables from the main style.css for consistency */
+:root {
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #F5EDE0;
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+}
 
- body {
-    font-family: 'Lamoore', 'Open Sans', Arial, sans-serif;
+body {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8; /* Main site body background */
-    color: #333; /* Main site default text color */
-    cursor: default !important; /* Override custom cursor from general styles */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    line-height: 1.6;
 }
 
-/* Override custom cursors for links and buttons */
-a,
-a:hover {
-    cursor: pointer !important;
-}
-
-button,
-input[type="button"],
-input[type="submit"] {
-    cursor: pointer !important;
-}
-
-/*-------------------------------------------------------------------------------------
- * HEADER & NAVIGATION
- *------------------------------------------------------------------------------------*/
- header {
-    /* Color base del pan de hamburguesa */
-    background-color: #d18830; /* Tono principal naranja/dorado del pan */
-
-    /* Opcional: Sutil gradiente para dar un poco de volumen y aspecto horneado */
-    /* Descomenta y ajusta si deseas este efecto */
-    
-    background-image: linear-gradient(
-        to bottom,
-        rgba(240, 200, 120, 0.6) 0%,  /* Un tono dorado más claro y ligeramente transparente en la parte superior */
-        /*rgba(220, 170, 90, 0.3) 40%, /* Transición */
-        /*transparent 100%             /* Se desvanece a transparente hacia abajo, permitiendo ver el background-color */
-    );
-
-
-    /* Opcional: Textura muy sutil de "poros" de pan (casi imperceptible) */
-    /* Si se usa, el gradiente anterior debería ser más sutil o eliminarse */
-    
-    background-image:
-        radial-gradient(rgba(255, 255, 255, 0.03) 0.5px, transparent 0.5px),
-        radial-gradient(rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
-    background-size: 5px 5px, 5px 5px;
-    background-position: 0 0, 2.5px 2.5px;
-    background-repeat: repeat, repeat;
-    
-
-
-    color: white;
-    padding: 1.5rem 1rem;
+header {
+    background-color: var(--bg-dark-section); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    padding: 20px 40px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(100, 50, 0, 0.25); /* Sombra más cálida, como la de un pan */
-    position: relative;
-    overflow: hidden; /* Evita desbordamientos si se usan gradientes o texturas */
-    border-bottom: 3px solid #b87322; /* Un borde inferior ligeramente más oscuro para simular el borde del pan */
+    border-bottom: 3px solid var(--accent-orange); /* UPDATED */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 header h1 {
-    font-family: 'Ashton', sans-serif;
-    margin: 0 0 0.75rem 0;
-    font-size: 2.5rem; /* INTRANET H1 FONT SIZE - DO NOT CHANGE */
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra de texto para legibilidad */
-    color: white;
-    position: relative;
-    z-index: 1;
+    margin: 0 0 15px 0;
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    font-size: 2.5em; /* Adjusted */
+    font-weight: normal; /* Anton is boldish */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-nav {
-    position: relative;
-    z-index: 1;
-}
-
-nav ul {
-    list-style: none;
+header nav ul {
+    list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
 }
 
-nav ul li a {
-    color: #ffffff;
+header nav ul li {
+    display: inline-block;
+    margin: 0 10px; /* Adjusted */
+}
+
+header nav ul li a {
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
     text-decoration: none;
-    font-family: 'Lamoore', 'Open Sans', sans-serif;
-    font-size: 1.1rem; /* INTRANET NAV FONT SIZE - DO NOT CHANGE */
-    font-weight: 600;
-    padding: 0.5em 1em;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Sombra sutil para los enlaces */
+    font-weight: normal;
+    font-size: 1em; /* Adjusted */
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid transparent; /* For hover effect */
+    transition: all 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a:focus {
-    background-color: rgba(0, 0, 0, 0.2); /* Más oscuro al pasar el ratón */
-    color: #f5f5f5;
-    text-shadow: none; /* Quitar sombra al pasar para un efecto "presionado" */
+header nav ul li a:hover {
+    background-color: var(--accent-orange); /* UPDATED */
+    color: var(--text-dark); /* UPDATED */
+    border-color: var(--accent-orange);
 }
-/*-------------------------------------------------------------------------------------
- * MAIN CONTENT & SECTIONS
- *------------------------------------------------------------------------------------*/
+
 main {
-    padding: 2rem 1rem;
-    max-width: 960px;
-    margin: 2rem auto;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4); /* Enhanced shadow */
+    border-radius: 8px;
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
 }
 
-.content-card {
-    background-color: #ffffff; /* Clean white cards like main site's .description-text */
-    border: 1px solid #e0e0e0; /* Light border, similar to main site containers */
-    border-radius: 10px; /* Main site's .description-text border-radius */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Main site's .description-text box-shadow */
-    padding: 1.5rem 2rem;
-    margin-bottom: 2.5rem;
+.cookie-policy .policy-header {
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    margin-bottom: 30px;
+    padding-bottom: 20px;
 }
 
-section h2 {
-    color: #d18830; /* Main site accent color for headings */
-    letter-spacing: 0.03em; /* Kept from previous intranet style */
-    border-bottom: 2px solid #ffcc80; /* Lighter accent border, like .status-box border */
-    padding-bottom: 0.6rem;
+.cookie-policy .policy-header h2 { /* This h2 is different from section h2 */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
+    font-size: 2em;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.cookie-policy .revision-date {
+    font-style: italic;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.7;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.cookie-policy .toc {
+    background-color: var(--bg-dark-main); /* UPDATED */
+    padding: 20px; /* Adjusted */
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--accent-orange); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
+}
+
+.cookie-policy .toc h3 { /* TOC heading */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
     margin-top: 0;
-    margin-bottom: 1.8rem;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /* Very subtle shadow for readability */
+    margin-bottom: 15px; /* Adjusted */
+    font-size: 1.3em;
+    letter-spacing: 0.5px;
 }
-
-article {
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 3px solid #ffcc80; /* Accent color for article border */
-}
-
-article:last-child {
-    margin-bottom: 0.5rem;
-}
-
-article h3 {
-    font-family: 'Lamoore', 'Open Sans', sans-serif;
-    color: #555; /* Darker gray text, similar to main site paragraph text */
-    margin-top: 0;
-    margin-bottom: 0.6rem;
-    text-shadow: none; /* Keep subheadings clean */
-}
-
-p {
-    font-family: 'Lamoore', 'Open Sans', sans-serif;
-    color: #444; /* Main site text color (slightly darker than #555) for body copy */
-    margin-top: 0;
-    margin-bottom: 1rem;
-    text-shadow: none; /* Keep paragraphs clean */
-}
-
-ul {
-    padding-left: 1.8rem;
-    list-style-type: disc;
-}
-
-ul li {
-    margin-bottom: 0.8rem;
-    font-family: 'Lamoore', 'Open Sans', sans-serif;
-    font-size: 1rem; /* INTRANET LIST ITEM FONT SIZE - DO NOT CHANGE */
-    color: #444;
-}
-
-main a {
-    color: #c06c20; /* Darker shade of main site's orange for links */
+.cookie-policy .toc h3 a {
+    color: var(--accent-orange); /* UPDATED */
     text-decoration: none;
-    font-weight: 600; /* Kept from previous intranet style */
 }
-
-main a:hover,
-main a:focus {
-    color: #a05010; /* Even darker for hover */
+.cookie-policy .toc h3 a:hover {
     text-decoration: underline;
+    color: #f8c555; /* Lighter orange */
 }
 
-/*-------------------------------------------------------------------------------------
- * FOOTER
- *------------------------------------------------------------------------------------*/
-footer {
-    background-color: #e8e0d4; /* Background from main site's .description-section */
-    color: #555; /* Text color from main site */
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin-top: 3rem;
-    font-size: 0.95rem; /* INTRANET FOOTER P FONT SIZE - DO NOT CHANGE (small adjustment from prev) */
-    border-top: 3px solid #d18830; /* Main accent color for top border */
-    /* Replicating the wavy border from the main site footer is complex here
-       without directly copying its ::before pseudo-element.
-       If desired, that SVG logic could be adapted. For now, a solid border. */
-}
 
-footer p {
+.cookie-policy .toc ul {
+    list-style-type: none;
+    padding-left: 0;
     margin: 0;
-    font-family: 'Lamoore', 'Open Sans', sans-serif;
 }
 
-/*-------------------------------------------------------------------------------------
- * RESPONSIVE ADJUSTMENTS (Font sizes within media queries are NOT changed from previous)
- *------------------------------------------------------------------------------------*/
+.cookie-policy .toc ul li {
+    margin-bottom: 8px; /* Adjusted */
+}
+
+.cookie-policy .toc ul li a {
+    text-decoration: none;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
+    transition: color 0.2s ease;
+}
+
+.cookie-policy .toc ul li a:hover {
+    text-decoration: underline;
+    color: var(--accent-orange); /* UPDATED */
+}
+
+.cookie-policy section {
+    margin-bottom: 40px;
+}
+
+.cookie-policy section h2 { /* Main section titles */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
+    border-bottom: 2px solid var(--accent-orange); /* UPDATED */
+    padding-bottom: 10px; /* Adjusted */
+    margin-top: 0;
+    margin-bottom: 25px; /* Adjusted */
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
+}
+
+.cookie-policy section h3 { /* Sub-section titles */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    padding-bottom: 8px; /* Adjusted */
+    letter-spacing: 0.5px;
+}
+.cookie-policy section h3:first-of-type {
+    margin-top: 0;
+}
+
+.cookie-policy section h4 {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 700; /* Bold Roboto */
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.85;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.cookie-policy p {
+    margin-bottom: 15px;
+    text-align: justify;
+    opacity: 0.9;
+}
+
+.cookie-policy ul, .cookie-policy ol {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    opacity: 0.9;
+}
+
+.cookie-policy ul li, .cookie-policy ol li {
+    margin-bottom: 8px;
+}
+
+.cookie-policy strong {
+    color: var(--accent-orange); /* UPDATED */
+    font-weight: 500; /* Roboto medium */
+}
+
+.cookie-policy a {
+    color: var(--accent-orange); /* UPDATED */
+    text-decoration: none;
+}
+.cookie-policy a:hover {
+    text-decoration: underline;
+    color: #f8c555; /* Lighter orange */
+}
+
+
+.cookie-policy dl {
+    margin-bottom: 20px;
+}
+
+.cookie-policy dt {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 700; /* Bold Roboto */
+    color: var(--accent-orange); /* UPDATED */
+    margin-top: 15px;
+}
+
+.cookie-policy dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border-color-dark-theme); /* UPDATED */
+    opacity: 0.9;
+}
+
+.tracker-category {
+    margin-bottom: 30px;
+    padding: 20px; /* Adjusted */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 6px;
+    background-color: var(--bg-dark-main); /* UPDATED */
+}
+.tracker-category h3 { /* H3 inside tracker category */
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    padding-bottom: 10px; /* Adjusted */
+    color: var(--accent-orange); /* Make it stand out */
+}
+
+.tracker-category h4 {
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.8;
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.third-party-tracker, .first-party-tracker {
+    margin-left: 0; /* No extra indent, parent padding handles it */
+    padding-left: 15px;
+    border-left: 3px solid var(--accent-orange); /* UPDATED */
+    margin-bottom: 15px;
+    padding-top: 5px; /* Space for items */
+    padding-bottom: 5px;
+}
+
+.third-party-tracker .service-name, .first-party-tracker .service-name {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 500; /* Medium Roboto */
+    color: var(--text-light); /* UPDATED */
+    margin-bottom: 5px;
+}
+.checkbox-placeholder { /* This is a visual placeholder */
+    display: inline-block;
+    width: 18px; /* Match main site checkbox */
+    height: 18px;
+    background-color: #5a4d3f; /* Match main site checkbox */
+    border: 1px solid #7a6c5d; /* Match main site checkbox */
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 18px;
+    font-size: 0.8em;
+    color: var(--text-light); /* For the [ ] */
+}
+
+.ayuda-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--accent-orange); /* UPDATED */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    padding: 25px; /* Adjusted */
+    border-radius: 6px;
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
+}
+
+.ayuda-footer h2, .ayuda-footer h3, .ayuda-footer h4 {
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
+    border-bottom: none;
+    letter-spacing: 0.5px;
+}
+.ayuda-footer h2 { font-size: 1.6em; margin-bottom:15px; }
+.ayuda-footer h3 { font-size: 1.3em; margin-top: 20px; margin-bottom:10px;}
+.ayuda-footer h4 { font-size: 1.1em; margin-top: 10px; margin-bottom:5px; font-family: 'Roboto', sans-serif; font-weight: 700;}
+
+
+.ayuda-footer nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.ayuda-footer nav ul li {
+    margin-bottom: 8px;
+}
+.ayuda-footer nav ul li a {
+    color: var(--text-light);
+}
+.ayuda-footer nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+
+.site-footer-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color-dark-theme); /* UPDATED */
+}
+.site-footer-info p {
+    font-size: 0.9em;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.8;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-dark-section); /* Darker footer, consistent with header */
+    color: var(--text-light); /* UPDATED */
+    margin-top: 40px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color-dark-theme);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
     header h1 {
-        font-size: 2rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+        font-size: 2em;
     }
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    nav ul li a {
-        display: block;
-        padding: 0.8em 1em;
-        text-align: center;
-        font-size: 1.1rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    header nav ul li a {
+        font-size: 0.9em;
+        padding: 6px 10px;
     }
     main {
-        padding: 1.5rem 0.75rem;
+        padding: 20px;
+        margin: 20px auto;
     }
-    .content-card {
-        padding: 1.25rem 1.5rem;
+    .cookie-policy section h2 {
+        font-size: 1.6em;
     }
-    section h2 {
-        font-size: 1.7rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .cookie-policy section h3 {
+        font-size: 1.3em;
     }
-    article h3 {
-        font-size: 1.25rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .ayuda-footer {
+        padding: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 15px; /* INTRANET BASE FONT SIZE (small screen) - DO NOT CHANGE */
+    header nav ul li {
+        display: block;
+        margin: 5px 0;
     }
-    header h1 {
-        font-size: 1.7rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .cookie-policy section h2 {
+        font-size: 1.4em;
     }
-    section h2 {
-        font-size: 1.5rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .cookie-policy section h3 {
+        font-size: 1.2em;
     }
-    article h3 {
-        font-size: 1.15rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .cookie-policy p,
+    .cookie-policy ul li, .cookie-policy ol li,
+    .cookie-policy dd {
+        font-size: 0.95em;
     }
-    nav ul li a {
-         font-size: 1rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
-    }
-    p, ul li {
-        font-size: 0.95rem; /* INTRANET FONT SIZE - DO NOT CHANGE */
+    .tracker-category, .ayuda-footer {
+        padding: 15px;
     }
 }

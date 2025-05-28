@@ -5,19 +5,34 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Kalam', cursive, sans-serif;
-    background-color: #fdf6f0;
-    color: #4a3b31;
-    padding-top: 20px;
-    padding-bottom: 20px;
+/* --- NEW COLOR PALETTE VARIABLES (Copied from style.css for reference if not globally available) --- */
+:root {
+    --bg-dark-main: #876434; /* Dark warm brown for main page background */
+    --bg-dark-section: #4a3417; /* Slightly lighter for some sections/cards */
+    --bg-light-contrast: #F5EDE0; /* Light beige for contrasting sections (like Goikocina, Footer) */
+    --text-light: #F5EDE0; /* Off-white/light beige for text on dark backgrounds */
+    --text-dark: #3D352A; /* Dark brown for text on light backgrounds */
+    --accent-orange: #F7B731; /* Updated: Bright gold/yellow from logo cheese/highlights */
+    --accent-red: #ce7413; /* Rich red from tomato/tongue */
+    --accent-green: #7E8C4A; /* Earthy green from lettuce */
+    --accent-brown-light: #B08A6F; /* Updated: Lighter brown from logo bg for accents */
+    --border-color-dark-theme: #5A4D3F; /* For borders on dark elements */
 }
 
-/* Estilo para la fuente Ashton (asegúrate que la fuente esté disponible) */
-/* Si 'Ashton' no está definida globalmente, necesitarás @font-face o importarla */
+body {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    background-color: var(--bg-dark-main); /* UPDATED COLOR */
+    color: var(--text-light); /* UPDATED COLOR */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Estilo para la fuente Ashton (ahora Anton) */
 .font-style-ashton {
-    font-family: 'Ashton', 'Comic Sans MS', cursive, sans-serif !important; /* Añadido sans-serif como último fallback */
-    font-weight: bold !important;
+    font-family: 'Anton', sans-serif !important; /* UPDATED FONT */
+    font-weight: normal !important; /* Anton is already boldish, or use 400 if specific weight needed */
+    letter-spacing: 0.5px;
 }
 
 
@@ -25,43 +40,53 @@ body {
 .main-nav {
     padding-top: 20px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #ffcc80;
+    border-bottom: 2px solid var(--border-color-dark-theme); /* UPDATED COLOR */
     margin-bottom: 40px;
     width: 100%;
-    font-size: 1.5em;
 }
 
 .nav-buttons-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    max-width: 10000px; /* Considera si este valor es necesario o si puede ser más restrictivo o 100% */
+    gap: 15px; /* Reduced gap slightly */
+    max-width: 10000px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
 .nav-button {
-    background-color: #fff;
-    border: 1px solid #bcaaa4;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 0.95em;
-    color: #5a4a42;
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    background-color: transparent; /* UPDATED */
+    border: 2px solid var(--text-light); /* UPDATED */
+    border-radius: 25px; /* Match main site buttons */
+    padding: 10px 20px; /* Adjusted padding */
+    font-size: 14px; /* Adjusted size */
+    letter-spacing: 1px;
+    color: var(--text-light); /* UPDATED */
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-    background-color: #f5f5f5;
+    background-color: var(--text-light); /* UPDATED */
+    color: var(--bg-dark-main); /* UPDATED */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .nav-button.active {
-    background-color: #ffcc80;
-    color: #795548;
-    border-color: #ffb74d;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    background-color: var(--accent-orange); /* UPDATED */
+    color: var(--text-dark); /* UPDATED */
+    border-color: var(--accent-orange); /* UPDATED */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+.nav-button.active:hover {
+    background-color: #f8c555; /* Slightly lighter orange for hover on active */
+    color: var(--text-dark);
+}
+
 
 /* Área de contenido principal */
 .content-area {
@@ -71,16 +96,19 @@ body {
     gap: 40px;
     width: 100%;
     padding: 0 15px;
+    margin: 0 auto; /* Center content area if it has a max-width */
+    max-width: 950px; /* Common max-width from other intranet pages */
 }
 
 /* Caja de Fichaje (Entrada/Salida) */
 .fichaje-box {
-    background-color: #ffcc80;
-    border-radius: 15px;
+    background-color: var(--bg-dark-section); /* UPDATED COLOR */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px; /* Match main site cards */
     padding: 30px;
     width: 100%;
-    max-width: 550px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    max-width: 600px; /* Adjusted max-width */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Match main site card shadows */
 }
 
 .fichaje-section {
@@ -91,47 +119,53 @@ body {
 }
 
 .fichaje-section h2 {
-    /* font-family ya heredado o especificado por .font-style-ashton */
-    font-size: 2.2em;
-    color: #795548;
-    margin-bottom: 15px;
-    /* font-weight: bold; ya en .font-style-ashton */
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton if applied in HTML */
+    font-size: 2em; /* Adjusted size */
+    color: var(--accent-orange); /* UPDATED COLOR */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .fichaje-controls {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .fichaje-info {
-    background-color: #ffe0b2;
-    border: 1px solid #ffb74d;
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
     padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 1em; /* Usa la fuente Kalam por defecto */
-    color: #795548;
-    min-width: 90px;
+    border-radius: 5px;
+    font-size: 1em;
+    color: var(--text-light); /* UPDATED */
+    min-width: 100px;
     text-align: center;
 }
 
 .fichaje-action-button {
-    /* font-family ya heredado o especificado por .font-style-ashton */
-    background-color: #ffe0b2;
-    border: 1px solid #ffb74d;
-    padding: 10px 18px;
-    border-radius: 8px;
-    color: #795548;
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    background-color: var(--accent-red); /* UPDATED */
+    border: none; /* UPDATED */
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: var(--text-light); /* UPDATED */
     font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: all 0.3s ease;
 }
 .fichaje-action-button:hover {
-    background-color: #ffd54f;
+    background-color: #e78423; /* Darker red */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .fichaje-action-button:active {
-    transform: scale(0.95);
+    transform: scale(0.98) translateY(0);
 }
 
 /* Contenedor del Calendario y Botón Download */
@@ -141,51 +175,69 @@ body {
     align-items: center;
     gap: 25px;
     width: 100%;
-    max-width: 700px; /* Ajusta según el ancho de tu imagen de calendario */
+    max-width: 700px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* UPDATED */
 }
 
 .calendario-visualizador {
-    background-color: #ffcc80;
-    border-radius: 15px;
+    background-color: var(--bg-dark-main); /* Inner background for image if needed */
+    border-radius: 8px;
     width: 100%;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     overflow: hidden;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--border-color-dark-theme);
 }
 
 .calendario-visualizador img {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px; /* Bordes redondeados para la imagen si quieres */
+    border-radius: 6px;
 }
 
 .download-button {
-    /* font-family ya heredado o especificado por .font-style-ashton */
-    background-color: #ffcc80;
-    border: 1px solid #ffb74d;
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    background-color: var(--accent-green); /* UPDATED */
+    border: none; /* UPDATED */
     padding: 14px 30px;
-    border-radius: 8px;
-    color: #795548;
-    font-size: 1.2em;
+    border-radius: 25px;
+    color: var(--text-light); /* UPDATED */
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    /* font-weight: bold; ya en .font-style-ashton */
+    transition: all 0.3s ease;
 }
 .download-button:hover {
-    background-color: #ffd54f;
+    background-color: #6a783c; /* Darker Green */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .download-button:active {
-    transform: scale(0.95);
+    transform: scale(0.98) translateY(0);
 }
 
 /* ----- Responsive ----- */
 @media (min-width: 768px) {
     .fichaje-controls {
         flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 768px) { /* General tablet adjustments */
+    .nav-button {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+    .fichaje-section h2 {
+        font-size: 1.8em;
     }
 }
 
@@ -201,34 +253,42 @@ body {
     }
     .nav-buttons-container {
         padding: 0 10px;
+        gap: 10px;
     }
     .content-area {
         padding: 0 10px;
         gap: 20px;
     }
     .nav-button {
-        font-size: 0.85em;
-        padding: 8px 10px;
+        font-size: 11px; /* Further reduce for small screens */
+        padding: 6px 12px;
+        letter-spacing: 0.5px;
     }
     .fichaje-box {
         padding: 20px;
     }
     .fichaje-section h2 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
     .fichaje-info, .fichaje-action-button {
         font-size: 0.9em;
-        width: 100%; /* Para que ocupen el ancho en móvil y se apilen */
-        margin-bottom: 8px;
+        width: 100%; 
+        margin-bottom: 10px;
     }
-    .fichaje-controls > *:last-child { /* Evitar doble margen en el último elemento */
+    .fichaje-action-button {
+        padding: 10px 15px;
+    }
+    .fichaje-controls > *:last-child { 
         margin-bottom: 0;
+    }
+    .calendario-container {
+        padding: 15px;
     }
     .calendario-visualizador {
         padding: 5px;
     }
     .download-button {
-        font-size: 1.1em;
+        font-size: 1em;
         padding: 12px 22px;
     }
 }

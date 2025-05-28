@@ -1,193 +1,289 @@
 /* styles/estatuto.css */
-/* Estilos base heredados de fichaje.css */
+/* Estilos base (body, nav) heredados de fichaje.css */
 
-.main-container {
-    
-    margin: 0 auto;
+html {
+    scroll-behavior: smooth;
 }
 
-.nav-button.active {
-    background-color: #ffcc80;
-    color: #795548;
-    border-color: #ffb74d;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
+/* .main-container defined in fichaje.css */
 
 .content-section {
-    background-color: #fff8e1; 
-    border: 1px solid #ffecb3;
-    border-radius: 15px;
-    padding: 30px 40px; 
+    background-color: var(--bg-dark-section); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
+    padding: 30px 40px;
     width: 100%;
-    box-sizing: border-box; /* Añadido para mejor manejo de padding y border */
-    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-    margin: 0 auto;
-    max-width: 950px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    /* margin: 0 auto; /* Centered by .content-area in fichaje.css */
+    /* max-width: 950px; /* Controlled by .content-area */
     margin-bottom: 30px;
 }
+.content-section:last-child{
+    margin-bottom: 0;
+}
 
-.section-title {
-    font-size: 2.5em; 
-    color: #795548; 
+.section-title { /* h2.font-style-ashton.section-title */
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 2.5em;
+    color: var(--accent-orange); /* UPDATED */
+    margin-top: 0; /* If first element in content-section */
     margin-bottom: 30px;
     text-align: center;
     padding-bottom: 15px;
-    border-bottom: 2px solid #ffca28; 
-    word-spacing: 10px;
-    letter-spacing: 3px;
-    line-height: 1.5; /* Ajustado desde 100px */
-    margin-top: 30px;
+    border-bottom: 2px solid var(--accent-orange); /* UPDATED */
+    letter-spacing: 1px; /* Adjusted */
+    line-height: 1.3;
+}
+
+/* --- Table of Contents (Índice) Styles for Estatuto --- */
+.toc-container {
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.toc-title {
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 1.8em;
+    color: var(--accent-orange); /* UPDATED */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.toc-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-orange); /* UPDATED */
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.toc-list li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-left: 5px solid var(--accent-orange); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-size: 1em;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toc-list li a::before {
+    content: '📜';
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    color: var(--accent-orange); /* UPDATED */
+    font-size: 1.3em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.toc-list li a[href*="#link-container-boe"]::before {
+    content: '🏛️';
+}
+
+.toc-list li a:hover,
+.toc-list li a:focus {
+    background-color: var(--accent-orange); /* UPDATED */
+    border-color: var(--accent-orange);
+    border-left-color: #e6a100; /* Darker orange */
+    color: var(--text-dark); /* UPDATED */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+/* Estilos para la sección de Puntos Clave */
+.key-points-section {
+    margin-top: 0;
+}
+
+.subsection-title-kalam { /* Renamed to .subsection-title-anton */
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 1.9em;
+    color: var(--text-light); /* UPDATED */
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    text-align: center; /* Center subsection titles too */
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    letter-spacing: 1px;
+}
+
+.professional-text-block {
+    /* This container doesn't need its own styling if items are styled */
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+
+.key-point-item {
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-left: 4px solid var(--accent-orange); /* UPDATED */
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.key-point-item:last-child {
+    margin-bottom: 0;
+}
+
+.key-point-title {
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-weight: normal; /* Anton is boldish */
+    font-size: 1.4em;
+    color: var(--accent-orange); /* UPDATED */
+    display: block;
+    text-align: left;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border-color-dark-theme); /* UPDATED */
+}
+
+.key-point-description {
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-size: 1.1em; /* Adjusted from 1.15em */
+    line-height: 1.7;
+    color: var(--text-light); /* UPDATED */
+    margin-bottom: 0;
+    text-align: justify;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    letter-spacing: 0.3px;
+    opacity: 0.9;
 }
 
 /* Estilos para el contenedor del enlace al BOE */
 .link-container {
-    max-width: 700px; 
-    margin: 40px auto; /* Ajustado para dar espacio uniforme */
+    max-width: 700px;
+    margin: 50px auto 0; /* Adjusted margin, no bottom margin needed if last */
     text-align: center;
-    padding-top: 30px; /* Añadido para separar del contenido anterior */
-    padding-bottom: 30px;
-    border-top: 1px dashed #ffdd80; /* Cambiado de bottom a top para separar de la sección anterior */
-    border-bottom: none; /* Eliminado si el anterior era el último elemento visual de separación */
+    padding-top: 30px;
+    /* padding-bottom: 20px; /* Removed, container is last */
+    border-top: 2px solid var(--border-color-dark-theme); /* UPDATED */
 }
 
 .link-description {
-    font-family: 'Kalam', cursive;
-    font-size: 1.15em;
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-size: 1.1em; /* Adjusted */
     line-height: 1.6;
-    color: #5d4037; 
+    color: var(--text-light); /* UPDATED */
     margin-bottom: 25px;
+    opacity: 0.9;
 }
 
 .external-link-button {
-    display: inline-flex; 
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffb74d; 
-    border: 2px solid #ffa726; 
+    background-color: var(--accent-orange); /* UPDATED */
+    border: none; /* UPDATED */
     padding: 15px 30px;
-    border-radius: 10px;
-    color: #4e342e; 
-    font-size: 0.8em; 
+    border-radius: 25px; /* Match main site buttons */
+    color: var(--text-dark); /* UPDATED */
+    font-size: 1em; /* Adjusted from 0.8em */
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* From main buttons */
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-    letter-spacing: 3px;
-    /* margin: 0 auto; No necesario en inline-flex dentro de un text-align:center */
-    word-spacing: 2px;
-    font-family: 'Kalam', cursive; /* Asegurar la fuente si .font-style-ashton no la define */
+    transition: all 0.3s ease; /* Match main site buttons */
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2); /* Softer shadow */
 }
 
 .external-link-button:hover {
-    background-color: #ffa000; 
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    background-color: #f8c555; /* Lighter orange */
+    transform: translateY(-2px) scale(1.03); /* Match main site buttons */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3); /* Match main site buttons */
 }
 
 .external-link-button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: translateY(0px) scale(0.98); /* Adjusted active state */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .link-icon {
-    width: 24px; 
+    width: 24px;
     height: 24px;
     margin-right: 10px;
     vertical-align: middle;
+    /* Assuming icon is dark and needs to be light on orange button */
+    filter: brightness(0) saturate(100%) invert(16%) sepia(7%) saturate(1000%) hue-rotate(348deg) brightness(99%) contrast(91%);
 }
 
 .link-note {
-    font-family: 'Kalam', cursive;
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     font-size: 0.9em;
-    color: #a1887f; 
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.7; /* More subtle */
     margin-top: 15px;
 }
 
-/* Estilos para la nueva sección de Puntos Clave como texto profesional */
-.key-points-section {
-    margin-top: 30px;
-}
-
-.subsection-title-kalam { 
-    font-family: 'Kalam', cursive;
-    font-size: 1.8em; 
-    color: #8d6e63; 
-    margin-top: 0;
-    margin-bottom: 20px; 
-    padding-bottom: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ffe0b2; 
-}
-
-.professional-text-block {
-    background-color: #ffffff; 
-    border: 1px solid #f5e6c3; 
-    border-radius: 8px;
-    padding: 20px 25px; 
-    margin-bottom: 30px; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    /* text-align: center; Eliminado de aquí, se manejará en los hijos */
-}
-
-.professional-text-block p {
-    font-family: 'Kalam', cursive; 
-    font-size: 1.2em; 
-    line-height: 1.65; 
-    color: #4a4a4a; 
-    margin-bottom: 25px; /* Reducido desde 50px, ajustar si es necesario */
-    margin-left: 1px;
-    margin-right: 12px;
-    text-align: justify;   /* ¡CAMBIADO AQUÍ! */
-    hyphens: none;         /* ¡AÑADIDO AQUÍ! */
-    -webkit-hyphens: none; /* ¡AÑADIDO AQUÍ! */
-    -ms-hyphens: none;     /* ¡AÑADIDO AQUÍ! */
-}
-
-.professional-text-block p:last-child {
-    margin-bottom: 0; /* Ajustado, antes era 30px */
-}
-
-.professional-text-block p strong {
-    font-weight: bold; 
-    color: #795548; 
-    display: block;         /* ¡AÑADIDO AQUÍ! */
-    text-align: center;     /* ¡AÑADIDO AQUÍ! */
-    margin-bottom: 8px;    /* Espacio entre el título y la descripción */
-}
-
-/* Nota sobre el HTML:
-   La estructura <br></p> al final de cada párrafo en tu HTML es incorrecta.
-   El <br> debería estar dentro del contenido o eliminarse si solo es para espaciado (usa margin/padding en su lugar).
-   Ej: <p>Texto...<strong>Título:</strong><br>Descripción...</p>
-   o mejor:
-   <div>
-       <h4 class="item-title">Título</h4>
-       <p class="item-description">Descripción...</p>
-   </div>
-   Los estilos aplicados intentarán funcionar con el HTML provisto.
-*/
-
-
 @media (max-width: 768px) {
     .content-section {
-        padding: 25px 30px;
+        padding: 25px 20px;
     }
     .section-title {
-        font-size: 1.3em; /* Ajustado para consistencia */
-        line-height: 1.4;
+        font-size: 2.2em; /* Adjusted */
     }
-    .external-link-button {
-        font-size: 0.7em; /* Ajustado para consistencia */
-        padding: 12px 25px;
+    .toc-title {
+        font-size: 1.6em;
     }
-    .subsection-title-kalam {
-        font-size: 1.5em;
+    .toc-list li a {
+        font-size: 0.95em;
+        padding: 12px 15px;
+        gap: 10px;
     }
-    .professional-text-block {
+    .toc-list li a::before {
+        font-size: 1.2em;
+    }
+    .subsection-title-kalam { /* .subsection-title-anton */
+        font-size: 1.7em; /* Adjusted */
+    }
+    .key-point-item {
         padding: 15px 20px;
     }
-    .professional-text-block p {
-        font-size: 1em;
+    .key-point-title {
+        font-size: 1.25em;
+    }
+    .key-point-description {
+        font-size: 1.05em;
+    }
+    .external-link-button {
+        font-size: 0.9em; /* Adjusted from 0.75em */
+        padding: 12px 25px;
     }
 }
 
@@ -196,43 +292,49 @@
         padding: 20px 15px;
     }
     .section-title {
-        font-size: 1.2em; /* Ajustado para consistencia */
+        font-size: 1.8em; /* Adjusted */
+        margin-bottom: 25px;
+    }
+    .toc-container {
+        padding: 20px 15px;
+    }
+    .toc-title {
+        font-size: 1.4em;
+    }
+    .toc-title::after {
+        width: 60px;
+    }
+    .toc-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .toc-list li a {
+        font-size: 0.9em;
+    }
+    .subsection-title-kalam { /* .subsection-title-anton */
+        font-size: 1.4em;
         margin-bottom: 20px;
-        line-height: 1.3;
     }
-    .link-container {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    .link-description {
-        font-size: 1.05em;
-    }
-    .external-link-button {
-        font-size: 0.7em; /* Ajustado para consistencia */
-        padding: 10px 20px;
-        width: auto; /* Permitir que se ajuste al contenido */
-        max-width: 90%; /* Para evitar que sea demasiado ancho */
-        box-sizing: border-box;
-    }
-     .link-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 8px;
-    }
-    .subsection-title-kalam {
-        font-size: 1.35em;
-    }
-    .professional-text-block {
+    .key-point-item {
         padding: 15px;
     }
-    .professional-text-block p {
-        font-size: 0.95em;
-        line-height: 1.6;
-        /* Si el texto justificado sin guiones crea demasiado espacio en móviles, */
-        /* considera cambiar a text-align: left; aquí: */
-        /* text-align: left; */
+    .key-point-title {
+        font-size: 1.15em;
     }
-    /* .points-summary-note no existe en el HTML proporcionado */
+    .key-point-description {
+        font-size: 1em;
+        line-height: 1.65;
+    }
+    .link-container {
+        margin-top: 40px;
+        padding-top: 25px;
+    }
+    .link-description {
+        font-size: 1em;
+    }
+    .external-link-button {
+        font-size: 0.9em; /* Adjusted from 0.7em */
+        padding: 10px 18px;
+        max-width: 90%;
+    }
 }

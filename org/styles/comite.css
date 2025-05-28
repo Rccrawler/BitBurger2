@@ -1,91 +1,27 @@
-/* START OF MODIFIED FILE comite.css */
+/* Base styles like body, .main-nav, .nav-button are in fichaje.css */
 
-/* Reset básico y estilos generales (Heredados de fichaje.css, pero podemos reafirmar) */
-body {
-    font-family: 'Kalam', cursive, sans-serif; /* Default font for most text */
-    background-color: #fdf6f0; /* Common intranet background */
-    color: #4a3b31; /* Common text color */
-    margin: 0;
-    padding: 20px 0; /* Similar to fichaje.css body padding */
-    line-height: 1.6;
+html {
+    scroll-behavior: smooth;
 }
 
+/* .main-container needs to be styled if not globally, or use .content-area from fichaje.css */
 .main-container {
     width: 100%;
     margin: 0 auto;
 }
 
-/* Estilo para la fuente Ashton (ya debería estar en fichaje.css) */
-.font-style-ashton {
-    font-family: 'Ashton', 'Comic Sans MS', cursive, sans-serif !important;
-    font-weight: bold !important;
-}
-
-/* Navegación principal - Asumiendo que fichaje.css lo maneja.
-   Si se necesita anular algo específicamente para comite.html, se haría aquí.
-   Por ahora, nos aseguramos de no contradecir fichaje.css. */
-.main-nav {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ffcc80;
-    margin-bottom: 40px;
-    width: 100%;
-    font-size: 1.5em; /* Consistent with other navs */
-}
-
-.nav-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    max-width: 10000px; /* Consistent */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.nav-button {
-    background-color: #fff;
-    border: 1px solid #bcaaa4;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 0.95em; /* Consistent */
-    color: #5a4a42;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-.nav-button:hover {
-    background-color: #f5f5f5;
-}
-
-.nav-button.active {
-    background-color: #ffcc80;
-    color: #795548;
-    border-color: #ffb74d;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-/* Área de contenido principal */
-.content-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los .content-section si tienen max-width */
-    gap: 30px; /* Espacio entre las secciones de contenido */
-    width: 100%;
-    padding: 0 15px; /* Padding lateral para el área de contenido */
-    box-sizing: border-box;
-}
+/* .font-style-ashton is defined in fichaje.css to use 'Anton' */
 
 /* Estilos para las secciones de contenido */
 .content-section {
-    background-color: #fff8e1; /* Un color crema/amarillo pálido, similar a estatuto.css */
-    border: 1px solid #ffecb3; /* Borde a juego */
-    border-radius: 15px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
     padding: 30px 40px;
     width: 100%;
-    max-width: 950px; /* Ancho máximo consistente con estatuto/despidos */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    margin-bottom: 20px; /* Margen entre secciones si no hay gap en content-area */
+    /* max-width: 950px; /* Controlled by .content-area in fichaje.css */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
     box-sizing: border-box;
 }
 .content-section:last-child {
@@ -94,28 +30,118 @@ body {
 
 /* Título principal de la página (H1) */
 .section-title { /* Aplicado a h1.font-style-ashton.section-title */
-    font-size: 2.8em; /* Tamaño similar a otros títulos principales */
-    color: #795548; /* Color marrón oscuro, común en títulos */
-    margin-top: 0; /* Quitar margen superior si es el primer elemento de content-section */
-    margin-bottom: 40px;
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    font-size: 2.5em; 
+    color: var(--accent-orange); /* UPDATED */
+    margin-top: 0; 
+    margin-bottom: 30px;
     text-align: center;
-    border-bottom: 2px solid #ffca28; /* Borde inferior temático */
+    border-bottom: 2px solid var(--accent-orange); /* UPDATED */
     padding-bottom: 20px;
-    word-spacing: 8px;
-    letter-spacing: 2px;
-    line-height: 1.4;
+    letter-spacing: 1px; 
+    line-height: 1.3;
+}
+
+/* --- Table of Contents (Índice) Styles for Comite --- */
+.toc-container {
+    background-color: var(--bg-dark-main); /* UPDATED, contrast with section */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.toc-title { /* Aplicado a h3.font-style-ashton.toc-title */
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    font-size: 1.8em;
+    color: var(--accent-orange); /* UPDATED */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.toc-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-orange); /* UPDATED */
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.toc-list li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-left: 5px solid var(--accent-orange); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    text-decoration: none;
+    border-radius: 6px; 
+    font-family: 'Roboto', sans-serif; /* UPDATED - for list items */
+    font-size: 1em;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toc-list li a::before {
+    content: 'ℹ️';
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    color: var(--accent-orange); /* UPDATED */
+    font-size: 1.3em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Iconos específicos para el comité */
+.toc-list li a[href*="#comite-structure"]::before { content: '👥'; } 
+.toc-list li a[href*="#all-commissions"]::before { content: '📋'; } 
+.toc-list li a[href*="#commission-health-safety"]::before { content: '🛡️'; } 
+.toc-list li a[href*="#commission-equality"]::before { content: '⚖️'; } 
+.toc-list li a[href*="#commission-training"]::before { content: '🎓'; } 
+.toc-list li a[href*="#commission-economic"]::before { content: '📊'; }
+
+
+.toc-list li a:hover,
+.toc-list li a:focus {
+    background-color: var(--accent-orange); /* UPDATED */
+    border-color: var(--accent-orange);
+    border-left-color: #e6a100; /* Darker orange */
+    color: var(--text-dark); /* UPDATED */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    outline: none;
 }
 
 /* Párrafos introductorios y generales */
 .intro-paragraph,
 .comite-composition p,
-.commission-item p {
-    font-family: 'Kalam', cursive;
+.commission-item p { 
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     font-size: 1.1em;
     line-height: 1.7;
-    color: #4a3b31; /* Color de texto principal */
+    color: var(--text-light); /* UPDATED */
     margin-bottom: 15px;
     text-align: justify;
+    opacity: 0.9;
     hyphens: none;
     -webkit-hyphens: none;
     -ms-hyphens: none;
@@ -127,18 +153,19 @@ body {
 
 /* Subtítulos de sección (H2) */
 .subsection-title { /* Aplicado a h2.font-style-ashton.subsection-title */
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
     font-size: 2em;
-    color: #8d6e63; /* Un marrón medio */
-    margin-top: 0; /* Si es el primer elemento de .content-section */
+    color: var(--text-light); /* UPDATED */
+    margin-top: 0;
     margin-bottom: 25px;
-    text-align: left; /* O 'center' si se prefiere como en otros sitios */
+    text-align: left;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ffe0b2; /* Borde sutil */
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
 }
 
 /* Lista de miembros */
 .member-list {
-    font-family: 'Kalam', cursive;
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     list-style: none;
     padding-left: 0;
     margin-bottom: 20px;
@@ -146,71 +173,75 @@ body {
 }
 .member-list li {
     padding: 8px 0;
-    border-bottom: 1px dashed #ffecb3;
-    color: #5d4037;
+    border-bottom: 1px dashed var(--border-color-dark-theme); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
 }
 .member-list li:last-child {
     border-bottom: none;
 }
 .member-list li strong {
-    color: #795548; /* Marrón más oscuro para el cargo */
+    color: var(--accent-orange); /* UPDATED */
+    font-weight: 500; /* Roboto medium */
 }
 
 /* Contenedor de cada comisión */
 .commission-item {
-    background-color: #ffffff;
-    border: 1px solid #ffe0b2; /* Borde naranja muy claro, como benefit-item */
-    border-radius: 10px;
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
     padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    margin-bottom: 30px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
 .commission-item:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0; 
 }
 
 /* Nombre de la comisión (H3) */
 .commission-name {
-    font-family: 'Kalam', cursive;
+    font-family: 'Anton', sans-serif; /* UPDATED */
     font-size: 1.7em;
-    color: #bf360c; /* Naranja oscuro/rojizo, como benefit-text h3 */
+    color: var(--accent-red); /* UPDATED */
     margin-top: 0;
     margin-bottom: 10px;
 }
 
 /* Responsable de la comisión */
 .commission-responsible {
-    font-family: 'Kalam', cursive;
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     font-size: 1.05em;
-    color: #5d4037;
+    color: var(--text-light); /* UPDATED */
     margin-bottom: 20px;
     font-style: italic;
+    opacity: 0.8;
 }
 .commission-responsible strong {
-    font-weight: bold;
+    font-weight: 500; /* Roboto medium */
     font-style: normal;
-    color: #4e342e;
+    color: var(--accent-orange); /* UPDATED */
 }
 
 /* Títulos de Objetivos/Funciones (H4) */
 .commission-item h4 {
-    font-family: 'Kalam', cursive;
+    font-family: 'Anton', sans-serif; /* UPDATED */
     font-size: 1.3em;
-    color: #8d6e63; /* Marrón medio */
+    color: var(--text-light); /* UPDATED */
     margin-top: 20px;
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px dotted #d7ccc8;
+    border-bottom: 1px dotted var(--border-color-dark-theme); /* UPDATED */
 }
 
 /* Listas dentro de las comisiones */
 .commission-item ul {
-    font-family: 'Kalam', cursive;
-    list-style: disc; /* O 'none' con ::before para bullets personalizados */
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    list-style: disc;
     padding-left: 25px;
     margin-bottom: 15px;
     font-size: 1.05em;
-    color: #5d4037;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
 }
 .commission-item ul li {
     margin-bottom: 8px;
@@ -224,12 +255,23 @@ body {
 /* ----- Responsive ----- */
 @media (max-width: 768px) {
     .content-section {
-        padding: 25px 30px;
+        padding: 25px 20px; 
     }
     .section-title {
-        font-size: 2.2em; /* Reducido para tabletas */
-        margin-bottom: 30px;
+        font-size: 2.2em;
+        margin-bottom: 25px; 
         padding-bottom: 15px;
+    }
+    .toc-title {
+        font-size: 1.6em;
+    }
+    .toc-list li a {
+        font-size: 0.95em;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    .toc-list li a::before {
+        font-size: 1.2em;
     }
     .subsection-title {
         font-size: 1.7em;
@@ -255,10 +297,26 @@ body {
     }
     .section-title {
         font-size: 1.8em;
-        margin-bottom: 25px;
+        margin-bottom: 20px; 
         padding-bottom: 10px;
-        word-spacing: 4px;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
+    }
+    .toc-container {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+    .toc-title {
+        font-size: 1.4em;
+    }
+    .toc-title::after {
+        width: 60px;
+    }
+    .toc-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .toc-list li a {
+        font-size: 0.9em;
     }
     .subsection-title {
         font-size: 1.5em;
@@ -270,11 +328,7 @@ body {
      .commission-item h4 {
         font-size: 1.1em;
     }
-
-    .nav-button { /* Copiado de fichaje.css para consistencia en móvil */
-        font-size: 0.85em;
-        padding: 8px 10px;
-    }
+    /* .nav-button responsive styles inherited from fichaje.css */
     .intro-paragraph,
     .comite-composition p,
     .commission-item p,
@@ -283,5 +337,3 @@ body {
         font-size: 0.95em;
     }
 }
-
-/* END OF MODIFIED FILE comite.css */

@@ -1,114 +1,58 @@
-/* Reset básico y estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset básico y estilos generales (mostly from fichaje.css) */
+/* body, .main-nav, .nav-button styles are inherited from fichaje.css */
 
-body {
-    font-family: 'Kalam', cursive, sans-serif;
-    background-color: #fdf6f0;
-    color: #4a3b31;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    line-height: 1.6;
+.nav-button.active { /* Copied from fichaje.css for explicit state if needed */
+    background-color: var(--accent-orange);
+    color: var(--text-dark);
+    border-color: var(--accent-orange);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
-.font-style-ashton {
-    font-family: 'Ashton', 'Comic Sans MS', cursive, sans-serif !important;
-    font-weight: bold !important;
-}
-
-.main-nav {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ffcc80;
-    margin-bottom: 40px;
-    width: 100%;
-    font-size: 1.5em;
-}
-
-.nav-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    max-width: 10000px; /* Considera si este valor es necesario o si puede ser más restrictivo o 100% */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.nav-button {
-    background-color: #fff;
-    border: 1px solid #bcaaa4;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 0.95em;
-    color: #5a4a42;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-.nav-button:hover {
-    background-color: #f5f5f5;
-}
-
-.nav-button.active {
-    background-color: #ffcc80;
-    color: #795548;
-    border-color: #ffb74d;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-/* Estilo para el botón activo en la página de bienvenida,
-   y :active para cuando cualquier botón se presiona,
-   alineado con los estilos de estatuto.css para el botón activo */
-.nav-button.active,
-.nav-button:active {
-    background-color: #ffcc80;
-    color: #795548; /* Coincide con estatuto.css .active */
-    border-color: #ffb74d; /* Coincide con estatuto.css .active */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Coincide con estatuto.css .active */
-    transform: none; /* Quitamos el scale si usamos box-shadow para el estado activo */
+.nav-button.active:hover {
+    background-color: #f8c555; /* Lighter orange */
+    color: var(--text-dark);
 }
 
 
-/* --- EL RESTO DEL CSS (content-area, video-placeholder, etc.) PERMANECE IGUAL --- */
+/* Content area specific to bienvenida */
 .content-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    padding: 0 15px;
-    margin-bottom: 40px;
+    /* General .content-area styles from fichaje.css:
+       display: flex; flex-direction: column; align-items: center;
+       gap: 40px; width: 100%; padding: 0 15px; max-width: 950px; margin: 0 auto; */
+    margin-bottom: 40px; /* Add bottom margin if it's the last thing on page */
 }
 
-.page-main-title {
+.page-main-title { /* This class was not used in the HTML provided, but good to have */
+    font-family: 'Anton', sans-serif; /* UPDATED */
     font-size: 2.2em;
-    color: #4a3b31;
-    margin-bottom: 10px;
+    color: var(--accent-orange); /* UPDATED */
+    margin-bottom: 20px; /* Adjusted */
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .welcome-video-section,
 .welcome-description-section {
     width: 100%;
-    max-width: 650px;
-    display: flex;
-    justify-content: center;
+    max-width: 750px; /* Increased max-width for video/description */
+    display: flex; 
+    justify-content: center; 
+    background-color: var(--bg-dark-section); /* ADDED container background */
+    padding: 20px; /* ADDED padding */
+    border-radius: 8px; /* ADDED border-radius */
+    border: 1px solid var(--border-color-dark-theme); /* ADDED border */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* ADDED shadow */
 }
 
 .video-placeholder {
-    background-color: #ffcc80;
-    border: 1px solid #e69500;
-    border-radius: 15px;
+    background-color: #000; /* Black background for video player */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px; /* Consistent rounding */
     width: 100%;
     aspect-ratio: 16 / 9;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Inner shadow for depth, slightly increased */
     padding: 0;
     overflow: hidden;
 }
@@ -117,89 +61,70 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 8px; /* Match placeholder */
     display: block;
 }
 
 .description-box {
-    background-color: #ffcc80;
-    border: 1px solid #e69500;
-    border-radius: 15px;
     width: 100%;
-    padding: 25px 30px;
-    font-size: 1.1em;
-    color: #4a3b31;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    /* text-align: left; Ya no es necesario aquí si los párrafos lo controlan,
-                         o puedes cambiarlo a justify si quieres que afecte a texto
-                         directo en .description-box que no esté en un <p> */
+    padding: 20px; 
+    color: var(--text-light); /* UPDATED */
     min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.description-box h3 {
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    color: var(--accent-orange); /* UPDATED */
+    font-size: 1.8em; /* Adjusted size */
+    margin-bottom: 20px; /* Increased spacing */
+    text-align: center;
+    letter-spacing: 0.5px;
+}
 
 .description-box p {
-    margin-bottom: 10px;
-    text-align: justify;   /* ¡AQUÍ! Para justificar el texto del párrafo */
-
-    /* Para evitar la partición de palabras con guion al final de la línea */
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-size: 1.1em; /* Standardized size */
+    margin-bottom: 15px; 
+    text-align: justify;
+    line-height: 1.7; 
+    opacity: 0.9;
     hyphens: none;
-    -webkit-hyphens: none; /* Para Safari y Chrome antiguos/móviles */
-    -ms-hyphens: none;     /* Para IE / Edge antiguos */
-    /* Firefox generalmente respeta 'hyphens: none' sin prefijo */
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 }
 
 .description-box p:last-child {
     margin-bottom: 0;
-    /* Opcional: la última línea de un párrafo justificado a veces se ve mejor alineada a la izquierda.
-       text-align-last: left;
-       Pero si quieres que también intente justificarse (puede crear mucho espacio si es corta),
-       déjalo como está o usa text-align-last: justify;
-       El comportamiento por defecto de text-align: justify; es que la última línea se alinee a la izquierda.
-    */
 }
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-/**/
 
 
 /* ----- Responsive ----- */
 @media (max-width: 768px) {
     .content-area {
-        gap: 25px;
+        gap: 30px; /* Adjusted gap */
     }
     .page-main-title {
         font-size: 2em;
     }
+    .welcome-video-section,
+    .welcome-description-section {
+        padding: 15px;
+        max-width: 95%; /* Allow more fluid width */
+    }
     .description-box {
         font-size: 1em;
-        padding: 20px;
+        padding: 15px;
+    }
+    .description-box h3 {
+        font-size: 1.6em; /* Adjusted */
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .main-nav {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        margin-bottom: 20px;
-    }
-    .nav-buttons-container {
-        padding: 0 10px;
-        /* Para móviles, es común que los botones se envuelvan o se hagan más pequeños.
-           El gap y padding ya son bastante ajustados. */
-    }
-    .nav-button {
-        font-size: 0.9em; /* El font-size ya se reduce en móviles */
-        padding: 8px 10px; /* Ajustamos padding también en móviles si es necesario */
-    }
+    /* body, main-nav, nav-button responsive styles inherited from fichaje.css */
     .content-area {
         padding: 0 10px;
         gap: 20px;
@@ -207,16 +132,25 @@ body {
     .page-main-title {
         font-size: 1.7em;
     }
+    .welcome-video-section,
+    .welcome-description-section {
+        padding: 10px;
+    }
     .video-placeholder {
-        border-radius: 10px;
+        border-radius: 6px;
     }
     .video-placeholder video {
-        border-radius: 10px;
+        border-radius: 6px;
     }
     .description-box {
-        padding: 15px;
+        padding: 10px;
         font-size: 0.95em;
-        border-radius: 10px;
         min-height: 120px;
+    }
+     .description-box h3 {
+        font-size: 1.4em; /* Adjusted */
+    }
+    .description-box p {
+        font-size: 1em; /* Ensure readability */
     }
 }

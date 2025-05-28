@@ -1,184 +1,142 @@
 /* styles/despidos.css */
-/* Estilos base heredados de fichaje.css */
-
-.main-nav {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ffcc80;
-    margin-bottom: 40px;
-    width: 100%;
-    font-size: 1.5em;
-}
-
-.nav-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    max-width: 10000px; /* Considera si este valor es necesario o si puede ser más restrictivo o 100% */
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.nav-button {
-    background-color: #fff;
-    border: 1px solid #bcaaa4;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 0.95em;
-    color: #5a4a42;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-.nav-button:hover {
-    background-color: #f5f5f5;
-}
-
-.nav-button.active {
-    background-color: #ffcc80;
-    color: #795548;
-    border-color: #ffb74d;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
+/* Estilos base (body, nav) heredados de fichaje.css */
 
 .content-section {
-    background-color: #ffebee; 
-    border: 1px solid #ffcdd2; 
-    border-radius: 15px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px;
     padding: 30px;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    margin-bottom: 30px; 
-    max-width: 950px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    /* max-width: 950px; /* Controlled by .content-area */
 }
 .content-section:last-child {
     margin-bottom: 0;
 }
 
-.section-title { /* NO JUSTIFICAR */
-    font-size: 1.8em;
-    color: #c62828; 
-    margin-bottom: 50px;
+.section-title { /* Aplicado a h2.font-style-ashton.section-title */
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 2.2em; /* Adjusted, was 1.8em */
+    color: var(--accent-red); /* UPDATED, to match theme of dismissals */
+    margin-top: 0; /* If first element in content-section */
+    margin-bottom: 30px; /* Adjusted, was 50px */
     text-align: center;
-    border-bottom: 2px solid #ef9a9a; 
-    padding-bottom: 50px;   
-    word-spacing: 12px; 
-    letter-spacing: 5px; 
-    line-height: 80px; 
-    margin-top: 30px;
-    margin-left: 5px;
-    margin-right: 5px;
+    border-bottom: 2px solid var(--accent-red); /* UPDATED */
+    padding-bottom: 20px; /* Adjusted, was 50px */
+    letter-spacing: 1px; /* Adjusted */
+    line-height: 1.4; /* Adjusted */
 }
 
-.intro-text, 
-.important-note, 
-.clarification { 
-    font-family: 'Kalam', cursive;
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #4e342e; 
-    margin-bottom: 25px;
-    text-align: justify; 
-}
-
+.intro-text,
 .company-criteria > p:not(.clarification) {
-    font-family: 'Kalam', cursive;
-    font-size: 1.1em; 
-    line-height: 1.6;
-    color: #4e342e; 
-    margin-bottom: 25px; 
-    text-align: justify; 
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-size: 1.1em;
+    line-height: 1.7; /* Increased for readability */
+    color: var(--text-light); /* UPDATED */
+    margin-bottom: 25px;
+    text-align: justify;
+    opacity: 0.9;
 }
-
 
 .important-note {
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     margin-top: 25px;
-    padding: 15px;
-    background-color: #fffde7; 
-    border: 1px dashed #fff59d; 
+    padding: 20px; /* Increased padding */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px dashed var(--accent-orange); /* UPDATED */
     border-radius: 8px;
+    color: var(--text-light); /* UPDATED */
+    font-size: 1.05em; /* Slightly smaller than main text */
+    line-height: 1.6;
+    text-align: justify;
 }
 .important-note strong {
-    color: #b71c1c; 
+    color: var(--accent-orange); /* UPDATED */
+    font-weight: 500; /* Roboto medium */
 }
 
 .causes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-bottom: 20px;
+    gap: 30px; /* Increased gap */
+    margin-bottom: 30px; /* Increased margin */
 }
 
 .cause-category {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #ffccbc; 
+    background-color: var(--bg-dark-main); /* UPDATED */
+    padding: 25px; /* Increased padding */
+    border-radius: 8px;
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-.cause-category h3 { /* NO JUSTIFICAR (SUBTÍTULO) */
-    font-family: 'Kalam', cursive;
-    font-size: 1.35em;
-    color: #d32f2f; 
+.cause-category h3 {
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 1.5em; /* Adjusted */
+    color: var(--accent-orange); /* UPDATED */
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased margin */
 }
 
 .cause-category ul,
 .company-criteria ul {
-    font-family: 'Kalam', cursive;
-    list-style: none; 
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    list-style: none;
     padding-left: 0;
-    color: #5d4037; 
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
 }
 
 .cause-category ul li,
 .company-criteria ul li {
-    padding-left: 25px; 
+    padding-left: 30px; /* Increased padding for icon */
     position: relative;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    text-align: justify; 
+    margin-bottom: 12px; /* Increased margin */
+    line-height: 1.6;
+    text-align: justify;
 }
 
 .cause-category ul li::before,
 .company-criteria ul li::before {
-    content: '⚠️'; 
+    content: '⚠️';
     position: absolute;
     left: 0;
-    top: 0px; 
-    color: #ef5350; 
-    font-size: 1.1em;
+    top: 2px; /* Adjusted for new font */
+    color: var(--accent-red); /* UPDATED */
+    font-size: 1.2em; /* Adjusted */
 }
 
 .company-criteria.optional-section {
-    background-color: #fff9c4; 
-    border-color: #fff59d;
+    background-color: var(--bg-dark-section); /* Consistent section bg */
+    border-color: var(--border-color-dark-theme); /* Consistent border */
 }
-.company-criteria.optional-section .section-title { /* NO JUSTIFICAR */
-    color: #f57f17; 
-    border-bottom-color: #fff176;
+.company-criteria.optional-section .section-title {
+    color: var(--accent-green); /* Different accent for this section */
+    border-bottom-color: var(--accent-green); /* Different accent */
 }
 .company-criteria.optional-section ul li::before {
-    content: '⭐'; 
-    color: #fbc02d; 
+    content: '⭐';
+    color: var(--accent-orange); /* Using orange for stars */
 }
-.company-criteria .clarification { 
+.company-criteria .clarification { /* This is a p tag */
+    font-family: 'Roboto', sans-serif; /* UPDATED */
     font-style: italic;
-    color: #757575; 
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.7; /* More subtle */
     font-size: 1em;
     margin-top: 20px;
+    text-align: justify;
 }
 
 /* Nuevos estilos para la sección de referencias legales */
 .legal-references {
-    background-color: #e3f2fd; 
-    border-color: #bbdefb;
+    background-color: var(--bg-dark-section); /* Consistent section bg */
+    border-color: var(--border-color-dark-theme);
 }
-.legal-references .section-title { /* NO JUSTIFICAR */
-    color: #1565c0; 
-    border-bottom-color: #90caf9;
+.legal-references .section-title {
+    color: var(--accent-blue); /* Assuming --accent-blue would be defined, using green as fallback */
+    border-bottom-color: var(--accent-green); /* e.g. #5c9dde, fallback var(--accent-green) */
 }
 
 .legal-subsection {
@@ -188,92 +146,101 @@
     margin-bottom: 0;
 }
 
-.subsection-title-kalam { /* NO JUSTIFICAR (SUBTÍTULO) */
-    font-family: 'Kalam', cursive;
-    font-size: 1.5em;
-    color: #1e88e5; 
+.subsection-title-kalam { /* Now .subsection-title-anton */
+    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-size: 1.6em; /* Adjusted */
+    color: var(--text-light); /* UPDATED, or a subtle accent */
     margin-top: 0;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px; /* Increased */
+    padding-bottom: 10px; /* Increased */
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
 }
 
 .articles-list {
-    font-family: 'Kalam', cursive;
-    list-style-type: decimal; 
-    padding-left: 30px; 
-    color: #37474f; 
+    font-family: 'Roboto', sans-serif; /* UPDATED */
+    list-style-type: decimal;
+    padding-left: 30px;
+    color: var(--text-light); /* UPDATED */
     font-size: 1.05em;
-    line-height: 1.6;
+    line-height: 1.7; /* Increased */
+    opacity: 0.9;
 }
 
 .articles-list li {
     margin-bottom: 12px;
-    text-align: justify; 
+    text-align: justify;
 }
 .articles-list li strong {
-    color: #0d47a1; 
+    color: var(--accent-orange); /* UPDATED */
+    font-weight: 500; /* Roboto medium */
 }
 
-.links-container { 
+.links-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; 
-    align-items: center; /* <<<<---- CAMBIO AQUÍ PARA CENTRAR LOS BOTONES */
+    gap: 20px; /* Increased gap */
+    align-items: center;
+    margin-top: 20px; /* Added margin */
 }
 
-.legal-link-button { 
+.legal-link-button {
+    font-family: 'Anton', sans-serif; /* UPDATED, from .font-style-ashton */
     display: inline-flex;
     align-items: center;
-    background-color: #ffb74d; 
-    border: 2px solid #ffa726; 
-    padding: 12px 20px;
-    border-radius: 8px;
-    color: #4e342e; 
-    font-size: 1em; /* Ajustado desde 0.5em para mejor legibilidad */
+    justify-content: center; /* Center text in button */
+    background-color: var(--accent-orange); /* UPDATED */
+    border: none; /* UPDATED */
+    padding: 12px 25px; /* Adjusted */
+    border-radius: 25px; /* Match main site buttons */
+    color: var(--text-dark); /* UPDATED */
+    font-size: 1em;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: auto; 
-    max-width: 100%; 
-    font-family: 'Ashton', 'Comic Sans MS', cursive, sans-serif; /* Asegura la fuente Ashton */
-    font-weight: bold; /* Asegura negrita para Ashton */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: auto;
+    min-width: 220px; /* Ensure buttons have some width */
+    max-width: 100%;
 }
 
 .legal-link-button:hover {
-    background-color: #ffa000; 
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #f8c555; /* Lighter orange */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .legal-link-button:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.link-icon { 
+.link-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
     vertical-align: middle;
+    filter: brightness(0) invert(1); /* Adjust if icon is dark, to make it light */
 }
+/* If icons are light, this might be needed: filter: invert(16%) sepia(7%) saturate(1000%) hue-rotate(348deg) brightness(99%) contrast(91%); to make them dark on the orange button */
+/* For now, assuming icons are fine or will be SVGs styled by fill */
 
 
 @media (max-width: 768px) {
     .content-section {
         padding: 25px;
     }
-    .section-title { 
+    .section-title {
         font-size: 2em;
     }
     .causes-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
-    .subsection-title-kalam { 
-        font-size: 1.35em;
+    .subsection-title-kalam { /* .subsection-title-anton */
+        font-size: 1.4em; /* Adjusted */
     }
-    .legal-link-button { 
-        font-size: 1.1em; 
+    .legal-link-button {
+        font-size: 0.9em; /* Adjusted */
         padding: 10px 18px;
     }
 }
@@ -282,33 +249,31 @@
     .content-section {
         padding: 20px 15px;
     }
-    .section-title { 
+    .section-title {
         font-size: 1.7em;
-        margin-bottom: 20px;
+        margin-bottom: 25px; /* Adjusted */
     }
-    .intro-text, .important-note, .clarification { 
+    .intro-text, .important-note, .clarification,
+    .company-criteria > p:not(.clarification) {
         font-size: 1em;
     }
-    .cause-category h3 { 
-        font-size: 1.2em;
+    .cause-category h3 {
+        font-size: 1.3em; /* Adjusted */
     }
-    .cause-category ul li, .company-criteria ul li { 
+    .cause-category ul li, .company-criteria ul li {
         font-size: 0.95em;
     }
-    .subsection-title-kalam { 
+    .subsection-title-kalam { /* .subsection-title-anton */
         font-size: 1.25em;
     }
-    .articles-list { 
+    .articles-list {
         font-size: 1em;
         padding-left: 20px;
     }
-    .legal-link-button { 
-        font-size: 1em; 
+    .legal-link-button {
+        font-size: 0.9em; /* Adjusted */
         padding: 10px 15px;
-        /* width: 100%; */ /* COMENTADO: Si quieres que en móvil ocupen el 100% del ancho, descomenta esta línea. */
-                           /* Si está comentado, se centrarán con su ancho natural. */
-        /* justify-content: center; */ /* Esta línea centra el contenido DENTRO del botón. Puedes mantenerla si es necesario. */
-                                    /* Si width:100% está activo y quieres el texto centrado, mantenla. */
-                                    /* Si el botón tiene ancho natural, el contenido ya suele estar centrado por el inline-flex. */
+        width: 90%; /* Make buttons take more width on mobile */
+        justify-content: center;
     }
 }
