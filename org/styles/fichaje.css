@@ -6,17 +6,25 @@
 }
 
 /* --- NEW COLOR PALETTE VARIABLES (Copied from style.css for reference if not globally available) --- */
+/* En tu :root (ej. fichaje.css) */
 :root {
-    --bg-dark-main: #876434; /* Dark warm brown for main page background */
-    --bg-dark-section: #4a3417; /* Slightly lighter for some sections/cards */
-    --bg-light-contrast: #F5EDE0; /* Light beige for contrasting sections (like Goikocina, Footer) */
-    --text-light: #F5EDE0; /* Off-white/light beige for text on dark backgrounds */
-    --text-dark: #3D352A; /* Dark brown for text on light backgrounds */
-    --accent-orange: #F7B731; /* Updated: Bright gold/yellow from logo cheese/highlights */
-    --accent-red: #ce7413; /* Rich red from tomato/tongue */
-    --accent-green: #7E8C4A; /* Earthy green from lettuce */
-    --accent-brown-light: #B08A6F; /* Updated: Lighter brown from logo bg for accents */
-    --border-color-dark-theme: #5A4D3F; /* For borders on dark elements */
+    /* ... otras variables ... */
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #ecdcc2; /* ESTE ES EL BEIGE CÁLIDO */
+    --bg-off-white-card: #FAF6EF; /* Un blanco hueso para tarjetas internas */
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+    --border-color-light-theme: #D9C7A9; /* Borde para el beige cálido */
+    --border-color-off-white: #EAE0D1; /* Borde para tarjetas blanco hueso */
+    --border-content-box: #D9C7A9;
+    --bg-content-box: #ecdcc2; 
+    --bg-inner-card: #FAF6EF;  
 }
 
 body {

@@ -1,59 +1,30 @@
-/* Reset básico y estilos generales (mostly from fichaje.css) */
-/* body, .main-nav, .nav-button styles are inherited from fichaje.css */
+/* bienvenida.css */
 
-.nav-button.active { /* Copied from fichaje.css for explicit state if needed */
-    background-color: var(--accent-orange);
-    color: var(--text-dark);
-    border-color: var(--accent-orange);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.nav-button.active:hover {
-    background-color: #f8c555; /* Lighter orange */
-    color: var(--text-dark);
-}
+/* --- Estilos Heredados de fichaje.css --- */
+/* .nav-button.active, .content-area, etc. se asumen definidos en fichaje.css */
 
-
-/* Content area specific to bienvenida */
-.content-area {
-    /* General .content-area styles from fichaje.css:
-       display: flex; flex-direction: column; align-items: center;
-       gap: 40px; width: 100%; padding: 0 15px; max-width: 950px; margin: 0 auto; */
-    margin-bottom: 40px; /* Add bottom margin if it's the last thing on page */
-}
-
-.page-main-title { /* This class was not used in the HTML provided, but good to have */
-    font-family: 'Anton', sans-serif; /* UPDATED */
-    font-size: 2.2em;
-    color: var(--accent-orange); /* UPDATED */
-    margin-bottom: 20px; /* Adjusted */
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.welcome-video-section,
-.welcome-description-section {
+/* --- Contenedor de la Sección de Video (puede mantener fondo oscuro o cambiar) --- */
+.welcome-video-section { 
     width: 100%;
-    max-width: 750px; /* Increased max-width for video/description */
-    display: flex; 
-    justify-content: center; 
-    background-color: var(--bg-dark-section); /* ADDED container background */
-    padding: 20px; /* ADDED padding */
-    border-radius: 8px; /* ADDED border-radius */
-    border: 1px solid var(--border-color-dark-theme); /* ADDED border */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* ADDED shadow */
+    max-width: 800px; /* Un poco más ancho */
+    margin: 0 auto 40px auto; /* Centrado y con margen inferior */
+    background-color: var(--bg-dark-section); 
+    padding: 25px; 
+    border-radius: 12px; 
+    border: 1px solid var(--border-color-dark-theme); 
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3); 
 }
 
 .video-placeholder {
-    background-color: #000; /* Black background for video player */
-    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
-    border-radius: 8px; /* Consistent rounding */
+    background-color: #000; 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 10px; /* Bordes más suaves para el video */
     width: 100%;
     aspect-ratio: 16 / 9;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Inner shadow for depth, slightly increased */
-    padding: 0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Sombra interior para profundidad */
     overflow: hidden;
 }
 
@@ -61,39 +32,94 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px; /* Match placeholder */
+    border-radius: 9px; /* Ligeramente menor que el placeholder para que no se solape el borde */
     display: block;
 }
 
-.description-box {
+/* --- Contenedor de la Sección de Descripción --- */
+.welcome-description-section {
     width: 100%;
-    padding: 20px; 
-    color: var(--text-light); /* UPDATED */
+    max-width: 800px;
+    margin: 0 auto; /* Centrado */
+    background-color: var(--bg-dark-section);
+    padding: 20px; /* Padding para separar la caja beige de los bordes */
+    border-radius: 12px;
+    border: 1px solid var(--border-color-dark-theme);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* --- Caja de Descripción (Fondo Beige) --- */
+.description-box { 
+    width: 100%;
+    padding: 40px 45px; /* Aumentar padding para más aire */
+    background-color: var(--bg-content-box); /* Beige cálido #ecdcc2 */
+    color: var(--text-dark);
+    border-radius: 10px; 
+    border: 1px solid var(--border-content-box); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Sombra un poco más pronunciada */
     min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.description-box h3 {
-    font-family: 'Anton', sans-serif; /* UPDATED */
-    color: var(--accent-orange); /* UPDATED */
-    font-size: 1.8em; /* Adjusted size */
-    margin-bottom: 20px; /* Increased spacing */
+.description-box h3 { /* Título "Summary of the video" */
+    font-family: 'Anton', sans-serif; 
+    color: var(--accent-red); 
+    font-size: 2.3em; /* Ligeramente más grande */
+    font-weight: normal; /* Anton es bold por defecto */
+    margin-top: 0;
+    margin-bottom: 35px; /* Más espacio después del título */
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.2px; /* Un poco más de espaciado */
+    padding-bottom: 18px; /* Más padding para la línea */
+    border-bottom: 2px solid var(--accent-red); 
+    align-self: center; 
+    display: inline-flex; 
+    align-items: center;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /* Sombra muy sutil al título */
+}
+
+.description-box h3::before {
+    content: "🎬"; /* Cambiado a un icono más relacionado con video/resumen */
+    margin-right: 15px;
+    font-size: 0.8em; 
+    color: var(--accent-red);
 }
 
 .description-box p {
-    font-family: 'Roboto', sans-serif; /* UPDATED */
-    font-size: 1.1em; /* Standardized size */
-    margin-bottom: 15px; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.18em; /* Aumentar ligeramente el tamaño del texto */
+    color: var(--text-dark); 
+    opacity: 1; 
+    margin-bottom: 22px; /* Más espacio entre párrafos */
     text-align: justify;
-    line-height: 1.7; 
-    opacity: 0.9;
-    hyphens: none;
-    -webkit-hyphens: none;
-    -ms-hyphens: none;
+    line-height: 1.85; /* Aumentar interlineado para mayor legibilidad */
+    hyphens: auto; /* Intentar silabeo para mejorar justificación */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Estilo para el primer párrafo o primera letra */
+.description-box p:first-of-type::first-letter {
+    font-size: 3em; /* Letra capital grande */
+    float: left;
+    margin-right: 0.05em; /* Ajuste fino del espaciado derecho */
+    margin-top: 0.05em; /* Ajuste fino del espaciado superior */
+    padding: 0.1em 0.1em 0 0; /* Espacio alrededor de la letra */
+    line-height: 0.7; /* Ajustar para que no afecte mucho al interlineado de la primera línea */
+    font-family: 'Anton', sans-serif; /* Fuente diferente para la capitular */
+    color: var(--accent-brown-light); /* Color de acento para la capitular */
+}
+/* Para asegurar que el resto del primer párrafo fluya bien */
+.description-box p:first-of-type {
+    overflow: hidden; /* Contiene el float */
+}
+
+
+.description-box p strong, .description-box p b { 
+    font-weight: 700; /* Un poco más de peso */
+    color: var(--accent-red); /* Usar un color de acento para el strong/bold */
 }
 
 .description-box p:last-child {
@@ -102,55 +128,52 @@
 
 
 /* ----- Responsive ----- */
-@media (max-width: 768px) {
-    .content-area {
-        gap: 30px; /* Adjusted gap */
-    }
-    .page-main-title {
-        font-size: 2em;
-    }
-    .welcome-video-section,
-    .welcome-description-section {
-        padding: 15px;
-        max-width: 95%; /* Allow more fluid width */
-    }
+@media (max-width: 850px) {
     .description-box {
-        font-size: 1em;
-        padding: 15px;
+        padding: 35px 40px;
     }
     .description-box h3 {
-        font-size: 1.6em; /* Adjusted */
+        font-size: 2.1em;
+    }
+    .description-box p {
+        font-size: 1.15em;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .description-box {
+        padding: 30px 35px; 
+    }
+    .description-box h3 {
+        font-size: 2em; 
+    }
+    .description-box p {
+        font-size: 1.1em;
+    }
+     .description-box p:first-of-type::first-letter {
+        font-size: 2.8em;
     }
 }
 
 @media (max-width: 480px) {
-    /* body, main-nav, nav-button responsive styles inherited from fichaje.css */
-    .content-area {
-        padding: 0 10px;
-        gap: 20px;
-    }
-    .page-main-title {
-        font-size: 1.7em;
-    }
-    .welcome-video-section,
-    .welcome-description-section {
-        padding: 10px;
-    }
-    .video-placeholder {
-        border-radius: 6px;
-    }
-    .video-placeholder video {
-        border-radius: 6px;
-    }
     .description-box {
-        padding: 10px;
-        font-size: 0.95em;
-        min-height: 120px;
+        padding: 25px 20px; /* Menos padding en móviles */
     }
      .description-box h3 {
-        font-size: 1.4em; /* Adjusted */
+        font-size: 1.7em; 
+        margin-bottom: 25px;
+        padding-bottom: 12px;
+        letter-spacing: 1px;
     }
     .description-box p {
-        font-size: 1em; /* Ensure readability */
+        font-size: 1.05em; 
+        line-height: 1.75;
+        margin-bottom: 20px;
+    }
+    .description-box p:first-of-type::first-letter {
+        font-size: 2.5em; /* Ajustar tamaño de capitular para móvil */
+        margin-right: 0.03em;
+        margin-top: 0.03em;
     }
 }

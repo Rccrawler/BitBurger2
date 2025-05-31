@@ -6,8 +6,6 @@
     <title>Intranet - Bienvenido</title>
 
     <!-- 1. Enlazar la hoja de estilos base (ajusta la ruta si es necesario) -->
-    <!-- Asumo que fichaje.css está en la misma carpeta styles que bienvenida.css -->
-    <!-- Si tu CSS base tiene otro nombre, cámbialo aquí -->
     <link rel="stylesheet" href="../styles/fichaje.css"> 
     
     <!-- 2. Enlazar tu hoja de estilos específica para bienvenida -->
@@ -32,8 +30,8 @@
                 <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button>
                 <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
                 <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button>
-                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button> <!-- Translated -->
-                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button>
             </div>
         </nav>
 
@@ -42,10 +40,6 @@
             <section class="welcome-video-section">
                 <div class="video-placeholder">
                     <video controls>
-                        <!-- ¡IMPORTANTE! Reemplaza la siguiente línea con la ruta a tu video:
-                             - Para un video local: "videos/mi_video_bienvenida.mp4"
-                             - Para un video de AWS S3: "https://tu-bucket.s3.tu-region.amazonaws.com/ruta/al/video.mp4"
-                        -->
                         <source src="https://bitburger-fotos-y-videos.s3.us-east-1.amazonaws.com/Videos/Bienvenida.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -55,19 +49,13 @@
             <section class="welcome-description-section">
                 <div class="description-box">
                     <h3>Summary of the video</h3>
-                    <br>
-                    <p>Hello and welcome to the BitBurger team! We are very happy that you are joining us!
-                        <br>
-                        Our obsession is quality. From the ingredients to the service, every detail is crucial. And you are a key piece in maintaining that excellence that defines us!
-                        <br>
-                        To ensure that we operate with the highest standards, we have a Committee. This team works constantly to ensure that all our practices, from operational to legal, are impeccable. This means that you are in a place that takes its responsibilities seriously.
-                        <br>
-                        And not only that, they also analyze proposals and implement improvements to optimize our processes, our products, and even the sustainability of our business. We strive to be better every day!
-                        <br>
-                        We want you to know that you are joining a company that invests in its future and in doing things right. Your professionalism and commitment are key to this journey.
-                        <br>
-                        Welcome once again! Together we will take BitBurger to the next level!
-                    </p>
+                    <!-- Eliminado el <br> que estaba aquí -->
+                    <p>Hello and welcome to the <strong>BitBurger team</strong>! We are very happy that you are joining us!</p>
+                    <p>Our obsession is <strong>quality</strong>. From the ingredients to the service, every detail is crucial. And you are a <strong>key piece</strong> in maintaining that excellence that defines us!</p>
+                    <p>To ensure that we operate with the highest standards, we have a <strong>Committee</strong>. This team works constantly to ensure that all our practices, from operational to legal, are <strong>impeccable</strong>. This means that you are in a place that takes its responsibilities seriously.</p>
+                    <p>And not only that, they also analyze proposals and implement improvements to optimize our processes, our products, and even the <strong>sustainability</strong> of our business. We strive to be better every day!</p>
+                    <p>We want you to know that you are joining a company that <strong>invests in its future</strong> and in doing things right. Your <strong>professionalism and commitment</strong> are key to this journey.</p>
+                    <p><strong>Welcome once again!</strong> Together we will <strong>take BitBurger to the next level!</strong></p>
                 </div>
             </section>
         </main>
