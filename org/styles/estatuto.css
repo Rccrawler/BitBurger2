@@ -1,55 +1,67 @@
 /* styles/estatuto.css */
-/* Estilos base (body, nav) heredados de fichaje.css */
-
 html {
     scroll-behavior: smooth;
 }
 
-/* .main-container defined in fichaje.css */
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-.content-section {
-    background-color: var(--bg-dark-section); /* UPDATED */
-    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+.content-section { 
+    background-color: var(--bg-dark-section); 
+    border: 1px solid var(--border-color-dark-theme); 
     border-radius: 8px;
     padding: 30px 40px;
     width: 100%;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    /* margin: 0 auto; /* Centered by .content-area in fichaje.css */
-    /* max-width: 950px; /* Controlled by .content-area */
     margin-bottom: 30px;
+    /* Animación de entrada para la primera sección general */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 .content-section:last-child{
     margin-bottom: 0;
 }
 
-.section-title { /* h2.font-style-ashton.section-title */
-    font-family: 'Anton', sans-serif; /* UPDATED */
+.section-title { 
+    font-family: 'Anton', sans-serif; 
     font-size: 2.5em;
-    color: var(--accent-orange); /* UPDATED */
-    margin-top: 0; /* If first element in content-section */
+    color: var(--accent-orange); 
+    margin-top: 0; 
     margin-bottom: 30px;
     text-align: center;
     padding-bottom: 15px;
-    border-bottom: 2px solid var(--accent-orange); /* UPDATED */
-    letter-spacing: 1px; /* Adjusted */
+    border-bottom: 2px solid var(--accent-orange); 
+    letter-spacing: 1px; 
     line-height: 1.3;
 }
 
-/* --- Table of Contents (Índice) Styles for Estatuto --- */
-.toc-container {
-    background-color: var(--bg-dark-main); /* UPDATED */
-    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+/* --- Table of Contents (Índice) Styles --- */
+.toc-container { 
+    background-color: var(--bg-dark-main); 
+    border: 1px solid var(--border-color-dark-theme); 
     border-radius: 8px;
     padding: 25px 30px;
     margin-bottom: 40px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    /* Animación de entrada */
+    opacity: 0; /* Inicia invisible para la animación */
+    animation: fadeInUp 0.6s ease-out 0.2s forwards; /* 0.2s de retraso */
 }
 
 .toc-title {
-    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-family: 'Anton', sans-serif; 
     font-size: 1.8em;
-    color: var(--accent-orange); /* UPDATED */
+    color: var(--accent-orange); 
     text-align: center;
     margin-top: 0;
     margin-bottom: 25px;
@@ -63,7 +75,7 @@ html {
     display: block;
     width: 80px;
     height: 3px;
-    background-color: var(--accent-orange); /* UPDATED */
+    background-color: var(--accent-orange); 
     border-radius: 2px;
     margin: 10px auto 0;
 }
@@ -77,30 +89,47 @@ html {
     gap: 15px;
 }
 
-.toc-list li a {
+.toc-list li { /* Contenedor para animar individualmente los links */
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggering animation delay for TOC items */
+.toc-list li:nth-child(1) { animation-delay: 0.3s; } /* Ajusta el inicio si el contenedor tiene retraso */
+.toc-list li:nth-child(2) { animation-delay: 0.4s; }
+.toc-list li:nth-child(3) { animation-delay: 0.5s; }
+.toc-list li:nth-child(4) { animation-delay: 0.6s; }
+.toc-list li:nth-child(5) { animation-delay: 0.7s; }
+.toc-list li:nth-child(6) { animation-delay: 0.8s; }
+.toc-list li:nth-child(7) { animation-delay: 0.9s; }
+.toc-list li:nth-child(8) { animation-delay: 1.0s; }
+
+
+.toc-list li a { 
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 14px 18px;
-    background-color: var(--bg-dark-section); /* UPDATED */
-    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
-    border-left: 5px solid var(--accent-orange); /* UPDATED */
-    color: var(--text-light); /* UPDATED */
+    background-color: var(--bg-dark-section);
+    border: 1px solid var(--border-color-dark-theme);
+    border-left: 5px solid var(--accent-orange); 
+    color: var(--text-light);
     text-decoration: none;
     border-radius: 6px;
-    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-family: 'Roboto', sans-serif; 
     font-size: 1em;
     transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 .toc-list li a::before {
     content: '📜';
     font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
-    color: var(--accent-orange); /* UPDATED */
+    color: var(--accent-orange); 
     font-size: 1.3em;
     line-height: 1;
     flex-shrink: 0;
+    transition: transform 0.2s ease-out; /* Para animar el icono en hover */
 }
 
 .toc-list li a[href*="#link-container-boe"]::before {
@@ -109,128 +138,181 @@ html {
 
 .toc-list li a:hover,
 .toc-list li a:focus {
-    background-color: var(--accent-orange); /* UPDATED */
+    background-color: var(--accent-orange); 
     border-color: var(--accent-orange);
-    border-left-color: #e6a100; /* Darker orange */
-    color: var(--text-dark); /* UPDATED */
+    border-left-color: #e6a100; 
+    color: var(--text-dark); 
     transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(var(--accent-orange-rgb, 255, 165, 0),0.4); /* Sombra con color de acento (fallback a naranja si no está definida la var) */
     outline: none;
 }
 
-/* Estilos para la sección de Puntos Clave */
-.key-points-section {
-    margin-top: 0;
+.toc-list li a:hover::before,
+.toc-list li a:focus::before {
+    transform: scale(1.2) rotate(-5deg); /* Icono se agranda y rota un poco */
 }
 
-.subsection-title-kalam { /* Renamed to .subsection-title-anton */
-    font-family: 'Anton', sans-serif; /* UPDATED */
+
+/* Estilos para la sección de Puntos Clave - FONDO BEIGE */
+.key-points-section { 
+    margin-top: 0; /* Eliminado, ya que la sección superior tendrá su animación */
+    background-color: var(--bg-light-contrast); /* Beige claro */
+    color: var(--text-dark); 
+    padding: 40px; 
+    border-radius: 8px; 
+    border: 1px solid #d1c8bc; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    /* No necesita animación aquí porque los .key-point-item se animan individualmente con JS */
+}
+
+.subsection-title-kalam {
+    font-family: 'Anton', sans-serif; 
     font-size: 1.9em;
-    color: var(--text-light); /* UPDATED */
+    color: var(--text-dark); 
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     padding-bottom: 15px;
-    text-align: center; /* Center subsection titles too */
-    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    text-align: center; 
+    border-bottom: 1px solid #cccccc; 
     letter-spacing: 1px;
 }
 
-.professional-text-block {
-    /* This container doesn't need its own styling if items are styled */
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin-bottom: 0;
-    box-shadow: none;
+/* Estilos para cada item con texto a la izquierda e imagen a la derecha */
+.key-point-item { 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 40px; 
+    background-color: #fff; 
+    border: 1px solid #cccccc; 
+    border-right: 5px solid var(--accent-orange); 
+    border-radius: 8px;
+    padding: 30px; 
+    margin-bottom: 35px; 
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07); 
+    overflow: hidden; 
+
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-in-out; 
 }
 
-.key-point-item {
-    background-color: var(--bg-dark-main); /* UPDATED */
-    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
-    border-left: 4px solid var(--accent-orange); /* UPDATED */
-    border-radius: 8px;
-    padding: 20px 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+.key-point-item.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.key-point-item:hover {
+    transform: translateY(-5px) !important; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
 }
 
 .key-point-item:last-child {
     margin-bottom: 0;
 }
 
+.key-point-text-container { 
+    flex-grow: 1; 
+}
+
+.key-point-image-container { 
+    flex-shrink: 0; 
+    width: 220px; 
+}
+
+.key-point-image-container img {
+    width: 100%;
+    height: auto; 
+    display: block; 
+    border-radius: 6px; 
+    object-fit: cover; 
+}
+
 .key-point-title {
-    font-family: 'Anton', sans-serif; /* UPDATED */
-    font-weight: normal; /* Anton is boldish */
-    font-size: 1.4em;
-    color: var(--accent-orange); /* UPDATED */
-    display: block;
-    text-align: left;
+    font-family: 'Anton', sans-serif; 
+    font-weight: normal; 
+    font-size: 1.5em; 
+    color: var(--accent-orange); 
+    margin-top: 0; 
     margin-bottom: 12px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted var(--border-color-dark-theme); /* UPDATED */
+    padding-bottom: 8px; 
+    border-bottom: 1px dotted #dddddd; 
+    text-align: left;
 }
 
 .key-point-description {
-    font-family: 'Roboto', sans-serif; /* UPDATED */
-    font-size: 1.1em; /* Adjusted from 1.15em */
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.1em; 
     line-height: 1.7;
-    color: var(--text-light); /* UPDATED */
+    color: var(--text-dark); 
     margin-bottom: 0;
     text-align: justify;
-    hyphens: none;
-    -webkit-hyphens: none;
-    -ms-hyphens: none;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
     letter-spacing: 0.3px;
-    opacity: 0.9;
+    opacity: 1; 
 }
 
-/* Estilos para el contenedor del enlace al BOE */
-.link-container {
-    max-width: 700px;
-    margin: 50px auto 0; /* Adjusted margin, no bottom margin needed if last */
+/* Estilos para el contenedor del enlace al BOE - FONDO BEIGE */
+.link-container { 
+    max-width: 100%; 
+    margin: 30px 0 0 0; 
     text-align: center;
-    padding-top: 30px;
-    /* padding-bottom: 20px; /* Removed, container is last */
-    border-top: 2px solid var(--border-color-dark-theme); /* UPDATED */
+    padding: 25px; 
+    border-top: none; 
+    background-color: var(--bg-light-contrast); 
+    color: var(--text-dark); 
+    border-radius: 8px; 
+    border: 1px solid #d1c8bc; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.5s forwards; /* Retraso para aparecer después de los key-points o TOC */
+}
+.key-points-section .link-container {
+    margin-top: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    /* La animación de .link-container general ya la cubrirá si está dentro de .key-points-section, 
+       o se puede ajustar el delay si es necesario que sea independiente */
 }
 
 .link-description {
-    font-family: 'Roboto', sans-serif; /* UPDATED */
-    font-size: 1.1em; /* Adjusted */
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.1em; 
     line-height: 1.6;
-    color: var(--text-light); /* UPDATED */
+    color: var(--text-dark); 
     margin-bottom: 25px;
-    opacity: 0.9;
+    opacity: 1; 
 }
 
 .external-link-button {
-    font-family: 'Anton', sans-serif; /* UPDATED */
+    font-family: 'Anton', sans-serif; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--accent-orange); /* UPDATED */
-    border: none; /* UPDATED */
+    background-color: var(--accent-orange); 
+    border: none; 
     padding: 15px 30px;
-    border-radius: 25px; /* Match main site buttons */
-    color: var(--text-dark); /* UPDATED */
-    font-size: 1em; /* Adjusted from 0.8em */
+    border-radius: 25px; 
+    color: var(--text-dark); 
+    font-size: 1em; 
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px; /* From main buttons */
+    letter-spacing: 1px; 
     cursor: pointer;
-    transition: all 0.3s ease; /* Match main site buttons */
-    box-shadow: 0 3px 5px rgba(0,0,0,0.2); /* Softer shadow */
+    transition: all 0.3s ease; 
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2); 
 }
 
 .external-link-button:hover {
-    background-color: #f8c555; /* Lighter orange */
-    transform: translateY(-2px) scale(1.03); /* Match main site buttons */
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3); /* Match main site buttons */
+    background-color: #f8c555; 
+    transform: translateY(-2px) scale(1.03); 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
 }
 
 .external-link-button:active {
-    transform: translateY(0px) scale(0.98); /* Adjusted active state */
+    transform: translateY(0px) scale(0.98); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -239,24 +321,38 @@ html {
     height: 24px;
     margin-right: 10px;
     vertical-align: middle;
-    /* Assuming icon is dark and needs to be light on orange button */
     filter: brightness(0) saturate(100%) invert(16%) sepia(7%) saturate(1000%) hue-rotate(348deg) brightness(99%) contrast(91%);
 }
 
 .link-note {
-    font-family: 'Roboto', sans-serif; /* UPDATED */
+    font-family: 'Roboto', sans-serif; 
     font-size: 0.9em;
-    color: var(--text-light); /* UPDATED */
-    opacity: 0.7; /* More subtle */
+    color: var(--text-dark); 
+    opacity: 0.7; 
     margin-top: 15px;
 }
 
+/* ----- Responsive ----- */
+
+@media (max-width: 992px) { 
+    .key-point-image-container {
+        width: 180px; 
+    }
+    .key-point-item {
+        gap: 30px; 
+        padding: 25px; 
+    }
+    .key-point-title {
+        font-size: 1.35em;
+    }
+}
+
 @media (max-width: 768px) {
-    .content-section {
+    .content-section, .key-points-section, .link-container {
         padding: 25px 20px;
     }
     .section-title {
-        font-size: 2.2em; /* Adjusted */
+        font-size: 2.2em; 
     }
     .toc-title {
         font-size: 1.6em;
@@ -269,30 +365,51 @@ html {
     .toc-list li a::before {
         font-size: 1.2em;
     }
-    .subsection-title-kalam { /* .subsection-title-anton */
-        font-size: 1.7em; /* Adjusted */
+    .subsection-title-kalam { 
+        font-size: 1.7em; 
     }
+
     .key-point-item {
-        padding: 15px 20px;
+        flex-direction: column; 
+        padding: 20px;
+        gap: 20px; 
+        border-left: 5px solid var(--accent-orange); 
+        border-right: none; 
+    }
+    /* Ajuste hover para móvil */
+    .key-point-item:hover {
+        transform: translateY(-3px) !important; 
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .key-point-text-container { 
+        width: 100%;
+    }
+    .key-point-image-container { 
+        width: 80%; 
+        max-width: 280px; 
+        margin: 15px auto 0 auto; 
     }
     .key-point-title {
-        font-size: 1.25em;
+        font-size: 1.3em; 
+        text-align: left; 
     }
     .key-point-description {
         font-size: 1.05em;
     }
+
     .external-link-button {
-        font-size: 0.9em; /* Adjusted from 0.75em */
+        font-size: 0.9em; 
         padding: 12px 25px;
     }
 }
 
 @media (max-width: 480px) {
-    .content-section {
+    .content-section, .key-points-section, .link-container {
         padding: 20px 15px;
     }
     .section-title {
-        font-size: 1.8em; /* Adjusted */
+        font-size: 1.8em; 
         margin-bottom: 25px;
     }
     .toc-container {
@@ -311,30 +428,58 @@ html {
     .toc-list li a {
         font-size: 0.9em;
     }
-    .subsection-title-kalam { /* .subsection-title-anton */
+    .subsection-title-kalam { 
         font-size: 1.4em;
         margin-bottom: 20px;
     }
+    
     .key-point-item {
         padding: 15px;
+        gap: 15px;
+    }
+    .key-point-image-container {
+        width: 90%;
+        max-width: 240px;
     }
     .key-point-title {
-        font-size: 1.15em;
+        font-size: 1.2em;
     }
     .key-point-description {
         font-size: 1em;
         line-height: 1.65;
     }
-    .link-container {
-        margin-top: 40px;
-        padding-top: 25px;
+
+    .link-container, .key-points-section .link-container {
+        margin-top: 20px; 
+        padding: 20px 15px;
     }
     .link-description {
         font-size: 1em;
     }
     .external-link-button {
-        font-size: 0.9em; /* Adjusted from 0.7em */
+        font-size: 0.9em; 
         padding: 10px 18px;
         max-width: 90%;
     }
+}
+
+/* --- PREFERS REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* Desactiva scroll-smooth */
+  }
+  .content-section,
+  .toc-container,
+  .toc-list li,
+  .link-container,
+  .key-point-item { /* Aplicar a todos los elementos animados */
+    animation-name: none !important; /* Desactiva animaciones CSS */
+    transition: none !important; /* Desactiva transiciones CSS */
+    opacity: 1 !important; /* Asegura visibilidad */
+    transform: translateY(0) !important; /* Resetea transformaciones */
+  }
+  /* Si tienes animaciones JS que añaden/quitan clases, podrían necesitar
+     ajustes en el JS para respetar prefers-reduced-motion también,
+     aunque en este caso el JS de estatuto.js añade 'animate-in' que
+     ya está cubierto arriba. */
 }
