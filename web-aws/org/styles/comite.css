@@ -1,0 +1,486 @@
+/* Base styles like body, .main-nav, .nav-button are in fichaje.css */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.main-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtlePulse {
+    0% { box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 7px 20px rgba(0,0,0,0.35); }
+    100% { box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+}
+
+
+.content-section { 
+    background-color: var(--bg-dark-section); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 8px;
+    padding: 30px 40px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    /* Animación de entrada para la primera sección general */
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title { 
+    font-family: 'Anton', sans-serif; 
+    font-size: 2.5em; 
+    color: var(--accent-orange); 
+    margin-top: 0; 
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-orange); 
+    padding-bottom: 20px;
+    letter-spacing: 1px; 
+    line-height: 1.3;
+}
+
+/* --- Table of Contents (Índice) Styles for Comite - MANTENER OSCURO --- */
+.toc-container { 
+    background-color: var(--bg-dark-main); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 100%;
+    box-sizing: border-box;
+    /* Animación de entrada */
+    opacity: 0; /* Inicia invisible para la animación */
+    animation: fadeInUp 0.7s ease-out 0.2s forwards; /* 0.2s de retraso */
+}
+
+.toc-title { 
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.8em;
+    color: var(--accent-orange); 
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.toc-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-orange); 
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.toc-list li { /* Contenedor para animar individualmente los links */
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggering animation delay for TOC items */
+.toc-list li:nth-child(1) { animation-delay: 0.4s; }
+.toc-list li:nth-child(2) { animation-delay: 0.5s; }
+.toc-list li:nth-child(3) { animation-delay: 0.6s; }
+.toc-list li:nth-child(4) { animation-delay: 0.7s; }
+.toc-list li:nth-child(5) { animation-delay: 0.8s; }
+.toc-list li:nth-child(6) { animation-delay: 0.9s; }
+.toc-list li:nth-child(7) { animation-delay: 1.0s; }
+
+
+.toc-list li a { 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background-color: var(--bg-dark-section); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-left: 5px solid var(--accent-orange); 
+    color: var(--text-light); 
+    text-decoration: none;
+    border-radius: 6px; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1em;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.toc-list li a::before {
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    color: var(--accent-orange); 
+    font-size: 1.3em;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-out; /* Para animar el icono */
+}
+/* Specific icons for TOC */
+.toc-list li a[href="#comite-intro"]::before { content: '🌟'; }
+.toc-list li a[href="#comite-structure"]::before { content: '👥'; } 
+.toc-list li a[href="#all-commissions"]::before { content: '📋'; } 
+.toc-list li a[href="#commission-health-safety"]::before { content: '🛡️'; } 
+.toc-list li a[href="#commission-equality"]::before { content: '⚖️'; } 
+.toc-list li a[href="#commission-training"]::before { content: '🎓'; } 
+.toc-list li a[href="#commission-economic"]::before { content: '📊'; } 
+
+
+.toc-list li a:hover,
+.toc-list li a:focus {
+    background-color: var(--accent-orange); 
+    border-color: var(--accent-orange);
+    border-left-color: #e6a100; 
+    color: var(--text-dark); 
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(var(--accent-orange-rgb),0.4); /* Sombra con color de acento */
+    outline: none;
+}
+.toc-list li a:hover::before,
+.toc-list li a:focus::before {
+    transform: scale(1.2) rotate(-5deg); /* Icono se agranda y rota un poco */
+}
+
+/* Secciones de Introducción y Composición con fondo beige */
+.comite-introduction,
+.comite-composition {
+    background-color: #ecdcc2; /* Beige cálido */
+    color: var(--text-dark); 
+    padding: 30px; 
+    border-radius: 8px; 
+    margin-bottom: 30px; 
+    border: 1px solid #D9C7A9; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+.comite-introduction { animation-delay: 0.3s; } /* Retraso diferente */
+.comite-composition { animation-delay: 0.4s; } /* Retraso diferente */
+
+
+.intro-paragraph,
+.comite-composition p { 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: var(--text-dark); 
+    margin-bottom: 15px;
+    text-align: justify;
+    opacity: 1; 
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+}
+.comite-composition p:last-of-type {
+    margin-bottom: 0;
+}
+
+.subsection-title { 
+    font-family: 'Anton', sans-serif; 
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+/* Título de subsección DENTRO de bloque beige */
+.comite-introduction .subsection-title,
+.comite-composition .subsection-title {
+    color: var(--text-dark); 
+    border-bottom: 1px solid #D9C7A9; 
+}
+.comite-composition .subsection-title::before {
+    content: "📜";
+    margin-right: 10px;
+    font-size: 0.8em;
+    color: var(--accent-red);
+}
+
+/* Título de subsección SOBRE el .content-section oscuro (como "Committee Commissions") */
+.comite-commissions > .subsection-title { 
+     color: var(--text-light);
+     border-bottom: 1px solid var(--border-color-dark-theme);
+}
+.comite-commissions > .subsection-title::before {
+    content: "🛠️";
+    margin-right: 10px;
+    font-size: 0.8em;
+    color: var(--accent-orange);
+}
+
+
+.member-list {
+    font-family: 'Roboto', sans-serif; 
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+.member-list li {
+    padding: 10px 15px; /* Más padding */
+    border-bottom: 1px dashed #D9C7A9; 
+    color: var(--text-dark); 
+    background-color: #FAF6EF; /* Blanco hueso para items de lista */
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Para hover sutil */
+}
+.member-list li:last-child {
+    border-bottom: none;
+}
+.member-list li:hover {
+    background-color: #f0e9dd; /* Un poco más oscuro al pasar el ratón */
+    transform: translateX(3px);
+}
+.member-list li strong {
+    color: var(--accent-red); /* Más contraste para strong */
+    font-weight: 700; 
+}
+
+.comite-commissions { 
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    /* No necesita animación propia, sus hijos la tendrán */
+}
+
+.commission-item { /* Items de comisión con fondo beige */
+    background-color: #ecdcc2; /* Beige cálido */
+    border: 1px solid #D9C7A9; 
+    border-left: 5px solid var(--accent-red); /* Acento rojo */
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-left-color 0.3s ease; /* Transiciones para hover */
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+/* Staggering animation delay for commission items */
+#commission-health-safety { animation-delay: 0.5s; }
+#commission-equality { animation-delay: 0.65s; }
+#commission-training { animation-delay: 0.8s; }
+#commission-economic { animation-delay: 0.95s; }
+
+
+.commission-item:hover {
+    transform: translateY(-6px) scale(1.005); /* Levanta y agranda ligeramente */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    border-left-color: var(--accent-orange); /* Cambia el color del borde izquierdo */
+}
+
+.commission-item:last-child {
+    margin-bottom: 0; 
+}
+
+.commission-name {
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.7em;
+    color: var(--accent-red); 
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+.commission-item:hover .commission-name {
+    color: var(--accent-orange); /* Cambia color del título al hacer hover en el item */
+}
+
+/* Iconos para nombres de comisión */
+#commission-health-safety .commission-name::before { content: '🛡️'; margin-right: 10px; font-size: 0.9em;}
+#commission-equality .commission-name::before { content: '⚖️'; margin-right: 10px; font-size: 0.9em;}
+#commission-training .commission-name::before { content: '🎓'; margin-right: 10px; font-size: 0.9em;}
+#commission-economic .commission-name::before { content: '📊'; margin-right: 10px; font-size: 0.9em;}
+
+
+.commission-responsible {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.05em;
+    color: var(--text-dark); 
+    margin-bottom: 20px;
+    font-style: italic;
+    background-color: #FAF6EF;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+.commission-item:hover .commission-responsible {
+    background-color: #fff; /* Más claro al hacer hover */
+}
+.commission-responsible strong {
+    font-weight: 700; 
+    font-style: normal;
+    color: var(--accent-orange); 
+}
+
+.commission-item h4 { /* "Objectives:" */
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.3em;
+    color: var(--text-dark); 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #C9B79C; 
+}
+
+.commission-item ul {
+    font-family: 'Roboto', sans-serif; 
+    list-style: none; /* Quitar bullets por defecto */
+    padding-left: 0;
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    color: var(--text-dark); 
+    opacity: 1; 
+}
+.commission-item ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: justify;
+    padding-left: 25px; /* Espacio para el icono */
+    position: relative;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    transition: color 0.2s ease;
+}
+.commission-item ul li::before {
+    content: "✅"; /* Icono para los items de la lista de objetivos */
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--accent-green); /* Verde para los checkmarks */
+    font-size: 0.9em;
+    transition: transform 0.2s ease;
+}
+.commission-item ul li:hover {
+    color: var(--accent-red); /* Cambia el color del texto del item li */
+}
+.commission-item ul li:hover::before {
+    transform: scale(1.1); /* El checkmark se agranda un poco */
+}
+
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+    .content-section {
+        padding: 25px 20px; 
+    }
+    .section-title {
+        font-size: 2.2em;
+        margin-bottom: 25px; 
+        padding-bottom: 15px;
+    }
+    .toc-title {
+        font-size: 1.6em;
+    }
+    .toc-list li a {
+        font-size: 0.95em;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    .toc-list li a::before {
+        font-size: 1.2em;
+    }
+    .subsection-title {
+        font-size: 1.7em;
+    }
+    .commission-name {
+        font-size: 1.5em;
+    }
+    .commission-item h4 {
+        font-size: 1.2em;
+    }
+    .intro-paragraph,
+    .comite-composition p,
+    .commission-item p,
+    .member-list,
+    .commission-item ul {
+        font-size: 1em;
+    }
+    .comite-introduction, .comite-composition {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 20px 15px;
+    }
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px; 
+        padding-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+    .toc-container {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+    .toc-title {
+        font-size: 1.4em;
+    }
+    .toc-title::after {
+        width: 60px;
+    }
+    .toc-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .toc-list li a {
+        font-size: 0.9em;
+    }
+    .subsection-title {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    .commission-name {
+        font-size: 1.3em;
+    }
+     .commission-item h4 {
+        font-size: 1.1em;
+    }
+    .intro-paragraph,
+    .comite-composition p,
+    .commission-item p,
+    .member-list,
+    .commission-item ul {
+        font-size: 0.95em;
+    }
+    .comite-introduction, .comite-composition, .commission-item {
+        padding: 15px;
+    }
+}

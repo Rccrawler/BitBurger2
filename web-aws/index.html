@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/boton.css">
+    <link rel="shortcut icon" href="img/inicio/logo3.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="expanding-button-container">
+                <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+                    <img src="img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
+                </button>
+                <div class="options-wrapper" id="optionsMenu">
+                    <button class="option-button option-1" data-url="pages/carrito.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
+                    <button class="option-button option-2" data-url="conocenos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
+                    <button class="option-button option-3" data-url="org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div></button>
+                    <button class="option-button option-4" data-url="pages/perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div></button>
+                </div>
+            </div>
+        </div>
+        <nav class="header-right">
+            <a href="pages/game/index.html" target="_blank" class="nav-button order-button">Game</a>
+            <a href="pages/editor-hanburgesa/index.html" class="nav-button order-button">Personalize</a>
+            <a href="pages/carta.html" class="nav-button reserve-button">ORDER</a>
+            <div class="language-selector">
+                <span>EN</span>
+                <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="10" height="10"><path d="M8 12L2 6h12L8 12z"/></svg>
+            </div>
+        </nav>
+    </header>
+
+    <script src="script/cookies.js"></script>
+    <div id="cookie-banner">
+        <p>We use cookies to improve your experience. <a href="org/pages/politica_cookies.html" style="color: lightblue;">Learn more</a>.</p>
+        <button onclick="aceptarCookies()">Accept</button>
+        <button onclick="abrirConfiguracion()">Set up</button>
+    </div>
+    <div id="configurar-cookies-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Cookies</h2><br>
+            <form id="configurar-cookies-form">
+                <label><input type="checkbox" name="cookies-necesarias" checked disabled> Necessary cookies (always active)</label>
+                <label><input type="checkbox" name="cookies-analiticas"> Analytical cookies</label>
+                <label><input type="checkbox" name="cookies-publicidad"> Advertising cookies</label>
+            </form>
+            <button onclick="guardarConfiguracion()">Save</button>
+            <button onclick="cerrarConfiguracion()">Cancel</button>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-section"> <!-- Initial animation likely CSS direct, not scroll -->
+            <div class="background-text-hero">
+                 <p>Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger</p>
+                 <p>--------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger ---------------------</p>
+                 <p>Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger</p>
+                 <p>--------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger --------------------------- Bitburger chef burger ---------------------</p>
+            </div>
+            <img src="img/inicio/burger-carousel-1.png" alt="burger-carousel-1" class="hero-burger">
+        </section>
+
+        <!-- NEW FULL WIDTH CAROUSEL SECTION -->
+        <section class="full-width-carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <!-- IMPORTANT: Replace these src attributes with your actual image paths -->
+                    <img src="img/inicio/20250527_1914_Comida Rápida Realista_simple_compose_01jw9bq28pfynb3rkzp81c30ze.png" alt="Carousel Image 1 - BitBurger Special" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649rej7teghp2y60wjqk.png" alt="Carousel Image 2 - Delicious Offer" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649set18v863c17sdjez.png" alt="Carousel Image 3 - Fresh Ingredients" class="carousel-slide">
+                    <img src="img/inicio/20250527_1923_Fiesta de Comida Rápida_simple_compose_01jw9c649ve6d8vnm7n90mcvt7.png" alt="Carousel Image 4 - Taste the Difference" class="carousel-slide">
+                </div>
+                <button class="carousel-button prev" aria-label="Previous slide">❮</button>
+                <button class="carousel-button next" aria-label="Next slide">❯</button>
+            </div>
+            <div class="carousel-dots">
+                <!-- Dots will be generated by JavaScript -->
+            </div>
+        </section>
+        <!-- END OF FULL WIDTH CAROUSEL SECTION -->
+
+        <section class="carta-section"> 
+            <div class="repeating-background-text carta-bg-text">
+                    <span>  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  book bitburger now  </span>
+            </div>
+        </section>
+
+        <section class="carta-section"> 
+            <div class="carta-items-wrapper">
+                <div class="carta-items">
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.15">
+                        <img src="img/inicio/burger-carousel-5.png" alt="Burgers">
+                        <h3>BURGERS <span class="arrow">↗</span></h3>
+                        <p>Our timeless classics — bold, juicy, unforgettable.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0">
+                        <img src="img/inicio/cocacola.png" alt="Drinks">
+                        <h3>DRINKS <span class="arrow">↗</span></h3>
+                        <p>Chill out with a refreshing sip — share it or keep it all to yourself.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.3">
+                        <img src="img/inicio/nachos.png" alt="Main Courses">
+                        <h3>MAIN COURSES <span class="arrow">↗</span></h3>
+                        <p>From loaded nachos to chicken dreams — full-on flavor ahead.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.45">
+                        <img src="img/inicio/burger-carousel-4.png" alt="Appetizers">
+                        <h3>APPETIZERS <span class="arrow">↗</span></h3>
+                        <p>Smashed, crispy, or cheesy — the perfect start to your feast.</p>
+                    </a>
+
+                    <a href="pages/carta.html" class="carta-item animate-on-scroll slide-from-right" data-delay="0.6">
+                        <img src="img/inicio/vegan.png" alt="Vegan Burgers">
+                        <h3>VEGAN BURGERS <span class="arrow">↗</span></h3>
+                        <p>100% plant-based. 100% delicious. Zero compromises.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="counter-section animate-on-scroll fade-in-up">
+            <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.1">Bitburgers sold this year</h2>
+            <div class="seven-segment-counter animate-on-scroll fade-in-scale" data-delay="0.2">
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">1</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+                <span class="dynamic-digit digit">0</span>
+            </div>
+        </section>
+
+        <section class="friends-section animate-on-scroll fade-in">
+            <img src="img/inicio/caja.png" alt="Goikoins" class="goikoins-img animate-on-scroll slide-from-left" data-delay="0.2">
+            <div class="friends-text animate-on-scroll slide-from-right" data-delay="0.2">
+                <h2>GET DISCOUNTS</h2>
+                <p>there are bitburger burgers in the video games find them and earn discounts</p>
+                <a href="pages/register.html" class="btn btn-outline animate-on-scroll fade-in-scale" data-delay="0.4">REGISTER</a>
+            </div>
+        </section>
+
+        <section class="foodtruck-section animate-on-scroll fade-in-up">
+            <div class="foodtruck-bg-text">BitBurger</div>
+            <div class="foodtruck-content">
+                <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.1">FOODTRUCK</h2>
+                <p class="animate-on-scroll slide-from-bottom" data-delay="0.2">BitBurger on wheels! We bring the flow wherever you are. The Beast and the Mini Beast are ready for the party.</p>
+                <a href="#" class="link-arrow animate-on-scroll fade-in" data-delay="0.3">TO KNOW MORE <span class="arrow">↗</span></a>
+            </div>
+        </section>
+
+        <section class="goikocina-section"> 
+            <div class="goikocina-image-area animate-on-scroll slide-from-left">
+                <img src="img/inicio/parriya.png" alt="Productos Goikocina" class="goikocina-products">
+            </div>
+            <div class="goikocina-text-area animate-on-scroll slide-from-right" data-delay="0.2">
+                <img src="img/inicio/gorro.png" alt="Chef hat" class="chef-icon animate-on-scroll fade-in-scale" data-delay="0.3">
+                <p class="animate-on-scroll slide-from-bottom" data-delay="0.4">Get ready to lick your fingers...</p>
+                <h2 class="animate-on-scroll slide-from-bottom" data-delay="0.5">We serve burgers. But we also design moments</h2>
+                <p class="animate-on-scroll slide-from-bottom" data-delay="0.6">We select only the finest ingredients, from the juicy meat to the crispiest vegetables. Every bite is an explosion of flavor!</p>
+                <a href="pages/carta.html" class="btn btn-outline-dark animate-on-scroll fade-in-scale" data-delay="0.6">From the moment you place your order on the web or app, until you try it the first bite, everything is designed to be quick, easy... and tasty.</a>
+            </div>
+        </section>
+
+        <section class="news-section">
+            <div class="repeating-background-text news-bg-text">
+                <span>NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger NEWSBitBurger</span>
+            </div>
+            <div class="news-grid">
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0">
+                    <img src="img/inicio/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg" alt="Noticia 1">
+                    <p class="news-category">NEWS</p>
+                    <h3>The Golden Gate Bridge has stood the test of time — and so have real, honest burgers like ours. Made with care, served with pride.</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.15">
+                    <img src="img/inicio/1115d808-d4ff-4787-b024-32d7b0d3eefc.webp" alt="Noticia 2">
+                    <p class="news-category">NEWS</p>
+                    <h3>Taking a ride on one of San Francisco’s historic cable cars? Make a stop at BitBurger for a burger experience that’s just as iconic.</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.3">
+                    <img src="img/inicio/image.jpg" alt="Noticia 3">
+                    <p class="news-category">NEWS</p>
+                    <h3>Just like the iconic Painted Ladies of San Francisco, our burgers are full of color, character, and local flavor. Stop by for a taste of the city!</h3>
+                </article>
+                <article class="news-card animate-on-scroll fade-in-up" data-delay="0.45">
+                    <img src="img/inicio/R (1).jpg" alt="Noticia 1 Repeat">
+                    <p class="news-category">NEWS</p>
+                    <h3>At BitBurger, we are adding drive-thru service to all of our locations.</h3>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="repeating-background-text footer-bg-text">
+            <!--<span>FOREVERCHORREOFOREVERCHORREOFOREVER</span>-->
+        </div>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo-social">
+                    <img src="img/inicio/logo3.png" alt="GOIKO Logo" style="width: 7vh;">
+                    <br>
+                    <br>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/facebook-13.png" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/gorjeo.png" alt="X"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/instagram.png" alt="Instagram"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="img/inicio/linkedin.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                <nav class="footer-nav main-links">
+                    <a href="pages/carta.html">MENU</a><a href="pages/carta.html">RESERVE</a><a href="pages/carta.html">ORDER NOW</a><a href="pages/carta.html">FOOD TRUCKS</a>
+                </nav>
+                <nav class="footer-nav secondary-links">
+                    <a href="#">ABOUT US</a><a href="#">ALLERGENS</a><a href="#">TERMS & CONDITIONS</a><a href="">PRIVACY POLICY</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+            <p><span>© 2024 BitBurger | <a href="contacto.html">More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">Creative Commons License | </a></span></p>
+            <nav><a href="#">LEGAL NOTICE</a><a href="#">COOKIE POLICY</a><a href="#">SALES CONDITIONS</a></nav>            
+            </div>
+        </div>
+    </footer>
+
+    <script src="script/boton.js"></script>
+    <!-- <script src="script/cookies.js"></script>  Already included above main -->
+    <script src="script/mainjs.js"></script> <!-- Add the carousel JS code to this file -->
+</body>
+</html>

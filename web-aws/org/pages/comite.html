@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Works Council</title>
+    <link rel="stylesheet" href="../styles/fichaje.css">
+    <link rel="stylesheet" href="../styles/comite.css">
+    <!-- MODIFICADO: Enlace de fuentes añadido -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon"> <!-- Asegúrate que la ruta al favicon sea correcta -->
+</head>
+<body>
+    <div class="main-container">
+        <header class="page-header">
+            <!-- Puedes añadir contenido al header si es necesario -->
+        </header>
+
+        <nav class="main-nav">
+            <div class="nav-buttons-container">
+                <button class="nav-button font-style-ashton" onclick="window.location.href='fichaje.html'">CLOCK-IN</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button> <!-- Corregido: llevaba a index.html -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button> <!-- Corregido: DIMISSALS -> DISMISSALS -->
+                <button class="nav-button font-style-ashton active">COMMITTEE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <!-- La primera sección ahora contiene el título y el índice -->
+            <section class="content-section">
+                <h1 class="font-style-ashton section-title">BitBurger Works Council</h1>
+                
+                <!-- Table of Contents (Índice) -->
+                <div class="toc-container">
+                    <h3 class="toc-title font-style-ashton">Index of the Committee</h3>
+                    <ul class="toc-list">
+                        <li><a href="#comite-intro">Introduction <br> Explanation of the Works Council about the committee</a></li>
+                        <li><a href="#comite-structure">Constitution & Composition <br> Committee Members that represent the workforce of the company</a></li>
+                        <li><a href="#all-commissions">Committee Commissions (Overview) <br> Commissions of the Works Council that represent the different areas of the company</a></li>
+                        <li><a href="#commission-health-safety">Health & Safety Commission <br> Supervises the health and safety of the workforce</a></li>
+                        <li><a href="#commission-equality">Equality Commission <br> Promotes equality and diversity within the workforce</a></li>
+                        <li><a href="#commission-training">Training Commission <br> Oversees training and professional development initiatives</a></li>
+                        <li><a href="#commission-economic">Economic Commission <br> Focuses on economic issues and the financial well-being of employees</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section comite-introduction" id="comite-intro">
+                <!-- El H1 se movió arriba, así que esta sección empieza con el párrafo -->
+                <p class="intro-paragraph">The BitBurger Works Council has been formally established to represent all employees of the company. Its current composition reflects a proportional distribution among the different departments and functional areas, ensuring equitable representation.</p>
+            </section>
+
+            <section class="content-section comite-composition" id="comite-structure">
+                <h2 class="font-style-ashton subsection-title">Constitution and Composition of the Committee</h2>
+                <p>The main leadership structure is as follows:</p>
+                <ul class="member-list">
+                    <li><strong>President:</strong> Mr. Andrew Calveche</li>
+                    <li><strong>Secretary:</strong> Mr. Alvaro López</li>
+                    <li><strong>Member:</strong> Mr. Arturo Marco</li>
+                    <li><strong>Member:</strong> Ms. Lucía Fernández</li>
+                    <li><strong>Member:</strong> Ms. Ana Belmonte</li>
+                </ul>
+                <p>These 5 representatives act on behalf of the diverse functional areas of the company, ensuring the advocacy of interests for the entire workforce. The commissions involving these employee representatives are:</p>
+            </section>
+
+            <section class="content-section comite-commissions" id="all-commissions">
+                <h2 class="font-style-ashton subsection-title">Committee Commissions</h2>
+
+                <article class="commission-item" id="commission-health-safety">
+                    <h3 class="commission-name">Health and Safety Commission</h3>
+                    <p class="commission-responsible"><strong>Responsible:</strong> Andrew Calveche</p>
+                    <h4>Objectives:</h4>
+                    <ul>
+                        <li>Ensure safe and healthy working conditions for all staff.</li>
+                        <li>Oversee compliance with current occupational risk prevention regulations.</li>
+                        <li>Encourage worker participation in improving safety and health conditions.</li>
+                    </ul>
+                    <h4>Main functions:</h4>
+                    <ul>
+                        <li>Actively collaborate with the company's risk prevention service in the identification, evaluation, and control of occupational risks.</li>
+                        <li>Monitor compliance with preventive measures and propose continuous improvements in occupational health and ergonomics.</li>
+                        <li>Supervise and be consulted on risk assessments, planning of preventive activities, emergency and evacuation plans, and the selection and adequacy of personal protective equipment (PPE).</li>
+                        <li>Collect, analyze, and channel complaints, suggestions, and initiatives from workers regarding unsafe or unhealthy working conditions.</li>
+                        <li>Participate in the investigation of occupational accidents and incidents to identify causes and propose corrective measures.</li>
+                        <li>Promote training and information programs on risk prevention for workers.</li>
+                        <li>Conduct periodic visits to different workstations to verify safety and health conditions.</li>
+                    </ul>
+                </article>
+
+                <article class="commission-item" id="commission-equality">
+                    <h3 class="commission-name">Equality Commission</h3>
+                    <p class="commission-responsible"><strong>Responsible:</strong> Lucía Fernández</p>
+                    <h4>Objectives:</h4>
+                    <ul>
+                        <li>Promote and ensure equal treatment and opportunities for women and men in all areas of the company.</li>
+                        <li>Eliminate any form of direct or indirect discrimination based on sex, sexual orientation, gender identity, or any other personal or social condition.</li>
+                        <li>Ensure the correct implementation, monitoring, and evaluation of the company's Equality Plan.</li>
+                        <li>Foster a work environment free from sexual and gender-based harassment.</li>
+                    </ul>
+                     <h4>Main functions:</h4>
+                    <ul>
+                        <li>Actively participate in the diagnosis, design, negotiation, implementation, monitoring, and evaluation of Bitburger's Equality Plan.</li>
+                        <li>Monitor the effective application of the measures contained in the Equality Plan in areas such as access to employment, professional classification, promotion, training, remuneration, work time organization to promote conciliation, and harassment prevention.</li>
+                        <li>Analyze and propose measures to correct possible wage inequalities (gender pay gap) and ensure the principle of "equal pay for work of equal value."</li>
+                        <li>Receive and channel inquiries, complaints, or reports related to situations of discrimination or harassment, ensuring confidentiality and due process according to established protocols.</li>
+                        <li>Promote awareness and training actions on equal opportunities and harassment prevention for the entire workforce.</li>
+                        <li>Ensure the use of inclusive and non-sexist language in all internal and external communications of the company.</li>
+                        <li>Collaborate in the preparation of periodic reports on the progress of equality policies.</li>
+                    </ul>
+                </article>
+
+                <article class="commission-item" id="commission-training">
+                    <h3 class="commission-name">Training Commission</h3>
+                    <p class="commission-responsible"><strong>Responsible:</strong> Arturo Marco and Ana Belmonte</p>
+                    <h4>Objectives:</h4>
+                    <ul>
+                        <li>Foster the professional and personal development of staff through continuous training.</li>
+                        <li>Ensure that the training offered is relevant, of high quality, and responds to both the company's needs and the workers' aspirations.</li>
+                        <li>Promote employee adaptability to technological and organizational changes, improving their employability.</li>
+                        <li>Ensure equal access to training opportunities for all groups within the company.</li>
+                    </ul>
+                    <h4>Main functions:</h4>
+                    <ul>
+                        <li>Participate in identifying training needs at individual, departmental, and global levels of the company.</li>
+                        <li>Collaborate in the development, monitoring, and evaluation of the company's annual Training Plan, issuing a prior report before its approval.</li>
+                        <li>Inform and guide workers on the different training actions available (internal, external, subsidized training, individual training permits, company training grants).</li>
+                        <li>Propose new topics, methodologies, and training actions considered of interest to the workforce and the company.</li>
+                        <li>Ensure that selection criteria for access to training are objective and non-discriminatory.</li>
+                        <li>Evaluate the impact and effectiveness of the training actions carried out, proposing improvements if necessary.</li>
+                        <li>Encourage worker participation in skills and competency development programs.</li>
+                    </ul>
+                </article>
+
+                <article class="commission-item" id="commission-economic">
+                    <h3 class="commission-name">Economic and Budgetary Control Commission</h3>
+                    <p class="commission-responsible"><strong>Responsible:</strong> Alvaro López</p>
+                    <h4>Objectives:</h4>
+                    <ul>
+                        <li>Ensure transparency in the company's economic and financial information that affects workers' interests.</li>
+                        <li>Supervise the correct application of agreed economic accords and budgetary allocations for labor and social aspects.</li>
+                        <li>Analyze the company's economic situation and its impact on employment and working conditions.</li>
+                    </ul>
+                    <h4>Main functions:</h4>
+                    <ul>
+                        <li>Receive, analyze, and issue reports on the economic information that Management must provide to the Works Council according to Article 64 of the Workers' Statute (ET) (general evolution of the economic sector, economic situation of the company, activity forecasts, probable evolution of employment, etc.).</li>
+                        <li>Supervise compliance with salary commitments, including agreed increases, supplements, and the correct application of salary scales from collective agreements.</li>
+                        <li>Monitor the execution of budgets allocated to specific items benefiting workers, such as funds for social benefits, training (in coordination with the training commission), or equality plans.</li>
+                        <li>Be consulted and inform on business decisions with significant economic impact on the workforce (e.g., restructuring, substantial modifications of working conditions with an economic basis).</li>
+                        <li>Analyze the quarterly information on the general progress of the company (mentioned in section 7 "Right to Economic Information") and convey relevant conclusions to the workforce in an understandable manner.</li>
+                        <li>Propose, where appropriate, measures that can contribute to improving efficiency or optimizing resources, always for the benefit of maintaining and improving working conditions.</li>
+                    </ul>
+                </article>
+
+            </section>
+        </main>
+    </div>
+    <!-- <script src="../../script/comite.js"></script> --> <!-- Si necesitas JS específico más tarde -->
+</body>
+</html>

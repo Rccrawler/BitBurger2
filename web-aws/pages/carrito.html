@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger - Cart</title>
+    <link rel="shortcut icon" href="../img/inicio/logo3.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/carrito.css">
+</head>
+<body>
+    <div class="cart-page-container">
+        <div class="cart-content-wrapper">
+            <div class="cart-header">
+                <h1 class="cart-title font-style-ashton">Cart</h1>
+                <button class="cart-close-btn" aria-label="Close cart">X</button>
+            </div>
+            
+            <div id="empty-cart-message" class="hidden">
+                <p>Your cart is empty. Add something delicious!</p>
+            </div>
+
+            <ul class="cart-item-list" id="dynamic-cart-item-list">
+                <!-- Cart items will be inserted here dynamically -->
+            </ul>
+
+            <div class="cart-summary">
+                <div class="total-price-container">
+                    <span>Total:</span>
+                    <span id="cart-total-price">€0.00</span>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <button class="process-order-btn font-style-ashton">Process order</button>
+                <img src="../img/inicio/burger-movil.png" alt="Burger icon" class="cart-footer-icon">
+            </div>
+        </div>
+
+        <!-- Modal de Selección de Método de Pago -->
+        <div id="payment-method-modal" class="modal-overlay hidden">
+            <div class="modal-popup-content payment-modal-content">
+                <button class="close-modal-btn payment-close-btn" aria-label="Close payment selection">×</button>
+                <h2 class="font-style-ashton">Select Payment Method</h2>
+                <div class="payment-options">
+                    <button class="payment-option-btn" data-method="credit-card">
+                        <img src="../img/inicio/credit-cart.png" alt="Credit Card"> <!-- Cambia por tus iconos -->
+                        <span>Credit Card</span>
+                    </button>
+                    <button class="payment-option-btn" data-method="paypal">
+                        <img src="../img/inicio/paypal.png" alt="PayPal"> <!-- Cambia por tus iconos -->
+                        <span>PayPal</span>
+                    </button>
+                    <button class="payment-option-btn" data-method="cash">
+                        <img src="../img/inicio/cash.png" alt="Cash on Delivery"> <!-- Cambia por tus iconos -->
+                        <span>Cash on Delivery</span>
+                    </button>
+                </div>
+                <div id="credit-card-details" class="hidden payment-details">
+                    <h3 class="font-style-ashton">Credit Card Details</h3>
+                    <input type="text" placeholder="Card Number" id="card-number" class="payment-input">
+                    <input type="text" placeholder="Cardholder Name" id="card-name" class="payment-input">
+                    <div class="card-expiry-cvv">
+                        <input type="text" placeholder="MM/YY" id="card-expiry" class="payment-input">
+                        <input type="text" placeholder="CVV" id="card-cvv" class="payment-input">
+                    </div>
+                </div>
+                <button id="confirm-payment-btn" class="btn btn-confirm-payment font-style-ashton" disabled>Confirm and Pay</button>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmación de Pedido -->
+        <div id="order-confirmation-modal" class="modal-overlay hidden">
+            <div class="modal-popup-content confirmation-modal-content">
+                <button class="close-modal-btn confirmation-close-btn" aria-label="Close confirmation">×</button>
+                <img src="../img/icons/order-success.png" alt="Order Success" class="confirmation-icon"> <!-- Cambia por tu icono -->
+                <h2 class="font-style-ashton">Order Placed!</h2>
+                <p>Your order <strong id="confirmed-order-id">#12345</strong> has been successfully placed.</p>
+                <p>Thank you for choosing BitBurger!</p>
+                <button id="back-to-menu-btn" class="btn btn-primary font-style-ashton">Back to Menu</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../script/carrito.js"></script>
+</body>
+</html>

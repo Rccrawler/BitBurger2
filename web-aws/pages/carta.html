@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/inicio/logo3.ico" type="image/x-icon">
+    <title>BitBurger - Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/style.css"> <!-- Estilos generales y del header -->
+    <link rel="stylesheet" href="../styles/boton.css"> <!-- Estilos del menú circular/desplegable -->
+    <link rel="stylesheet" href="../styles/carta.css"> <!-- Estilos específicos de esta página (Goiko) -->
+</head>
+<body>
+
+    <!-- Cookies -->
+    <script src="../script/cookies.js"></script>
+    <div id="cookie-banner" class="hidden">
+        <p>We use cookies to improve your experience.
+            <a href="terminos.html" style="color: var(--accent-orange);">learn more</a>.
+        </p>
+        <button onclick="aceptarCookies()">Accept</button>
+        <button onclick="abrirConfiguracion()">Configure</button>
+    </div>
+    <div id="configurar-cookies-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Cookies</h2><br>
+            <form id="configurar-cookies-form">
+                <label><input type="checkbox" name="cookies-necesarias" checked disabled> Necessary cookies</label>
+                <label><input type="checkbox" name="cookies-analiticas"> Analytical cookies</label>
+                <label><input type="checkbox" name="cookies-publicidad"> Advertising cookies</label>
+            </form>
+            <button onclick="guardarConfiguracion()">Save</button>
+            <button onclick="cerrarConfiguracion()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Header (definido en style.css y usando el menú de boton.css/boton.js) -->
+    <header>
+        <div class="header-left">
+            <div class="expanding-button-container">
+                <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+                    <img src="../img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
+                </button>
+                <div class="options-wrapper" id="optionsMenu">
+                    <button class="option-button option-1" data-url="carrito.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
+                    <button class="option-button option-2" data-url="../conocenos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
+                    <button class="option-button option-3" data-url="../org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div></button>
+                    <button class="option-button option-4" data-url="perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div></button>
+                </div>
+            </div>
+        </div>
+        <nav class="header-right">
+            <a href="carrito.html" class="nav-button reserve-button">ORDER</a>
+            <div class="language-selector">
+                <span>EN</span>
+                <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="10" height="10"><path d="M8 12L2 6h12L8 12z"/></svg>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal de la página de menú estilo Goiko -->
+    <main class="menu-page-goiko-style">
+        <section class="hero-menu-section">
+            <h1 class="hero-menu-title">BURGERS</h1>
+        </section>
+
+        <nav class="menu-categories-bar">
+            <!-- Los data-tab DEBEN COINCIDIR con los ID de los contenedores de abajo Y con las claves del categoryIdMap en carta.js para los productos -->
+            <a href="#" class="menu-category-link" data-tab="entrantes">STARTERS</a>
+            <a href="#" class="menu-category-link active" data-tab="hamburguesas">BURGERS</a> <!-- 'hamburguesas' es la activa por defecto -->
+            <a href="#" class="menu-category-link" data-tab="chicken-lovers">CHICKEN LOVERS</a> <!-- Si tienes categoría Pollo -->
+            <a href="#" class="menu-category-link" data-tab="kids-menu">KIDS MENU</a>
+            <a href="#" class="menu-category-link" data-tab="otros-platos">SALADS</a> <!-- 'otros-platos' para ensaladas según tu map -->
+            <a href="#" class="menu-category-link" data-tab="desserts">DESSERTS</a>
+            <a href="#" class="menu-category-link" data-tab="bebidas">DRINKS</a>
+            <a href="#" class="menu-category-link" data-tab="lunch-menu">LUNCH MENU</a>
+            <a href="#" class="menu-category-link" data-tab="allergens">ALLERGENS</a>
+        </nav>
+
+        <section class="preferences-section">
+            <h2>CHOOSE YOUR PREFERENCE:</h2>
+            <div class="preferences-columns">
+                <div class="preference-column">
+                    <h3>MEAT</h3>
+                    <p>100% BEEF</p>
+                    <p>CRISPY CHICKEN BREAST</p>
+                    <p>ARTICHOKE VEGGIE PATTY</p>
+                </div>
+                <div class="preference-column">
+                    <h3>SIDE</h3>
+                    <p>RUSTIC POTATOES</p>
+                    <p>THIN-CUT FRIES</p>
+                    <p>SWEET POTATOES</p>
+                    <p>SALAD</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-grid-section">
+            <h2 class="menu-grid-title">OUR MENU</h2> <!-- Título más genérico -->
+            <div class="menu-items-container">
+                <!-- Estos IDs DEBEN COINCIDIR con los data-tab de los links de arriba Y con el categoryIdMap de carta.js -->
+                <div id="smash-burgers" class="menu-category"></div>
+                <div id="entrantes" class="menu-category"></div>
+                <div id="hamburguesas" class="menu-category active"></div> <!-- 'hamburguesas' activa por defecto -->
+                <div id="chicken-lovers" class="menu-category"></div>
+                <div id="kids-menu" class="menu-category"></div>
+                <div id="otros-platos" class="menu-category"></div> <!-- Para las ensaladas -->
+                <div id="desserts" class="menu-category"></div>
+                <div id="bebidas" class="menu-category"></div>
+                <div id="lunch-menu" class="menu-category"></div>
+                <div id="allergens" class="menu-category">
+                    <!-- El contenido de alérgenos puede ser estático o cargado dinámicamente de otra forma -->
+                    <p style="text-align:center; padding:20px;">Allergen information coming soon. Please ask our staff for details.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision-section">
+            <p>STILL HAVEN'T DECIDED?</p>
+            <a href="/" class="back-to-menu-button">❮ EXPLORE CATEGORIES</a>
+        </section>
+    </main>
+
+    <!-- Item Detail Modal (Popup) -->
+    <div id="item-detail-modal" class="modal-overlay hidden">
+        <div class="modal-popup-content">
+            <!-- <span class="modal-background-text"></span> Background text si se desea -->
+            <button class="close-modal-btn" aria-label="Close modal">×</button>
+            <img id="modal-item-image" src="" alt="Product Detail"> <!-- src se llena por JS -->
+            <h3 id="modal-item-name" class="font-style-ashton-h2">Product Name</h3> <!-- texto se llena por JS -->
+            <p id="modal-item-description">Detailed product description here...</p> <!-- texto se llena por JS -->
+            <div class="quantity-selector">
+                <label for="item-quantity">Quantity:</label>
+                <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">-</button>
+                <input type="number" id="item-quantity" value="1" min="1" readonly aria-labelledby="item-quantity-label">
+                <button class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button id="add-to-order-btn" class="btn">Add to Order</button>
+        </div>
+    </div>
+
+    <footer class="footer-goiko">
+        <div class="footer-goiko-content">
+            <div class="footer-goiko-left">
+                <img src="../img/inicio/logo3.png" alt="BitBurger Logo" class="footer-goiko-logo">
+            </div>
+            <div class="footer-goiko-center">
+                <nav>
+                    <a href="#">RESERVATIONS</a>
+                    <a href="../pages/perfil.html">DELIVERY & TAKEAWAY</a>
+                    <a href="#">OUR RESTAURANTS</a>
+                    <a href="#">FRIENDS WITH BENEFITS</a>
+                    <a href="#">BITBURGERCINA</a> <!-- Cambiado GOIKOCINA a BITBURGERCINA -->
+                    <a href="../org/index.html">JOIN OUR TEAM</a>
+                </nav>
+            </div>
+            <div class="footer-goiko-right">
+                <nav>
+                    <a href="#">ALLERGENS</a> <!-- Este podría apuntar a la sección de alérgenos -->
+                    <a href="#">ONLINE INVOICE</a>
+                    <a href="../contacto.html">CONTACT US</a>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-goiko-social">
+            <!--<a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../img/inicio/facebook-13.png" alt="Facebook"></a>-->
+            <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../img/inicio/gorjeo.png" alt="X"></a>
+            <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../img/inicio/instagram.png" alt="Instagram"></a>
+            <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../img/inicio/linkedin.png" alt="LinkedIn"></a>
+        </div>
+        <div class="repeating-background-text footer-goiko-banner-text">
+            <span>BITBURGERFOREVERBITBURGERFOREVERBITBURGER</span>
+        </div>
+    </footer>
+
+    <!-- Scripts al final del body -->
+    <script src="../script/boton.js"></script> <!-- Para el menú circular desplegable -->
+    <script src="../script/carta.js"></script> <!-- Lógica específica de la página de carta (productos, modal) -->
+    <script src="../script/mainjs.js"></script> <!-- Scripts generales (animaciones on-scroll, etc.) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica de cookies (se mantiene)
+            // Esta parte está bien y es manejada por cookies.js también.
+            const cookieBanner = document.getElementById('cookie-banner');
+            if (cookieBanner && localStorage.getItem('cookiesAceptadas') !== 'true' && localStorage.getItem('cookieConsent') !== 'rechazadas') {
+                // cookies.js debería manejar la visibilidad, pero por si acaso:
+                // cookieBanner.classList.remove('hidden'); 
+            }
+
+            // Lógica para la barra de categorías del menú (estilo Goiko)
+            const menuCategoryLinks = document.querySelectorAll('.menu-categories-bar .menu-category-link');
+            const menuCategoryContainers = document.querySelectorAll('.menu-items-container .menu-category');
+
+            if (menuCategoryLinks.length > 0 && menuCategoryContainers.length > 0) {
+                menuCategoryLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetTab = link.dataset.tab;
+
+                        // Actualizar links activos
+                        menuCategoryLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+
+                        // Mostrar/ocultar contenedores de categoría y animar tarjetas
+                        menuCategoryContainers.forEach(container => {
+                            const isActive = container.id === targetTab;
+                            container.classList.toggle('active', isActive);
+                            
+                            if (isActive) { // Solo animar si la pestaña se está activando
+                                const cards = container.querySelectorAll('.menu-item-card');
+                                cards.forEach((card, index) => {
+                                    // Resetear para la animación (esto es importante)
+                                    card.style.opacity = '0';
+                                    card.style.transform = 'translateY(20px) scale(0.95)';
+                                    // Aplicar animación con retardo escalonado
+                                    setTimeout(() => {
+                                        card.style.opacity = '1';
+                                        card.style.transform = 'translateY(0) scale(1)';
+                                        // La transición la define el CSS
+                                    }, index * 70); // Retardo escalonado
+                                });
+                            }
+                        });
+                    });
+                });
+
+                // Animación inicial para la pestaña activa al cargar la página
+                // (Esto asume que los productos para la pestaña activa ya están cargados por carta.js)
+                // carta.js se encarga de renderizar y animar la pestaña activa después de fetch.
+                // Este bloque podría ser redundante si carta.js ya lo hace bien.
+                // Lo mantenemos por si carta.js solo carga datos y no maneja la animación inicial de la pestaña activa por defecto.
+                const initialActiveLink = document.querySelector('.menu-categories-bar .menu-category-link.active');
+                if (initialActiveLink) {
+                    const initialActiveCategory = document.getElementById(initialActiveLink.dataset.tab);
+                    if (initialActiveCategory && initialActiveCategory.classList.contains('active')) {
+                        // Pequeño retraso para asegurar que los elementos existen si carta.js los crea dinámicamente
+                        setTimeout(() => {
+                            const initialCards = initialActiveCategory.querySelectorAll('.menu-item-card');
+                            initialCards.forEach((card, index) => {
+                                card.style.opacity = '0'; // Asegurar estado inicial para animación
+                                card.style.transform = 'translateY(20px) scale(0.95)';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0) scale(1)';
+                                }, 100 + index * 70); // Un ligero retraso base + escalonado
+                            });
+                        }, 200); // Esperar un poco a que carta.js pueda haber renderizado
+                    }
+                }
+            } else {
+                console.warn("Menu category links or containers not found for Goiko style menu.");
+            }
+        });
+    </script>
+</body>
+</html>

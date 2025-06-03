@@ -1,0 +1,400 @@
+/* pages/editor-hanburgesa/styles/burger-builder.css */
+
+/* Use main site's color variables:
+:root {
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #F5EDE0;
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+}
+*/
+
+.burger-builder-main { /* Specific padding for this page if needed, distinct from general main padding */
+    padding-top: 90px; /* Adjust if header height is different or more space is needed */
+    padding-bottom: 30px;
+    background-color: var(--bg-dark-main);
+    min-height: calc(100vh - 70px - 156px); /* viewport - header - footer height approx */
+}
+
+.burger-builder-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-dark-section); /* A slightly different bg for the content area */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#menu-builder { /* Renamed from #menu */
+    width: 280px;
+    max-width: 100%;
+    background-color: transparent; /* Inherits from .burger-builder-container */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    color: var(--text-light);
+}
+
+.builder-section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#menu-builder p.builder-section-title:first-child { /* For "Ingredients" title */
+     margin-bottom: 10px;
+}
+
+.ingrediente { 
+    padding: 12px 10px; 
+    margin-bottom: 8px; 
+    background: var(--bg-light-contrast); 
+    border: 1px solid var(--border-color-dark-theme); 
+    color: var(--text-dark);
+    border-radius: 4px; 
+    cursor: pointer; 
+    user-select: none; 
+    text-align: center; 
+    transition: background-color 0.2s, transform 0.2s;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.95em;
+    /* Removed fixed height from original global .ingrediente style, rely on padding */
+}
+.ingrediente:hover { 
+    background-color: var(--accent-orange);
+    color: var(--text-dark);
+    transform: translateX(3px);
+}
+
+#hamburguesa-preview { /* Renamed from #hamburguesa */
+    flex: 1; 
+    background-color: var(--bg-dark-main); /* Match outer page background */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 25px; 
+    min-height: 500px; 
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--accent-brown-light);
+}
+
+#vista { 
+    width: 300px; /* Retaining this from themed version, adjust if original #vista size is preferred */
+    height: 450px; /* Retaining this from themed version, adjust if original #vista size is preferred */
+    /* Original #vista was 300px width, 650px height, and different background/border */
+    /* If you want the exact original #vista appearance, these would need to change too */
+    max-width: 95%; 
+    max-height: 95%; 
+    position: relative; 
+    background-color: rgba(0,0,0,0.1); /* Subtle darker area for burger */
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 10px; 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column-reverse; /* Stacks from bottom up */
+    align-items: center; 
+    justify-content: flex-start; /* Ingredients appear from bottom */
+    padding-top: 10px; /* Space for top bun */
+    padding-bottom: 10px; /* Space for bottom bun */
+}
+
+.capa { 
+    width: 85%; /* CHANGED: Reverted to original value */
+    max-width: 250px; /* CHANGED: Reverted to original value */
+    display: block; 
+    margin-bottom: -2px; /* CHANGED: Reverted to original value for less overlap */
+    pointer-events: none; 
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)); /* Kept from themed version */
+    transition: transform 0.2s ease-out; /* Kept from themed version */
+}
+
+#orden { 
+    margin-top: 25px; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 150px; /* Ensure it has some height */
+}
+#lista { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0 0 10px 0; 
+    background-color: var(--bg-dark-main); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 4px; 
+    padding: 8px; 
+    flex-grow: 1; 
+    overflow-y: auto; 
+    min-height: 150px; /* Fixed min height for the list */
+    max-height: 250px; /* Max height before scroll */
+}
+#lista li { 
+    margin: 5px 0; 
+    background: var(--bg-light-contrast);
+    color: var(--text-dark);
+    border: 1px solid var(--accent-brown-light); 
+    border-radius: 4px; 
+    padding: 8px 12px; 
+    cursor: grab; 
+    text-align: center; 
+    user-select: none; 
+    transition: background-color 0.2s, opacity 0.2s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+}
+#lista li:active {
+    cursor: grabbing;
+}
+#lista li.dragging { 
+    opacity: 0.6; 
+    background: var(--accent-orange); 
+}
+#lista-ayuda { 
+    font-size: 0.8em; 
+    color: var(--text-light);
+    opacity: 0.8;
+    text-align: center; 
+    margin-top: 8px; 
+    padding: 0 5px; 
+    line-height: 1.4;
+}
+#lista-ayuda .eliminar-text { 
+    color: var(--accent-red); 
+    font-weight: bold; 
+}
+
+#total-precio {
+    position: static; /* Changed from fixed to flow in #menu-builder */
+    background-color: transparent;
+    color: var(--text-light);
+    padding: 15px 5px;
+    border-radius: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: none;
+    text-align: right;
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color-dark-theme);
+}
+
+#encargar-btn {
+    display: block; 
+    width: 100%;
+    margin: 20px auto 5px auto; 
+    /* padding is handled by .button styles */
+}
+
+/* Styles for the animated button from original builder */
+/* We need to map its variables to our theme */
+#encargar-btn .button {
+    --primary-builder: var(--accent-red); /* Was #ff5569 */
+    --neutral-1-builder: var(--bg-light-contrast); /* Was #ffe5b4 */
+    --neutral-2-builder: var(--accent-brown-light); /* Was #8f6d2e */
+    --radius-builder: 14px;
+
+    cursor: pointer;
+    border-radius: var(--radius-builder);
+    color: var(--text-dark); /* Text color on the button */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    border: none;
+    box-shadow: 0 0.5px 0.5px 1px rgba(255, 255, 255, 0.2), /* Light highlight */
+    0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 5px 0px rgba(0, 0, 0, 0.05); /* Dark shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    padding: 18px; /* Slightly smaller padding */
+    height: 60px; /* Slightly smaller height */
+    font-family: 'Anton', sans-serif; /* Using theme font */
+    font-style: normal;
+    font-size: 16px; /* Adjusted font size */
+    font-weight: 400; /* Anton is already bold */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+#encargar-btn .button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.3), 0 10px 3px -3px rgba(0, 0, 0, 0.04);
+}
+#encargar-btn .button:active {
+    transform: scale(1);
+    box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 10px 3px -3px rgba(0, 0, 0, 0.2);
+}
+#encargar-btn .button:after { /* Gradient border */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-builder);
+    border: 2.5px solid transparent;
+    background: linear-gradient(var(--neutral-1-builder), var(--neutral-2-builder)) padding-box,
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45)) border-box;
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+#encargar-btn .button:hover::after {
+    transform: scale(1.05, 1.1);
+    box-shadow: inset 0 -1px 3px 0 var(--text-light); /* Light inner shadow */
+}
+#encargar-btn .button::before { /* Inner gradient background */
+    content: "";
+    inset: 7px 6px 6px 6px;
+    position: absolute;
+    background: linear-gradient(to top, var(--neutral-1-builder), var(--neutral-2-builder));
+    border-radius: 30px; /* Inner radius */
+    filter: blur(0.5px);
+    z-index: 2;
+}
+#encargar-btn .state p { display: flex; align-items: center; justify-content: center; }
+#encargar-btn .state .icon { position: absolute; left: 0; top: 0; bottom: 0; margin: auto; transform: scale(1.25); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+#encargar-btn .state .icon svg { overflow: visible; color: var(--text-dark); } /* Icon color */
+
+/* Outline for animated button */
+#encargar-btn .outline { position: absolute; border-radius: inherit; overflow: hidden; z-index: 1; opacity: 0; transition: opacity 0.4s ease; inset: -2px -3.5px; }
+#encargar-btn .outline::before { content: ""; position: absolute; inset: -100%; background: conic-gradient( from 180deg, transparent 60%, var(--text-light) 80%, transparent 100% ); animation: spin 2s linear infinite; animation-play-state: paused; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#encargar-btn .button:hover .outline { opacity: 1; }
+#encargar-btn .button:hover .outline::before { animation-play-state: running; }
+
+/* Letter animations for button */
+#encargar-btn .state p span { display: block; opacity: 0; animation: slideDownBB 0.8s ease forwards calc(var(--i) * 0.03s); color: var(--text-dark); } /* Ensure text color */
+#encargar-btn .button:hover p span { opacity: 1; animation: waveBB 0.5s ease forwards calc(var(--i) * 0.02s); }
+#encargar-btn .button:focus p span { opacity: 1; animation: disapearBB 0.6s ease forwards calc(var(--i) * 0.03s); }
+@keyframes waveBB { 30% { opacity: 1; transform: translateY(4px) translateX(0) rotate(0); } 50% { opacity: 1; transform: translateY(-3px) translateX(0) rotate(0); color: var(--primary-builder); } 100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); } }
+@keyframes slideDownBB { 0% { opacity: 0; transform: translateY(-20px) translateX(5px) rotate(-90deg); color: var(--primary-builder); filter: blur(5px); } 30% { opacity: 1; transform: translateY(4px) translateX(0) rotate(0); filter: blur(0); } 50% { opacity: 1; transform: translateY(-3px) translateX(0) rotate(0); } 100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); } }
+@keyframes disapearBB { from { opacity: 1; } to { opacity: 0; transform: translateX(5px) translateY(20px); color: var(--primary-builder); filter: blur(5px); } }
+
+/* Plane animation for button */
+#encargar-btn .state--default .icon svg { animation: landBB 0.6s ease forwards; }
+#encargar-btn .button:hover .state--default .icon { transform: rotate(45deg) scale(1.25); }
+#encargar-btn .button:focus .state--default svg { animation: takeOffBB 0.8s linear forwards; }
+#encargar-btn .button:focus .state--default .icon { transform: rotate(0) scale(1.25); }
+@keyframes takeOffBB { 0% { opacity: 1; } 60% { opacity: 1; transform: translateX(70px) rotate(45deg) scale(2); } 100% { opacity: 0; transform: translateX(160px) rotate(45deg) scale(0); } }
+@keyframes landBB { 0% { transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2); opacity: 0; filter: blur(3px); } 100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); } }
+
+/* Contrail for button */
+#encargar-btn .state--default .icon:before { content: ""; position: absolute; top: 50%; height: 2px; width: 0; left: -5px; background: linear-gradient(to right, transparent, var(--text-dark)); } /* Dark contrail */
+#encargar-btn .button:focus .state--default .icon:before { animation: contrailBB 0.8s linear forwards; }
+@keyframes contrailBB { 0% { width: 0; opacity: 1; } 8% { width: 15px; } 60% { opacity: 0.7; width: 80px; } 100% { opacity: 0; width: 160px; } }
+
+/* States for button */
+#encargar-btn .state { padding-left: 29px; z-index: 2; display: flex; position: relative; }
+#encargar-btn .state--default span:nth-child(4) { margin-right: 5px; }
+#encargar-btn .state--sent { display: none; }
+#encargar-btn .state--sent svg { transform: scale(1.25); margin-right: 8px; color: var(--text-dark); } /* Sent icon color */
+#encargar-btn .button:focus .state--default { position: absolute; }
+#encargar-btn .button:focus .state--sent { display: flex; }
+#encargar-btn .button:focus .state--sent span { opacity: 0; animation: slideDownBB 0.8s ease forwards calc(var(--i) * 0.2s); color: var(--text-dark); } /* Sent text color */
+#encargar-btn .button:focus .state--sent .icon svg { opacity: 0; animation: appearBB 1.2s ease forwards 0.8s; }
+@keyframes appearBB { 0% { opacity: 0; transform: scale(4) rotate(-40deg); color: var(--primary-builder); filter: blur(4px); } 30% { opacity: 1; transform: scale(0.6); filter: blur(1px); } 50% { opacity: 1; transform: scale(1.2); filter: blur(0); } 100% { opacity: 1; transform: scale(1); } }
+
+/* Disabled state for the button */
+#encargar-btn .button.disabled-button-style {
+    background: var(--border-color-dark-theme);
+    color: var(--text-light);
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+#encargar-btn .button.disabled-button-style:hover {
+    transform: none;
+     box-shadow: none;
+}
+#encargar-btn .button.disabled-button-style::after,
+#encargar-btn .button.disabled-button-style::before {
+    display: none; /* Hide gradients when disabled */
+}
+#encargar-btn .button.disabled-button-style .outline {
+    display: none; /* Hide outline effect when disabled */
+}
+
+
+/* Responsive adjustments for burger builder */
+@media (max-width: 768px) {
+    .burger-builder-main {
+        padding-top: 70px; /* Adjust if header smaller on mobile */
+    }
+    .burger-builder-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    #menu-builder {
+        width: 100%;
+        max-width: none;
+        padding: 0.5rem;
+        margin-bottom: 20px;
+    }
+    #hamburguesa-preview {
+        min-height: 350px; /* Smaller preview on mobile */
+        padding: 15px;
+    }
+    #vista {
+        width: 220px;
+        height: 320px;
+    }
+    .capa {
+        /* Adjusted for mobile from themed version, original was width: 80%; max-width: 200px; */
+        width: 85%; /* Maintaining aspect from desktop .capa */
+        max-width: 180px; /* Max width for mobile preview */
+        margin-bottom: -2px; /* Consistent overlap */
+    }
+    #lista {
+        min-height: 120px;
+        max-height: 180px;
+    }
+    #total-precio {
+        font-size: 1.1em;
+        padding: 10px 5px;
+        text-align: center;
+    }
+    #encargar-btn .button {
+        min-width: 160px;
+        padding: 15px;
+        height: 55px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hamburguesa-preview {
+        min-height: 300px;
+    }
+    #vista {
+        width: 180px;
+        height: 280px;
+    }
+    .capa {
+         /* Adjusted for small mobile from themed version, original was not specified for this breakpoint */
+        width: 85%; /* Maintaining aspect */
+        max-width: 150px; /* Max width for small mobile preview */
+        margin-bottom: -2px; /* Consistent overlap */
+    }
+     #encargar-btn .button .icon {
+        display: none; /* Hide icon on very small screens to save space */
+    }
+    #encargar-btn .state {
+        padding-left: 0; /* Remove padding if icon is hidden */
+        justify-content: center; /* Center text */
+    }
+}

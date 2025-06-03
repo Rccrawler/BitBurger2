@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif; /* Puedes cambiarla por la fuente específica de tu diseño */
+    background-color: #F5F0E6; /* Beige muy claro */
+    color: #3E2723; /* Marrón oscuro para texto general */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Espacio por si el contenido es más grande que la pantalla */
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #FDF5E6; /* Beige/crema para el contenedor del formulario */
+    padding: 30px 40px;
+    border-radius: 15px; /* Bordes redondeados como en la imagen de perfil */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Ancho máximo del formulario */
+    text-align: center;
+}
+
+.logo {
+    font-size: 3em; /* Tamaño del emoji de hamburguesa */
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #3E2723; /* Marrón oscuro */
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: normal; /* Para que no sea tan grueso si la fuente es bold por defecto */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #FFD580; /* Borde naranja pálido */
+    background-color: #FFF0CF; /* Fondo amarillo/naranja muy pálido */
+    border-radius: 8px; /* Bordes redondeados para los campos */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+    font-size: 1em;
+    color: #3E2723;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #E5874C; /* Borde más oscuro al enfocar */
+    box-shadow: 0 0 5px rgba(229, 135, 76, 0.3);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el checkbox y label a la izquierda */
+    margin-top: 5px; /* Ajuste para el checkbox */
+    margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Para que no ocupe todo el ancho */
+    accent-color: #E5874C; /* Color del check (navegadores modernos) */
+}
+
+.checkbox-group .checkbox-label {
+    font-weight: normal; /* El label del checkbox no necesita ser bold */
+    font-size: 0.9em;
+    margin-bottom: 0; /* Resetear margen inferior del label general */
+}
+
+.btn-register {
+    background-color: #E5874C; /* Naranja vibrante */
+    color: #FFFFFF; /* Texto blanco */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: #D35400; /* Naranja un poco más oscuro al pasar el ratón */
+}
+
+.login-link {
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.login-link a {
+    color: #D35400; /* Naranja oscuro para el enlace */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

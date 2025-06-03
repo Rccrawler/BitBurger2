@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Beneficios</title>
+    <!-- Asumo que fichaje.css existe en esta ruta, pero no fue proporcionado -->
+    <link rel="stylesheet" href="../styles/fichaje.css">
+    <link rel="stylesheet" href="../styles/beneficios.css"> <!-- Este CSS será modificado -->
+    <!-- MODIFICADO: Enlace de fuentes añadido -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="main-container">
+        <header class="page-header">
+            <!-- Contenido del header si lo hubiera -->
+        </header>
+
+        <nav class="main-nav">
+            <div class="nav-buttons-container">
+                <button class="nav-button font-style-ashton" onclick="window.location.href='fichaje.html'">CLOCK-IN</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='noticias.html'">NEWS</button>
+                <button class="nav-button font-style-ashton active">BENEFITS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button>
+                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <script src="../../script/employee-guard.js"></script> 
+            <section class="content-section">
+                <h2 class="font-style-ashton section-title">BENEFITS THAT THE COMPANY PROVIDES FOR ITS EMPLOYEES</h2>
+                <div class="benefits-list">
+                    <article class="benefit-item">
+                        <div class="benefit-text">
+                            <h3>Private Health Insurance</h3>
+                            <p>Comprehensive health coverage for you and your immediate family, with access to a wide network of specialists and hospitals.</p>
+                            <img src="../img/Salud.png" alt="Icono Salud" class="benefit-icon1">
+                        </div>
+                    </article>
+                    <article class="benefit-item">
+                        <div class="benefit-text">
+                            <h3>Gifts at BitBurger</h3>
+                            <p>Enjoy a daily free gift from one of our products or a special discount on our products. Eat delicious and save!</p>
+                            <img src="../img/Regalo.png" alt="Icono Regalo" class="benefit-icon2">
+                        </div>
+                    </article>
+                    <article class="benefit-item">
+                        <div class="benefit-text">
+                            <h3>Flexible schedule</h3>
+                            <p>Possibility to adapt your entry and exit schedule (depending on the position) for better work-life balance.</p>
+                            <img src="../img/Horario.png" alt="Icono Flexibilidad" class="benefit-icon3">
+                        </div>
+                    </article>
+                    <article class="benefit-item">
+                        <div class="benefit-text">
+                            <h3>Continuous Training</h3>
+                            <p>Access to courses and learning platforms to develop your professional and personal skills.</p>
+                            <img src="../img/Formacion.png" alt="Icono Formación" class="benefit-icon4">
+                        </div>
+                    </article>
+                    <article class="benefit-item">
+                        <div class="benefit-text">
+                            <h3>Day Off for Birthday</h3>
+                            <p>Celebrate your special day! We give you your birthday off to enjoy it as you wish.</p>
+                            <img src="../img/Tarta.png" alt="Icono Cumpleaños" class="benefit-icon5">
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../script/beneficios.js"></script> <!-- Este JS no será modificado -->
+</body>
+</html>

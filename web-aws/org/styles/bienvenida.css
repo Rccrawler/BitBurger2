@@ -1,0 +1,363 @@
+/* Import base styles from fichaje.css if not already linked in HTML (it is) */
+/* @import url('fichaje.css'); */
+
+/* --- COLOR PALETTE VARIABLES (from index.html's style.css) --- */
+:root {
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #F5EDE0;
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+}
+
+/* Apply new theme to the content area, leaving main-nav as is */
+body { /* Ensure body takes new main background if not overridden by fichaje.css */
+    background-color: var(--bg-dark-main); /* Match index.html body */
+    color: var(--text-light); /* Default text for dark bg */
+    font-family: 'Roboto', sans-serif; /* Match index.html body font */
+    overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
+}
+
+/* Keep existing nav styles for .nav-button.active from fichaje.css,
+   but ensure they are clearly defined if fichaje.css doesn't cover all states.
+   The provided bienvenida.css already has .active style, which is good.
+*/
+.nav-button.active {
+    background-color: var(--accent-orange);
+    color: var(--text-dark);
+    border-color: var(--accent-orange);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.nav-button.active:hover {
+    background-color: #f8c555; /* Lighter orange */
+    color: var(--text-dark);
+}
+
+
+/* Content area specific to bienvenida - General Setup */
+.content-area {
+    /* Inherits flex, etc. from fichaje.css. Let's ensure it has its own styling. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; /* Increased gap between sections */
+    width: 100%;
+    padding: 20px 15px 50px 15px; /* Add bottom padding */
+    max-width: 1000px; /* Slightly wider for more content */
+    margin: 0 auto; /* Centering */
+    background-color: var(--bg-dark-main); /* Ensure content area uses main dark bg */
+}
+
+/* Section Base Styles */
+.welcome-section {
+    width: 100%;
+    padding: 30px 25px;
+    background-color: var(--bg-dark-section);
+    border: 1px solid var(--border-color-dark-theme);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    text-align: center;
+}
+.welcome-section h2, .welcome-section h3 {
+    font-family: 'Anton', sans-serif;
+    color: var(--accent-orange);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.welcome-section p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    font-size: 1.1em;
+    line-height: 1.7;
+    opacity: 0.9;
+    text-align: left; /* Or justify if preferred */
+}
+.welcome-section p:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+/* 1. Welcome Hero Section */
+.welcome-hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../../img/inicio/parriya.png'); /* Example background, replace if needed */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    border: 1px solid var(--border-color-dark-theme);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    overflow: hidden; /* Contain letter animations */
+}
+.welcome-hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5em, 5vw, 3.8em);
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+    /* Prepare for letter animation - actual spans added by JS */
+}
+
+/* H1 Letter Animation - Spans added by JS */
+.welcome-hero h1 .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotate(10deg) scale(0.5);
+    animation: letter-pop-in 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes letter-pop-in {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+.welcome-hero .hero-subtitle,
+.welcome-hero .btn-explore {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px);
+    animation: fade-slide-up 0.8s ease-out forwards;
+}
+.welcome-hero .hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(1.1em, 2.5vw, 1.4em);
+    color: var(--text-light);
+    opacity: 0; /* Will be animated in */
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    line-height: 1.6;
+    animation-delay: 0.8s; /* Delay after H1 letters finish (approx) */
+}
+.welcome-hero .hero-employee-name {
+    color: var(--accent-orange);
+    font-weight: 700;
+    /* If animating employee name separately, target .hero-employee-name .char */
+}
+.welcome-hero .btn-explore {
+    font-family: 'Anton', sans-serif;
+    background-color: var(--accent-red);
+    color: var(--text-light);
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    border: none;
+    transition: all 0.3s ease; /* For hover effects */
+    display: inline-block;
+    opacity: 0; /* Will be animated in */
+    animation-delay: 1s; /* Delay after subtitle */
+}
+.welcome-hero .btn-explore:hover {
+    background-color: #e08a2e; /* Darker red */
+    transform: scale(1.05) translateY(0); /* Ensure translateY is not overridden by animation */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+@keyframes fade-slide-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 2. Video Section (Restyled) */
+.welcome-video-section { /* This now acts as a container for video and its title */
+    /* Reuses .welcome-section styles */
+}
+
+.welcome-video-section h2 {
+    font-size: 2.2em;
+}
+
+.video-player-wrapper { /* New wrapper for the video itself */
+    background-color: #000;
+    border: 1px solid var(--border-color-dark-theme);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 750px; /* Max width for video player */
+    aspect-ratio: 16 / 9;
+    margin: 0 auto; /* Center if section is wider */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.video-player-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 3. Quick Links / Index Section */
+.quick-nav-section {
+    /* Reuses .welcome-section styles */
+}
+.quick-nav-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.nav-card {
+    background-color: var(--bg-dark-main); /* Slightly different from section bg */
+    border: 1px solid var(--border-color-dark-theme);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover */
+    /* Animation applied via .animate-on-scroll */
+}
+.nav-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Keep hover, but ensure it doesn't conflict with animation transform */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+/* In bienvenida.css */
+
+.nav-card-image {
+    width: 100%;
+    height: 160px; /* This fixed height creates the uniform rectangular area */
+    object-fit: contain; /* This is key: scales image down to fit, preserves aspect ratio */
+    background-color: var(--bg-dark-section); /* Makes the image's direct background darker, matching screenshot's effect */
+                                           /* var(--bg-dark-section) is #4a3417, which is darker than the card's var(--bg-dark-main) #876434 */
+    padding: 10px;       /* Adds a little space around the contained icon, adjust as needed */
+    border-radius: 6px;  /* Existing: keeps rounded corners for the image area */
+    margin-bottom: 15px; /* Existing: space below the image */
+    border: 1px solid var(--border-color-dark-theme); /* Existing: border around the image area */
+    box-sizing: border-box; /* Ensures padding and border are included in width/height calculation */
+}
+.nav-card h3 {
+    font-family: 'Anton', sans-serif;
+    color: var(--accent-orange);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.nav-card p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes button to bottom */
+    opacity: 0.85;
+}
+.nav-card .btn-card {
+    font-family: 'Anton', sans-serif;
+    display: inline-block;
+    background-color: transparent;
+    color: var(--accent-orange);
+    border: 2px solid var(--accent-orange);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: all 0.3s ease; /* For hover */
+    align-self: flex-start; /* Align button to the start of the card */
+}
+.nav-card .btn-card:hover {
+    background-color: var(--accent-orange);
+    color: var(--text-dark);
+}
+
+
+/* 4. Welcome Description / "About Your Journey" (Restyled existing description box) */
+.welcome-journey-section {
+    /* Reuses .welcome-section styles */
+}
+.welcome-journey-section h2 {
+    font-size: 2.2em;
+}
+.welcome-journey-section .description-content { /* Wrapper for paragraphs */
+    /* Styles for p are inherited from .welcome-section p */
+}
+
+
+/* --- Scroll-Triggered Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.animate-on-scroll.fade-in-up {
+    transform: translateY(50px);
+}
+/* Add more specific animation types if needed e.g. slide-from-left/right */
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1); /* Reset all transforms */
+}
+
+/* Staggered animation delays for children of an animated parent */
+.animate-on-scroll.is-visible .animated-child {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fade-slide-up 0.6s ease-out forwards;
+}
+/* Define delays for animated-child elements using data-attributes or nth-child */
+.animate-on-scroll.is-visible .animated-child[data-delay="0.1s"] { animation-delay: 0.1s; }
+.animate-on-scroll.is-visible .animated-child[data-delay="0.2s"] { animation-delay: 0.2s; }
+.animate-on-scroll.is-visible .animated-child[data-delay="0.3s"] { animation-delay: 0.3s; }
+.animate-on-scroll.is-visible .animated-child[data-delay="0.4s"] { animation-delay: 0.4s; }
+.animate-on-scroll.is-visible .animated-child[data-delay="0.5s"] { animation-delay: 0.5s; }
+.animate-on-scroll.is-visible .animated-child[data-delay="0.6s"] { animation-delay: 0.6s; }
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .content-area {
+        gap: 30px;
+        padding: 15px 10px 30px 10px;
+    }
+    .welcome-section {
+        padding: 20px 15px;
+    }
+    .welcome-hero h1 {
+        font-size: clamp(2em, 6vw, 3em);
+    }
+    .welcome-hero .hero-subtitle {
+        font-size: clamp(1em, 3vw, 1.2em);
+    }
+    .quick-nav-grid {
+        grid-template-columns: 1fr; /* Stack cards */
+    }
+    .nav-card h3 {
+        font-size: 1.3em;
+    }
+    .nav-card p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-section h2, .welcome-section h3 {
+        font-size: 1.8em; /* Adjust main headings for smaller screens */
+    }
+    .nav-card h3 {
+        font-size: 1.2em;
+    }
+    .welcome-hero .btn-explore, .nav-card .btn-card {
+        font-size: 0.9em;
+        padding: 10px 25px;
+    }
+    .nav-card .btn-card {
+        padding: 8px 18px;
+    }
+
+    /* Adjust letter pop-in animation for smaller screens if too much */
+    .welcome-hero h1 .char {
+        transform: translateY(25px) rotate(5deg) scale(0.6);
+    }
+}

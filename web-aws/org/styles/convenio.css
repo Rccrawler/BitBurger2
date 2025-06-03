@@ -1,0 +1,405 @@
+/* styles/convenio.css */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-section { 
+    background-color: var(--bg-dark-section); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 8px;
+    padding: 30px 40px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin: 0 auto; 
+    box-sizing: border-box;
+    margin-bottom: 30px; 
+    /* Animación de entrada para la primera sección general (la que contiene el TOC) */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+
+.section-title { 
+    font-family: 'Anton', sans-serif; 
+    font-size: 2.4em;
+    color: var(--accent-orange); 
+    margin-top: 0; 
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-orange); 
+    padding-bottom: 15px;
+    letter-spacing: 1px; 
+    line-height: 1.3;
+}
+
+/* --- Table of Contents (Índice) Styles - MANTENER OSCURO --- */
+.toc-container { 
+    background-color: var(--bg-dark-main); 
+    border: 1px solid var(--border-color-dark-theme); 
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    /* Animación de entrada */
+    opacity: 0; /* Inicia invisible para la animación */
+    animation: fadeInUp 0.6s ease-out 0.2s forwards; /* 0.2s de retraso */
+}
+
+.toc-title {
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.8em;
+    color: var(--accent-orange); 
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.toc-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-orange); 
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+.toc-list li { /* Contenedor para animar individualmente los links */
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggering animation delay for TOC items */
+.toc-list li:nth-child(1) { animation-delay: 0.3s; }
+.toc-list li:nth-child(2) { animation-delay: 0.4s; }
+.toc-list li:nth-child(3) { animation-delay: 0.5s; }
+.toc-list li:nth-child(4) { animation-delay: 0.6s; }
+.toc-list li:nth-child(5) { animation-delay: 0.7s; }
+.toc-list li:nth-child(6) { animation-delay: 0.8s; }
+.toc-list li:nth-child(7) { animation-delay: 0.9s; }
+.toc-list li:nth-child(8) { animation-delay: 1.0s; }
+
+
+.toc-list li a { 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background-color: var(--bg-dark-section);
+    border: 1px solid var(--border-color-dark-theme);
+    border-left: 5px solid var(--accent-orange); 
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1em;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.toc-list li a::before {
+    content: '📄';
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    color: var(--accent-orange); 
+    font-size: 1.3em;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-out;
+}
+
+.toc-list li a[href*="#descargar-convenio-completo"]::before { content: '📥'; }
+.toc-list li a[href*="#consultar-convenio-zaragoza"]::before { content: '🔗'; }
+
+.toc-list li a:hover,
+.toc-list li a:focus {
+    background-color: var(--accent-orange); 
+    border-color: var(--accent-orange);
+    border-left-color: #e6a100; 
+    color: var(--text-dark); 
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(var(--accent-orange-rgb, 255, 165, 0),0.4);
+    outline: none;
+}
+
+.toc-list li a:hover::before,
+.toc-list li a:focus::before {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+
+/* --- Document Viewer Styles - FONDO BEIGE --- */
+.document-viewer { 
+    font-family: 'Roboto', sans-serif; 
+    color: var(--text-dark); 
+    font-size: 1.05em;
+    line-height: 1.8;
+    background-color: var(--bg-light-contrast);
+    padding: 30px 35px;
+    border-radius: 8px;
+    margin-top: 20px; /* Se mantiene para separación con el TOC */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
+    border: 1px solid #d1c8bc; 
+    /* IMPORTANTE: No hay animación global aquí, los hijos se animan individualmente */
+}
+
+/* Estilos para los elementos INTERNOS del .document-viewer que se van a animar */
+.document-viewer > .document-subtitle,
+.document-viewer > .section-heading,
+.document-viewer > .document-paragraph,
+.document-viewer > em,
+.document-viewer > .download-link-container {
+    opacity: 0;
+    transform: translateY(25px); /* Desplazamiento inicial */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* El retraso escalonado se puede manejar mejor con JS si es necesario para elementos que cargan juntos */
+}
+
+/* Clase que se añadirá con JavaScript para activar la animación de los elementos internos */
+.document-viewer > .animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.document-viewer h3.document-subtitle {
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.9em;
+    color: var(--accent-orange); 
+    margin-top: 0;
+    margin-bottom: 35px;
+    font-weight: normal; 
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #cccccc; 
+}
+
+.document-viewer .section-heading {
+    font-family: 'Anton', sans-serif; 
+    font-size: 1.5em;
+    color: var(--text-dark); 
+    margin-top: 45px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    display: block;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent-orange); 
+    position: relative;
+}
+
+.document-viewer .document-paragraph {
+    margin-bottom: 22px;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    letter-spacing: 0.2px;
+    color: var(--text-dark); 
+    opacity: 1; 
+}
+
+.document-viewer .document-paragraph strong {
+    color: var(--accent-orange); 
+    font-weight: 500; 
+}
+
+.document-viewer em { 
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 18px 22px;
+    font-size: 0.95em;
+    color: var(--text-dark); 
+    text-align: left;
+    hyphens: none;
+    background-color: #e9e0d1; 
+    border-left: 4px solid var(--accent-red); 
+    border-radius: 0 6px 6px 0;
+    font-style: normal;
+    line-height: 1.6;
+}
+
+.download-link-container,
+.external-convenio-link { /* .external-convenio-link ya está dentro de un .download-link-container */
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px 0;
+    font-size: 0.9em;
+    border-top: 1px solid #cccccc; 
+    line-height: 1.6;
+}
+.external-convenio-link {
+    margin-top: 20px; /* Este estilo es para el div específico con esa clase */
+}
+
+
+.download-button {
+    font-family: 'Anton', sans-serif; 
+    background-color: var(--accent-orange); 
+    border: none; 
+    padding: 14px 32px;
+    border-radius: 25px; 
+    color: var(--text-dark); 
+    font-size: 1.05em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.download-button:hover {
+    background-color: #f8c555; 
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.download-button:active {
+    transform: scale(0.98) translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.external-convenio-link p {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.0em;
+    color: var(--text-dark); 
+    margin-bottom: 20px;
+    text-align: center;
+    hyphens: none;
+    line-height: 1.6;
+    opacity: 1; 
+}
+
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 25px 30px;
+    }
+    .section-title {
+        font-size: 2em; 
+    }
+    .document-viewer {
+        font-size: 1em;
+        padding: 20px 25px;
+    }
+    .document-viewer h3.document-subtitle {
+        font-size: 1.7em;
+    }
+    .document-viewer .section-heading {
+        font-size: 1.35em;
+    }
+    .toc-title {
+        font-size: 1.6em;
+    }
+    .toc-list li a {
+        font-size: 0.95em;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    .toc-list li a::before {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 20px 15px;
+    }
+    .section-title {
+        font-size: 1.7em; 
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+    .document-viewer {
+        padding: 15px;
+    }
+    .document-viewer h3.document-subtitle {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .document-viewer .section-heading {
+        font-size: 1.25em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .document-viewer .document-paragraph {
+        font-size: 0.95em;
+        margin-bottom: 18px;
+    }
+     .document-viewer em {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+    .toc-container {
+        padding: 20px 15px;
+    }
+    .toc-title {
+        font-size: 1.4em;
+    }
+    .toc-title::after {
+        width: 60px;
+    }
+    .toc-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+     .toc-list li a {
+        font-size: 0.9em;
+    }
+    .download-button {
+        font-size: 0.95em;
+        padding: 12px 24px;
+    }
+    .download-link-container {
+        padding: 20px 0;
+    }
+}
+
+/* --- PREFERS REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .content-section,
+  .toc-container,
+  .toc-list li,
+  /* Elementos internos del document-viewer que se animan */
+  .document-viewer > .document-subtitle,
+  .document-viewer > .section-heading,
+  .document-viewer > .document-paragraph,
+  .document-viewer > em,
+  .document-viewer > .download-link-container {
+    animation-name: none !important;
+    transition: none !important; 
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}

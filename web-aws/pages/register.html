@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
+    <meta http-equiv="Expires" content="Wed, 21 Oct 2025 07:28:00 GMT">
+    <link rel="shortcut icon" href="../img/inicio/logo3.ico" type="image/x-icon">
+    <title>BitBurger - register</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/register-login.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🍔</div>
+        <h2>----- Register -----</h2>
+
+        <form id="registerForm" action="#" method="post">
+            <div class="form-group">
+                <label for="nombre"><p>Name:</p></label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apellidos"><p>Last name:</p></label>
+                <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><p>Email:</p></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><p>Password:</p></label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password"><p>Confirm Password:</p></label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <span id="password-confirm-error" class="error-message" style="display: none; color: red; font-size: 0.9em;"></span>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos" class="checkbox-label"><p>I accept the terms and conditions</p></label>
+            </div>
+
+            <button type="submit" class="btn-register"><p>Create Account</p></button>
+        </form>
+
+        <p class="login-link">
+            Do you already have an account? <a href="login.html"><p>Log In</p></a>
+        </p>
+    </div>
+
+    <script src="../script/cookies.js"></script>
+    <script src="../script/register.js"></script>
+
+</body>
+</html>

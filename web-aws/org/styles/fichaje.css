@@ -1,0 +1,302 @@
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- NEW COLOR PALETTE VARIABLES (Copied from style.css for reference if not globally available) --- */
+/* En tu :root (ej. fichaje.css) */
+:root {
+    /* ... otras variables ... */
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #ecdcc2; /* ESTE ES EL BEIGE CÁLIDO */
+    --bg-off-white-card: #FAF6EF; /* Un blanco hueso para tarjetas internas */
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+    --border-color-light-theme: #D9C7A9; /* Borde para el beige cálido */
+    --border-color-off-white: #EAE0D1; /* Borde para tarjetas blanco hueso */
+    --border-content-box: #D9C7A9;
+    --bg-content-box: #ecdcc2; 
+    --bg-inner-card: #FAF6EF;  
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    background-color: var(--bg-dark-main); /* UPDATED COLOR */
+    color: var(--text-light); /* UPDATED COLOR */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Estilo para la fuente Ashton (ahora Anton) */
+.font-style-ashton {
+    font-family: 'Anton', sans-serif !important; /* UPDATED FONT */
+    font-weight: normal !important; /* Anton is already boldish, or use 400 if specific weight needed */
+    letter-spacing: 0.5px;
+}
+
+
+/* Navegación principal */
+.main-nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color-dark-theme); /* UPDATED COLOR */
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.nav-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Reduced gap slightly */
+    max-width: 10000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.nav-button {
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    background-color: transparent; /* UPDATED */
+    border: 2px solid var(--text-light); /* UPDATED */
+    border-radius: 25px; /* Match main site buttons */
+    padding: 10px 20px; /* Adjusted padding */
+    font-size: 14px; /* Adjusted size */
+    letter-spacing: 1px;
+    color: var(--text-light); /* UPDATED */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: var(--text-light); /* UPDATED */
+    color: var(--bg-dark-main); /* UPDATED */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.nav-button.active {
+    background-color: var(--accent-orange); /* UPDATED */
+    color: var(--text-dark); /* UPDATED */
+    border-color: var(--accent-orange); /* UPDATED */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.nav-button.active:hover {
+    background-color: #f8c555; /* Slightly lighter orange for hover on active */
+    color: var(--text-dark);
+}
+
+
+/* Área de contenido principal */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto; /* Center content area if it has a max-width */
+    max-width: 950px; /* Common max-width from other intranet pages */
+}
+
+/* Caja de Fichaje (Entrada/Salida) */
+.fichaje-box {
+    background-color: var(--bg-dark-section); /* UPDATED COLOR */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 8px; /* Match main site cards */
+    padding: 30px;
+    width: 100%;
+    max-width: 600px; /* Adjusted max-width */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Match main site card shadows */
+}
+
+.fichaje-section {
+    margin-bottom: 25px;
+}
+.fichaje-section:last-child {
+    margin-bottom: 0;
+}
+
+.fichaje-section h2 {
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton if applied in HTML */
+    font-size: 2em; /* Adjusted size */
+    color: var(--accent-orange); /* UPDATED COLOR */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.fichaje-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.fichaje-info {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-size: 1em;
+    color: var(--text-light); /* UPDATED */
+    min-width: 100px;
+    text-align: center;
+}
+
+.fichaje-action-button {
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    background-color: var(--accent-red); /* UPDATED */
+    border: none; /* UPDATED */
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: var(--text-light); /* UPDATED */
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.fichaje-action-button:hover {
+    background-color: #e78423; /* Darker red */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.fichaje-action-button:active {
+    transform: scale(0.98) translateY(0);
+}
+
+/* Contenedor del Calendario y Botón Download */
+.calendario-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 700px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* UPDATED */
+}
+
+.calendario-visualizador {
+    background-color: var(--bg-dark-main); /* Inner background for image if needed */
+    border-radius: 8px;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border-color-dark-theme);
+}
+
+.calendario-visualizador img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.download-button {
+    font-family: 'Anton', sans-serif; /* Ensured by .font-style-ashton */
+    background-color: var(--accent-green); /* UPDATED */
+    border: none; /* UPDATED */
+    padding: 14px 30px;
+    border-radius: 25px;
+    color: var(--text-light); /* UPDATED */
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.download-button:hover {
+    background-color: #6a783c; /* Darker Green */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.download-button:active {
+    transform: scale(0.98) translateY(0);
+}
+
+/* ----- Responsive ----- */
+@media (min-width: 768px) {
+    .fichaje-controls {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 768px) { /* General tablet adjustments */
+    .nav-button {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+    .fichaje-section h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .main-nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+    .nav-buttons-container {
+        padding: 0 10px;
+        gap: 10px;
+    }
+    .content-area {
+        padding: 0 10px;
+        gap: 20px;
+    }
+    .nav-button {
+        font-size: 11px; /* Further reduce for small screens */
+        padding: 6px 12px;
+        letter-spacing: 0.5px;
+    }
+    .fichaje-box {
+        padding: 20px;
+    }
+    .fichaje-section h2 {
+        font-size: 1.6em;
+    }
+    .fichaje-info, .fichaje-action-button {
+        font-size: 0.9em;
+        width: 100%; 
+        margin-bottom: 10px;
+    }
+    .fichaje-action-button {
+        padding: 10px 15px;
+    }
+    .fichaje-controls > *:last-child { 
+        margin-bottom: 0;
+    }
+    .calendario-container {
+        padding: 15px;
+    }
+    .calendario-visualizador {
+        padding: 5px;
+    }
+    .download-button {
+        font-size: 1em;
+        padding: 12px 22px;
+    }
+}

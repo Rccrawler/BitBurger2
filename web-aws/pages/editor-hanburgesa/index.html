@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Changed to 'en' to match main site, adjust if 'es' is intentional -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBurger - Burger Builder</title> <!-- Updated title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Main site styles -->
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/boton.css">
+    
+    <!-- Burger builder specific styles -->
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon">
+    <!-- Removed Cache-Control and Expires meta tags for now, usually handled by server -->
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="expanding-button-container">
+                <button class="main-circular-button" id="mainButton" aria-label="Abrir opciones" aria-expanded="false">
+                    <img src="../../img/inicio/logo3.png" alt="Abrir menú" class="logo-image">
+                </button>
+                <div class="options-wrapper" id="optionsMenu">
+                    <button class="option-button option-1" data-url="../carrito.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Orders</span></div></button>
+                    <button class="option-button option-2" data-url="../../conocenos.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Know us</span></div></button>
+                    <button class="option-button option-3" data-url="../../org/index.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Employees</span></div></button>
+                    <button class="option-button option-4" data-url="../perfil.html"><div class="option-burger-content"><div class="option-bun-top"></div><div class="option-bun-bottom"></div><span class="option-text">Profile</span></div></button>
+                </div>
+            </div>
+        </div>
+        <nav class="header-right">
+            <a href="../game/index.html" target="_blank" class="nav-button order-button">Game</a>
+            <!-- Link to self, maybe remove or disable -->
+            <a href="index.html" class="nav-button order-button active">Personalize</a> 
+            <a href="../carta.html" class="nav-button reserve-button">ORDER</a>
+            <div class="language-selector">
+                <span>EN</span>
+                <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="10" height="10"><path d="M8 12L2 6h12L8 12z"/></svg>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cookie banner - can be kept or removed if not needed on this specific page -->
+    <script src="../../script/cookies.js"></script>
+    <div id="cookie-banner">
+        <p>We use cookies to improve your experience. <a href="../../org/pages/politica_cookies.html" style="color: lightblue;">Learn more</a>.</p>
+        <button onclick="aceptarCookies()">Accept</button>
+        <button onclick="abrirConfiguracion()">Set up</button>
+    </div>
+    <div id="configurar-cookies-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Cookies</h2><br>
+            <form id="configurar-cookies-form">
+                <label><input type="checkbox" name="cookies-necesarias" checked disabled> Necessary cookies (always active)</label>
+                <label><input type="checkbox" name="cookies-analiticas"> Analytical cookies</label>
+                <label><input type="checkbox" name="cookies-publicidad"> Advertising cookies</label>
+            </form>
+            <button onclick="guardarConfiguracion()">Save</button>
+            <button onclick="cerrarConfiguracion()">Cancel</button>
+        </div>
+    </div>
+
+    <main class="burger-builder-main"> <!-- Added a class to main for specific padding if needed -->
+        <div class="burger-builder-container">
+            <div id="menu-builder"> <!-- Renamed from #menu to avoid conflict with potential main site #menu -->
+                <p class="builder-section-title">Ingredients</p>
+                 <div class="ingrediente" data-img="pan_superior.png" data-height="82" data-limit="1" data-price="0.50">Superior Bread</div>
+                 <div class="ingrediente" data-img="lechuga2.png" data-height="0" data-limit="2" data-price="0.30">Lettuce</div>
+                 <div class="ingrediente" data-img="queso.png" data-height="7" data-limit="3" data-price="0.40">Cheese</div>
+                 <div class="ingrediente" data-img="carne.png" data-height="35" data-limit="3" data-price="1.50">Meat</div>
+                 <div class="ingrediente" data-img="pan_itermedio1.png" data-height="0" data-limit="2" data-price="0.40">Intermediate Bread</div>
+                 <div class="ingrediente" data-img="tomate.png" data-height="0" data-limit="3" data-price="0.25">Tomato</div>
+                 <div class="ingrediente" data-img="cebolla.png" data-height="-1" data-limit="2" data-price="0.35">Onion</div>
+                 <div class="ingrediente" data-img="pepinillos.png" data-height="0" data-limit="4" data-price="0.30">Pickles</div>
+                 <div class="ingrediente" data-img="pan_inferior2.png" data-height="0" data-limit="1" data-price="0.50">Bottom Bread</div>
+            
+                <div id="orden">
+                  <h3 class="builder-section-title">Current order</h3>
+                  <ul id="lista">
+                  </ul>
+                  <div id="lista-ayuda">Drag to reorder.<br> Double click to <span class="eliminar-text">remove</span>.<br><br>Sauces (BBQ, mustard, ketchup, mayo) included as sachets.</div>
+                  <div id="encargar-btn"><button class="button"><div class="outline"></div><div class="state state--default"><div class="icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g style="filter: url(#shadow)"><path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path><path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path></g><defs><filter id="shadow"><fedropshadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></fedropshadow></filter></defs></svg></div><p><span style="--i:0">S</span><span style="--i:1">e</span><span style="--i:2">n</span><span style="--i:3">d</span><span style="--i:4">C</span><span style="--i:5">a</span><span style="--i:6">r</span><span style="--i:7">t</span><span style="--i:8">.</span><span style="--i:9">.</span><span style="--i:10">.</span></p></div><div class="state state--sent"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em" stroke-width="0.5px" stroke="black"><g style="filter: url(#shadow)"><path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path><path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path></g></svg></div><p><span style="--i:5">S</span><span style="--i:6">e</span><span style="--i:7">n</span><span style="--i:8">t</span></p></div></button></div>
+                </div>
+            </div>
+        
+            <div id="hamburguesa-preview"> <!-- Renamed from #hamburguesa -->
+              <div id="vista">
+              </div>
+            </div>
+        </div>
+        <div id="total-precio">Total: $0.00</div>
+
+    </main>
+
+    <footer>
+        <div class="repeating-background-text footer-bg-text">
+            <!--<span>FOREVERCHORREOFOREVERCHORREOFOREVER</span>-->
+        </div>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo-social">
+                    <img src="../../img/inicio/logo3.png" alt="GOIKO Logo" style="width: 7vh;">
+                    <br>
+                    <br>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../../img/inicio/facebook-13.png" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../../img/inicio/gorjeo.png" alt="X"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../../img/inicio/instagram.png" alt="Instagram"></a>
+                        <a href="https://www.instagram.com/bitburger365?igsh=MXFjenU3ZGg0dXhkMA==" target="_blank"><img src="../../img/inicio/linkedin.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                <nav class="footer-nav main-links">
+                    <a href="../carta.html">MENU</a><a href="../carta.html">RESERVE</a><a href="../carta.html">ORDER NOW</a><a href="../carta.html">FOOD TRUCKS</a>
+                </nav>
+                <nav class="footer-nav secondary-links">
+                    <a href="#">ABOUT US</a><a href="#">ALLERGENS</a><a href="#">TERMS & CONDITIONS</a><a href="">PRIVACY POLICY</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+            <p><span>© 2024 BitBurger | <a href="../../contacto.html">More Information and Contact</a> | <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank">Creative Commons License | </a></span></p>
+            <nav><a href="#">LEGAL NOTICE</a><a href="#">COOKIE POLICY</a><a href="#">SALES CONDITIONS</a></nav>            
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script/boton.js"></script>
+    <!-- <script src="../../script/cookies.js"></script>  Already included above main -->
+    <script src="../../script/mainjs.js"></script> <!-- General animations, carousel etc. -->
+    <script src="burger-builder.js" defer></script> <!-- Burger builder specific JS -->
+</body>
+</html>

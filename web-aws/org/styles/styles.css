@@ -1,0 +1,397 @@
+/* Using variables from the main style.css for consistency */
+:root {
+    --bg-dark-main: #876434;
+    --bg-dark-section: #4a3417;
+    --bg-light-contrast: #F5EDE0;
+    --text-light: #F5EDE0;
+    --text-dark: #3D352A;
+    --accent-orange: #F7B731;
+    --accent-red: #ce7413;
+    --accent-green: #7E8C4A;
+    --accent-brown-light: #B08A6F;
+    --border-color-dark-theme: #5A4D3F;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark-main); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--bg-dark-section); /* UPDATED */
+    color: var(--text-light); /* UPDATED */
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 3px solid var(--accent-orange); /* UPDATED */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    font-size: 2.5em; /* Adjusted */
+    font-weight: normal; /* Anton is boldish */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 10px; /* Adjusted */
+}
+
+header nav ul li a {
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1em; /* Adjusted */
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid transparent; /* For hover effect */
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: var(--accent-orange); /* UPDATED */
+    color: var(--text-dark); /* UPDATED */
+    border-color: var(--accent-orange);
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--bg-dark-section); /* UPDATED */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4); /* Enhanced shadow */
+    border-radius: 8px;
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
+}
+
+.cookie-policy .policy-header {
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.cookie-policy .policy-header h2 { /* This h2 is different from section h2 */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
+    font-size: 2em;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.cookie-policy .revision-date {
+    font-style: italic;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.7;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.cookie-policy .toc {
+    background-color: var(--bg-dark-main); /* UPDATED */
+    padding: 20px; /* Adjusted */
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--accent-orange); /* UPDATED */
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
+}
+
+.cookie-policy .toc h3 { /* TOC heading */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
+    margin-top: 0;
+    margin-bottom: 15px; /* Adjusted */
+    font-size: 1.3em;
+    letter-spacing: 0.5px;
+}
+.cookie-policy .toc h3 a {
+    color: var(--accent-orange); /* UPDATED */
+    text-decoration: none;
+}
+.cookie-policy .toc h3 a:hover {
+    text-decoration: underline;
+    color: #f8c555; /* Lighter orange */
+}
+
+
+.cookie-policy .toc ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.cookie-policy .toc ul li {
+    margin-bottom: 8px; /* Adjusted */
+}
+
+.cookie-policy .toc ul li a {
+    text-decoration: none;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
+    transition: color 0.2s ease;
+}
+
+.cookie-policy .toc ul li a:hover {
+    text-decoration: underline;
+    color: var(--accent-orange); /* UPDATED */
+}
+
+.cookie-policy section {
+    margin-bottom: 40px;
+}
+
+.cookie-policy section h2 { /* Main section titles */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
+    border-bottom: 2px solid var(--accent-orange); /* UPDATED */
+    padding-bottom: 10px; /* Adjusted */
+    margin-top: 0;
+    margin-bottom: 25px; /* Adjusted */
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
+}
+
+.cookie-policy section h3 { /* Sub-section titles */
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.9;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    padding-bottom: 8px; /* Adjusted */
+    letter-spacing: 0.5px;
+}
+.cookie-policy section h3:first-of-type {
+    margin-top: 0;
+}
+
+.cookie-policy section h4 {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 700; /* Bold Roboto */
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.85;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.cookie-policy p {
+    margin-bottom: 15px;
+    text-align: justify;
+    opacity: 0.9;
+}
+
+.cookie-policy ul, .cookie-policy ol {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    opacity: 0.9;
+}
+
+.cookie-policy ul li, .cookie-policy ol li {
+    margin-bottom: 8px;
+}
+
+.cookie-policy strong {
+    color: var(--accent-orange); /* UPDATED */
+    font-weight: 500; /* Roboto medium */
+}
+
+.cookie-policy a {
+    color: var(--accent-orange); /* UPDATED */
+    text-decoration: none;
+}
+.cookie-policy a:hover {
+    text-decoration: underline;
+    color: #f8c555; /* Lighter orange */
+}
+
+
+.cookie-policy dl {
+    margin-bottom: 20px;
+}
+
+.cookie-policy dt {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 700; /* Bold Roboto */
+    color: var(--accent-orange); /* UPDATED */
+    margin-top: 15px;
+}
+
+.cookie-policy dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border-color-dark-theme); /* UPDATED */
+    opacity: 0.9;
+}
+
+.tracker-category {
+    margin-bottom: 30px;
+    padding: 20px; /* Adjusted */
+    border: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    border-radius: 6px;
+    background-color: var(--bg-dark-main); /* UPDATED */
+}
+.tracker-category h3 { /* H3 inside tracker category */
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color-dark-theme); /* UPDATED */
+    padding-bottom: 10px; /* Adjusted */
+    color: var(--accent-orange); /* Make it stand out */
+}
+
+.tracker-category h4 {
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.8;
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.third-party-tracker, .first-party-tracker {
+    margin-left: 0; /* No extra indent, parent padding handles it */
+    padding-left: 15px;
+    border-left: 3px solid var(--accent-orange); /* UPDATED */
+    margin-bottom: 15px;
+    padding-top: 5px; /* Space for items */
+    padding-bottom: 5px;
+}
+
+.third-party-tracker .service-name, .first-party-tracker .service-name {
+    font-family: 'Roboto', sans-serif; /* UPDATED FONT */
+    font-weight: 500; /* Medium Roboto */
+    color: var(--text-light); /* UPDATED */
+    margin-bottom: 5px;
+}
+.checkbox-placeholder { /* This is a visual placeholder */
+    display: inline-block;
+    width: 18px; /* Match main site checkbox */
+    height: 18px;
+    background-color: #5a4d3f; /* Match main site checkbox */
+    border: 1px solid #7a6c5d; /* Match main site checkbox */
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 18px;
+    font-size: 0.8em;
+    color: var(--text-light); /* For the [ ] */
+}
+
+.ayuda-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--accent-orange); /* UPDATED */
+    background-color: var(--bg-dark-main); /* UPDATED */
+    padding: 25px; /* Adjusted */
+    border-radius: 6px;
+    border: 1px solid var(--border-color-dark-theme); /* Added border */
+}
+
+.ayuda-footer h2, .ayuda-footer h3, .ayuda-footer h4 {
+    font-family: 'Anton', sans-serif; /* UPDATED FONT */
+    color: var(--accent-orange); /* UPDATED */
+    border-bottom: none;
+    letter-spacing: 0.5px;
+}
+.ayuda-footer h2 { font-size: 1.6em; margin-bottom:15px; }
+.ayuda-footer h3 { font-size: 1.3em; margin-top: 20px; margin-bottom:10px;}
+.ayuda-footer h4 { font-size: 1.1em; margin-top: 10px; margin-bottom:5px; font-family: 'Roboto', sans-serif; font-weight: 700;}
+
+
+.ayuda-footer nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.ayuda-footer nav ul li {
+    margin-bottom: 8px;
+}
+.ayuda-footer nav ul li a {
+    color: var(--text-light);
+}
+.ayuda-footer nav ul li a:hover {
+    color: var(--accent-orange);
+}
+
+
+.site-footer-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color-dark-theme); /* UPDATED */
+}
+.site-footer-info p {
+    font-size: 0.9em;
+    color: var(--text-light); /* UPDATED */
+    opacity: 0.8;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-dark-section); /* Darker footer, consistent with header */
+    color: var(--text-light); /* UPDATED */
+    margin-top: 40px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color-dark-theme);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    header h1 {
+        font-size: 2em;
+    }
+    header nav ul li a {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+    main {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .cookie-policy section h2 {
+        font-size: 1.6em;
+    }
+    .cookie-policy section h3 {
+        font-size: 1.3em;
+    }
+    .ayuda-footer {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+    .cookie-policy section h2 {
+        font-size: 1.4em;
+    }
+    .cookie-policy section h3 {
+        font-size: 1.2em;
+    }
+    .cookie-policy p,
+    .cookie-policy ul li, .cookie-policy ol li,
+    .cookie-policy dd {
+        font-size: 0.95em;
+    }
+    .tracker-category, .ayuda-footer {
+        padding: 15px;
+    }
+}

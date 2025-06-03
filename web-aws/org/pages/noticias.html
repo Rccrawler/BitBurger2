@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Changed lang to "en" -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - News</title> <!-- Translated title -->
+    <link rel="stylesheet" href="../styles/fichaje.css"> <!-- Common intranet styles --> <!-- Comment translated -->
+    <link rel="stylesheet" href="../styles/noticias.css"> <!-- Specific styles for news --> <!-- Comment translated -->
+    <!-- MODIFICADO: Enlace de fuentes añadido -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../../img/inicio/logo3.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="../../fonts/ashton/stylesheet.css"> -->
+</head>
+<body>
+    <div class="main-container">
+        <header class="page-header">
+            <!-- You can add content to the header if you need it --> <!-- Comment translated -->
+        </header>
+
+        <nav class="main-nav">
+            <div class="nav-buttons-container">
+                <button class="nav-button font-style-ashton" onclick="window.location.href='fichaje.html'">CLOCK-IN</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='bienvenida.html'">WELCOME</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton active">NEWS</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='beneficios.html'">BENEFITS</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='estatuto.html'">STATUTE</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='convenio.html'">AGREEMENT</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='despidos.html'">DISMISSALS</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='comite.html'">COMMITTEE</button> <!-- Translated -->
+                <button class="nav-button font-style-ashton" onclick="window.location.href='../../index.html'">EXIT</button> <!-- Translated -->
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <script src="../../script/employee-guard.js"></script> 
+            <section class="news-section-container" id="general-news">
+                <h2 class="font-style-ashton section-title">Things happening in the company...</h2> <!-- Translated -->
+                <!-- News will be inserted here by JS or can be pre-loaded --> <!-- Comment translated -->
+                <article class="news-item">
+                    <h3>New Sales Record!</h3> <!-- Translated -->
+                    <p class="news-meta">Published on July 15, 2024 by Management</p> <!-- Translated -->
+                    <p>This month we've achieved a new sales record for our Burger Bit Extrema. Thanks to everyone for your effort!</p> <!-- Translated -->
+                </article>
+                <article class="news-item">
+                    <h3>Upcoming Customer Service Training</h3> <!-- Translated -->
+                    <p class="news-meta">Published on July 12, 2024 by HR</p> <!-- Translated (RRHH -> HR) -->
+                    <p>Don't forget to sign up for the customer service training taking place next week. We will improve our skills to provide the best service.</p> <!-- Translated -->
+                </article>
+            </section>
+
+            <section class="news-section-container" id="employee-achievements">
+                <h2 class="font-style-ashton section-title">Update on what the committee members have achieved</h2> <!-- Translated -->
+                <article class="news-item">
+                    <h3>María G. completes her Advanced Cooking certification</h3> <!-- Translated -->
+                    <p class="news-meta">Achievement of July 10, 2024</p> <!-- Translated -->
+                    <p>Our colleague María has successfully obtained her certification. Congratulations on your dedication and keep cooking wonders!</p> <!-- Translated -->
+                </article>
+            </section>
+
+            <section class="news-section-container" id="employee-initiatives">
+                <h2 class="font-style-ashton section-title">Update on what the committee members are proposing to do</h2> <!-- Translated -->
+                <article class="news-item">
+                    <h3>Proposal: BitBurger Book Club</h3> <!-- Translated -->
+                    <p class="news-meta">Initiative by Juan P. - July 8, 2024</p> <!-- Translated -->
+                    <p>Juan proposes creating a monthly book club to share ideas and promote culture. Interested parties, contact him.</p> <!-- Translated -->
+                </article>
+            </section>
+
+            <section class="news-submission-section">
+                <p>If you have any news to share, use the button here:</p> <!-- Translated -->
+                <button id="openPostNewsModalBtn" class="news-action-button font-style-ashton">Post New News</button> <!-- Translated -->
+            </section>
+            
+            <section class="committee-form-section">
+                <p>If you have something to tell the committee members, use the button here:</p> <!-- Translated -->
+                <button onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAF-T39tUOEpITkhESFpEUDEzOUhWOEJaOTlTMzJZTS4u', '_blank');" class="news-action-button font-style-ashton">Fill out Form</button> <!-- Translated -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Publishing News --> <!-- Comment translated -->
+    <div id="postNewsModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="closePostNewsModalBtn" class="close-modal-btn font-style-ashton">X</button>
+            <h2 class="font-style-ashton">Write Your News</h2> <!-- Translated -->
+            <form id="postNewsForm">
+                <div class="form-group">
+                    <label for="newsTitle">Title:</label> <!-- Translated -->
+                    <input type="text" id="newsTitle" name="newsTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="newsContent">Content:</label> <!-- Translated -->
+                    <textarea id="newsContent" name="newsContent" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="newsCategory">Category:</label> <!-- Translated -->
+                    <select id="newsCategory" name="newsCategory">
+                        <option value="general-news">Things happening in the company</option> <!-- Translated -->
+                        <option value="employee-achievements">Colleague achievements</option> <!-- Translated -->
+                        <option value="employee-initiatives">Colleague initiatives</option> <!-- Translated -->
+                    </select>
+                </div>
+                <button type="submit" class="news-action-button font-style-ashton">Submit News</button> <!-- Translated -->
+            </form>
+        </div>
+    </div>
+
+    <script src="../script/noticias.js"></script> <!-- If you rename the JS file, update this path to news.js -->
+</body>
+</html>
